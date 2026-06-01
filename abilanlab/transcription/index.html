@@ -453,6 +453,19 @@ canvas#tp-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
 .tp-breadcrumb-current { color:rgba(168,197,226,.75);font-weight:500; }
 @media (max-width:480px) { .tp-breadcrumb-inner { padding:8px 1rem;font-size:.7rem; } }
 </style>
+<style>
+/* ── Safe-area iOS PWA : couvre la zone au-dessus du menu ── */
+#tp-nav-header {
+  background: #0f1823 !important;
+  padding-top: env(safe-area-inset-top);
+  height: calc(var(--nav-height, 68px) + env(safe-area-inset-top)) !important;
+}
+#tp-nav-header.scrolled { background: #0a1018 !important; }
+.tp-nav-inner { height: var(--nav-height, 68px) !important; }
+.tp-nav-spacer { height: calc(68px + env(safe-area-inset-top)) !important; }
+.tp-breadcrumb { top: calc(68px + env(safe-area-inset-top)) !important; }
+#pwa-splash { background: #000 !important; }
+</style>
 </head>
 <body>
 

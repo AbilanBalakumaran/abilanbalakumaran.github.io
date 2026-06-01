@@ -860,6 +860,19 @@ canvas#lab-grain {
     .tp-social-btn { padding: 8px 14px; font-size: 12px; }
 }
 </style>
+<style>
+/* ── Safe-area iOS PWA : couvre la zone au-dessus du menu ── */
+#tp-nav-header {
+  background: #0f1823 !important;
+  padding-top: env(safe-area-inset-top);
+  height: calc(var(--nav-height, 68px) + env(safe-area-inset-top)) !important;
+}
+#tp-nav-header.scrolled { background: #0a1018 !important; }
+.tp-nav-inner { height: var(--nav-height, 68px) !important; }
+.tp-nav-spacer { height: calc(68px + env(safe-area-inset-top)) !important; }
+.tp-breadcrumb { top: calc(68px + env(safe-area-inset-top)) !important; }
+#pwa-splash { background: #000 !important; }
+</style>
 </head>
 <body>
 
