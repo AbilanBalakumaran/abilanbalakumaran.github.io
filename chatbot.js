@@ -39,11 +39,11 @@
     },
     {
       keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire','blender','sound design'],
-      answer: () => `Les compétences d'Abilan couvrent tout le pipeline créatif :<br><br>🎬 <strong>Motion & Vidéo</strong> : After Effects, Premiere Pro, DaVinci Resolve, Blender (3D)<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign<br>🔊 <strong>Sound Design</strong> : Adobe Audition, habillages sonores, spatialisation audio<br>💻 <strong>Web</strong> : HTML/CSS/JS, WordPress, UI/UX<br>📊 <strong>Digital</strong> : Google Analytics, Google Ads, SEO YouTube, Community Management<br>🤖 <strong>IA</strong> : génération de voix, extension d'images, automatisation créative`
+      answer: () => `Ce qui rend Abilan rare, c'est qu'il maîtrise <strong>toute la chaîne de création</strong> sans avoir besoin d'une équipe :<br><br>🎬 <strong>Motion & Vidéo</strong> : After Effects, Premiere Pro, DaVinci Resolve, Blender 3D<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign — logo, charte, print, digital<br>🔊 <strong>Sound Design</strong> : Adobe Audition — musiques, voix IA, habillage sonore<br>💻 <strong>Développement</strong> : HTML, CSS, JavaScript, PHP, WordPress, UI/UX<br>📊 <strong>Marketing digital</strong> : Google Analytics ✅, Google Ads ✅, SEO YouTube, Community Management<br>🤖 <strong>Intelligence Artificielle</strong> : génération de voix, extension d'images, automatisation créative<br><br>Du brief client jusqu'à la livraison finale, il gère tout. C'est un <strong>couteau suisse du digital</strong> 🎯`
     },
     {
       keys: ['service','propose','offre','prestation','travail','mission','commande','tarif','prix','devis','aide','comment abilan','aider'],
-      answer: () => `Voici comment Abilan peut transformer votre business :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>→ Une vidéo bien pensée capte l'attention en 3 secondes et explique ce que 10 pages de texte ne feront jamais. Abilan le fait pour LinkedIn, YouTube, votre site, vos événements.<br><br>🎨 <strong>Identité visuelle & Design graphique</strong><br>→ Logo, charte, flyers, bannières : votre image doit inspirer confiance au premier regard. Il crée des identités qui marquent les esprits.<br><br>📱 <strong>Stratégie digitale & Réseaux sociaux</strong><br>→ Certifié Google Analytics et Google Ads. Il ne publie pas au hasard, il construit une stratégie qui génère de la visibilité et des clients.<br><br>💻 <strong>Développement web & Applications</strong><br>→ Sites WordPress, apps mobiles, interfaces UI/UX. Ce portfolio en est la preuve : du code propre, un design soigné.<br><br>📩 Prêt à démarrer ? Écrivez-lui directement ! 🚀`
+      answer: () => `Abilan maîtrise <strong>tout le spectre du digital créatif</strong> pour faire grandir votre marque :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>Vidéos explicatives, publicités, tutos, intros, animations 2D/3D, sound design. Il gère tout : script, illustration, animation, voix IA, montage. Résultat : vos messages passent en quelques secondes là où du texte échoue.<br><br>🎨 <strong>Identité visuelle & Design graphique</strong><br>Logo, charte graphique, flyers, bannières, supports print et digitaux. Une image qui inspire confiance au premier regard et reste dans les mémoires.<br><br>📱 <strong>Stratégie digitale & Community Management</strong><br>Gestion des réseaux, création de contenu, SEO YouTube, Google Analytics & Ads (certifié). Il transforme votre visibilité en clients réels.<br><br>💻 <strong>Développement web & Applications mobiles</strong><br>Sites WordPress, apps mobiles sur mesure, UI/UX design. Ce portfolio que vous visitez ? Il l'a codé entièrement lui-même.<br><br>📩 Un projet ? Contactez-le, il répond vite ! 🚀`
     },
     {
       keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france','linkedin'],
@@ -368,25 +368,29 @@
     setTimeout(() => { win.style.display = 'none'; }, 270);
   }
 
-  // ── Scroll fix iOS/PWA ─────────────────────────────
-  // Technique "document touchmove lock" : le seul qui fonctionne
-  // sur iOS PWA avec un élément position:fixed
-  let _touchZone = null; // 'msgs' | 'win' | null
+  // ── Scroll fix iOS/PWA — scroll JS manuel ──────────
+  // preventDefault sur tout le chat + scroll msgs piloté à la main
+  // C'est la seule technique qui fonctionne sur iOS position:fixed
+  let _tz = null, _ty = 0, _ts = 0;
 
   document.addEventListener('touchstart', e => {
-    if (!open) { _touchZone = null; return; }
-    _touchZone = e.target.closest('#cb-msgs') ? 'msgs'
-               : e.target.closest('#cb-win')  ? 'win'
-               : null;
+    if (!open) return;
+    const m = document.getElementById('cb-msgs');
+    _tz = e.target.closest('#cb-msgs') ? 'msgs'
+        : e.target.closest('#cb-win')  ? 'win' : null;
+    if (_tz === 'msgs' && m) { _ty = e.touches[0].clientY; _ts = m.scrollTop; }
   }, { passive: true });
 
   document.addEventListener('touchmove', e => {
-    if (_touchZone === 'win') {
-      // Touche sur le chat mais PAS sur la zone de scroll : bloquer la page
-      e.preventDefault();
+    if (!_tz) return;
+    e.preventDefault(); // Bloque la page dans tous les cas
+    if (_tz === 'msgs') {
+      const m = document.getElementById('cb-msgs');
+      if (m) m.scrollTop = _ts - (e.touches[0].clientY - _ty);
     }
-    // _touchZone === 'msgs' : le navigateur gère le scroll natif, on ne touche à rien
   }, { passive: false });
+
+  document.addEventListener('touchend', () => { _tz = null; }, { passive: true });
 
   function initScroll() {
     const m = document.getElementById('cb-msgs');
