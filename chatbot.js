@@ -11,31 +11,35 @@
   const KB = [
     {
       keys: ['bonjour','salut','hello','coucou','bonsoir','hey','hi'],
-      answer: () => `Bonjour ! 👋 Ravi de vous accueillir sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant ! Posez-moi n'importe quelle question sur son profil, ses services ou ses outils. Je suis là pour vous aider ! 😊`
+      answer: () => `Bonjour ! 👋 Ravi de vous accueillir sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant, posez-moi n'importe quelle question sur son profil, ses services ou ses outils. Je suis là pour vous aider ! 😊`
     },
     {
-      keys: ['qui','profil','présent','abilan','c\'est qui','parle moi','tell me','about'],
+      keys: ['qui est','c\'est qui','parle moi','tell me','about','profil','présentation','présente'],
       answer: () => `<strong>Abilan Balakumaran</strong> est <strong>Digital Manager & Motion Designer</strong> 🎨<br><br>Il crée des expériences visuelles impactantes : animations, identités visuelles, stratégies digitales et développement web.<br><br><em>"Votre visibilité en ligne est votre meilleur commercial !"</em>`
     },
     {
-      keys: ['compétence','logiciel','skill','maîtrise','technologie','sait','capable','outil','stack','after effects','premiere','illustrator','photoshop'],
+      keys: ['motion design','motion designer','animation','animé','clip','reel','montage','after effect','davinci','premiere pro'],
+      answer: () => `Abilan est spécialisé en <strong>Motion Design</strong> 🎬<br><br>Il crée des vidéos animées pour les réseaux sociaux, des publicités, des animations de logo, des génériques et bien plus encore.<br><br>Il maîtrise After Effects, Premiere Pro et DaVinci Resolve. Vous pouvez voir ses réalisations sur <a href="https://www.youtube.com/@sukiamv" target="_blank">sa chaîne YouTube</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> ! 🎨`
+    },
+    {
+      keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop'],
       answer: () => `Voici les compétences d'Abilan :<br><br>🎬 <strong>Vidéo & Motion</strong> : After Effects, Premiere Pro, DaVinci Resolve<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign<br>💻 <strong>Web</strong> : HTML/CSS/JS, WordPress, UI/UX<br>📱 <strong>Digital</strong> : Stratégie réseaux, Community Management`
     },
     {
-      keys: ['service','propose','offre','prestation','travail','mission','commande','tarif','prix','devis','aide','faire'],
+      keys: ['service','propose','offre','prestation','travail','mission','commande','tarif','prix','devis','aide','comment abilan'],
       answer: () => `Abilan propose <strong>4 grands services</strong> :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>🎨 <strong>Design graphique & Identité visuelle</strong><br>📱 <strong>Stratégie digitale & Community Management</strong><br>💻 <strong>Développement web & Applications</strong><br><br>Pour un devis, contactez-le directement par email 😊`
     },
     {
-      keys: ['contact','email','mail','joindre','écrire','message','disponible','disponibilité','localisation','où','location'],
+      keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france'],
       answer: () => `Le meilleur moyen de contacter Abilan :<br><br>📧 <strong><a href="mailto:Abilan.Balakumaran@gmail.com">Abilan.Balakumaran@gmail.com</a></strong><br><br>Il est <strong>mobile en Île-de-France</strong> et disponible pour des projets freelance. N'hésitez pas, il répond rapidement ! 🙂`
     },
     {
-      keys: ['réseau','instagram','youtube','behance','social','suivre','lien','communauté'],
-      answer: () => `Retrouvez Abilan sur ses réseaux :<br><br>📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank">Instagram : @abilan_motion</a><br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank">YouTube : @sukiamv</a><br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance : AbilanBalakumaran</a><br><br>Abonnez-vous pour suivre ses créations ! ✨`
+      keys: ['réseau','instagram','youtube','behance','social','suivre','communauté','yt','chaine','chaîne','abonné','abonne','suki','contenu','tuto','publie','poste','actif','créateur'],
+      answer: () => `Retrouvez Abilan sur ses réseaux :<br><br>📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank">Instagram : @abilan_motion</a><br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank">YouTube : @sukiamv</a><br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance : AbilanBalakumaran</a><br><br>Sur YouTube il partage ses créations en motion design et ses tutos. Abonnez-vous pour ne rien manquer ! ✨`
     },
     {
-      keys: ['lab','outil','gratuit','fonctionnalité','feature','transcription','filigrane','extender','image'],
-      answer: () => `Le Lab propose <strong>3 outils 100% gratuits</strong> :<br><br>🎙️ <a href="/abilanlab/transcription/"><strong>Transcription Audio</strong></a> : Audio/vidéo en texte, multilingue<br>🖼️ <a href="/abilanlab/filigrane-remover/"><strong>Filigrane Remover</strong></a> : Supprime les filigranes<br>✨ <a href="/abilanlab/image-extender/"><strong>Image Extender</strong></a> : Étend vos images avec l'IA<br><br>Voulez-vous que je vous explique comment utiliser l'un d'eux ?`
+      keys: ['lab','outil','gratuit','fonctionnalité','feature','transcription','filigrane','extender'],
+      answer: () => `Le Lab propose <strong>3 outils 100% gratuits</strong> :<br><br>🎙️ <a href="/abilanlab/transcription/"><strong>Transcription Audio</strong></a> : audio et vidéo en texte, multilingue<br>🖼️ <a href="/abilanlab/filigrane-remover/"><strong>Filigrane Remover</strong></a> : supprime les filigranes de vos images<br>✨ <a href="/abilanlab/image-extender/"><strong>Image Extender</strong></a> : étend vos images avec l'IA<br><br>Voulez-vous que je vous explique comment utiliser l'un d'eux ?`
     },
     {
       keys: ['transcri','audio','whisper','sous-titre','srt','dicter','enregistrement','vocal'],
@@ -46,19 +50,19 @@
       answer: () => `Comment utiliser le <strong>Filigrane Remover</strong> :<br><br>1️⃣ Importez votre image<br>2️⃣ Sélectionnez la zone du filigrane<br>3️⃣ Laissez l'IA faire son travail ✨<br>4️⃣ Téléchargez le résultat<br><br>100% gratuit, aucune donnée envoyée ! 🔒`
     },
     {
-      keys: ['extend','étend','agrandir','image extend','outpaint','zoom out'],
+      keys: ['extend','étend','agrandir','outpaint','zoom out'],
       answer: () => `Comment utiliser l'<strong>Image Extender</strong> :<br><br>1️⃣ Importez votre image<br>2️⃣ Choisissez la direction d'extension<br>3️⃣ L'IA génère le contenu manquant ✨<br>4️⃣ Téléchargez l'image étendue<br><br>Parfait pour recadrer ou agrandir vos visuels ! 🖼️`
     },
     {
-      keys: ['installer','install','pwa','application','app','écran d\'accueil','télécharger','appli','mobile'],
+      keys: ['installer','install','pwa','application','appli','écran d\'accueil','télécharger'],
       answer: () => `Vous pouvez installer ce site comme une <strong>vraie application</strong> ! 📱<br><br><strong>Sur iPhone (Safari) :</strong><br>Appuyez sur <em>Partager</em> puis <em>"Sur l'écran d'accueil"</em><br><br><strong>Sur Android (Chrome) :</strong><br>Appuyez sur les <em>3 points</em> puis <em>"Ajouter à l'écran d'accueil"</em><br><br>L'app se lance sans barre de navigateur, avec un beau splash screen ✨`
     },
     {
-      keys: ['projet','réalisation','portfolio','travaux','exemple','création','client'],
-      answer: () => `Parmi les projets notables d'Abilan :<br><br>📱 <strong>Application mobile</strong> : Suivi de chantier BTP<br>🌐 <strong>Site web</strong> : <a href="https://etudereno.fr" target="_blank">etudereno.fr</a> (WordPress)<br>🎬 <strong>Motion Design</strong> : Animations & contenus réseaux<br>🎨 <strong>Identités visuelles</strong> : Logos, chartes graphiques<br><br>Tout sur <a href="https://abilanbalakumaran.github.io/" target="_blank">son portfolio</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> 🎨`
+      keys: ['projet','réalisation','portfolio','travaux','exemple','dernier','récent'],
+      answer: () => `Parmi les projets notables d'Abilan :<br><br>📱 <strong>Application mobile</strong> : suivi de chantier BTP<br>🌐 <strong>Site web</strong> : <a href="https://etudereno.fr" target="_blank">etudereno.fr</a> (WordPress)<br>🎬 <strong>Motion Design</strong> : animations et contenus réseaux<br>🎨 <strong>Identités visuelles</strong> : logos et chartes graphiques<br><br>Tout est visible sur <a href="https://abilanbalakumaran.github.io/" target="_blank">son portfolio</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> 🎨`
     },
     {
-      keys: ['formation','étude','diplôme','école','université','cursus','parcours','bac','master'],
+      keys: ['formation','étude','diplôme','école','université','cursus','parcours','master','mba'],
       answer: () => `Abilan a un solide parcours :<br><br>🎓 <strong>MBA Digital Marketing & Business</strong><br>🎨 <strong>Spécialisation Motion Design & Création digitale</strong><br><br>Une combinaison rare entre créativité et stratégie pour des projets complets de A à Z !`
     },
     {
