@@ -287,8 +287,8 @@
   }
 
   // Helpers HTML médias
-  // Vidéo optimisée mobile : pas d'autoplay, preload="none", playsinline bloque le fullscreen iOS
-  const vid = (src, t='') => `<video src="${src}" title="${t}" controls muted playsinline webkit-playsinline preload="none" style="background:#0a1018;max-height:120px;"></video>`;
+  // Vidéo GIF-like : autoplay+loop sans son, pointer-events:none bloque tout clic/fullscreen
+  const vid = (src, t='') => `<video src="${src}" title="${t}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"></video>`;
   const imgt = (src, a='') => `<img src="${src}" alt="${a}" loading="lazy">`;
   const grid = items => `<div class="cb-grid">${items.join('')}</div>`;
   const chips = links => `<div class="cb-links">${links.map(([l,h])=>`<a href="${h}" target="_blank" class="cb-chip-link">${l}</a>`).join('')}</div>`;
