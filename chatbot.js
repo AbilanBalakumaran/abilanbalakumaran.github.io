@@ -89,13 +89,20 @@
   /* ── CSS ───────────────────────────────────────── */
   const css = document.createElement('style');
   css.textContent = `
-#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;border:0;background:transparent;padding:0;margin:0;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:transparent;outline:0 !important;box-shadow:none !important;}
+/* bouton : div pur, zéro style navigateur */
+#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;}
 #cb-btn:hover{transform:scale(1.12) translateY(-4px);}
 #cb-btn img{width:68px;height:68px;object-fit:cover;border-radius:50%;display:block;pointer-events:none;filter:drop-shadow(0 4px 24px rgba(107,155,209,.55));}
 .cb-ring{position:fixed;bottom:24px;right:24px;z-index:99989;width:68px;height:68px;border-radius:50%;border:2px solid rgba(107,155,209,.35);pointer-events:none;animation:cbRing 2.2s ease-out infinite;}
 .cb-ring2{animation-delay:.7s;}
 #cb-dot{position:fixed;bottom:82px;right:20px;z-index:99991;width:13px;height:13px;background:#6ba68d;border-radius:50%;border:2px solid #0f1823;box-shadow:0 0 8px rgba(107,166,141,.8);animation:cbDotPulse 2.5s ease-in-out infinite;pointer-events:none;}
-#cb-win{position:fixed;bottom:106px;right:24px;z-index:99992;width:345px;max-height:530px;background:#0d1720;border:1px solid rgba(168,197,226,.14);border-radius:22px;box-shadow:0 24px 64px rgba(0,0,0,.65),0 0 0 1px rgba(168,197,226,.04);display:flex;flex-direction:column;overflow:hidden;transform-origin:bottom right;}
+/* bulle de bienvenue */
+#cb-bubble{position:fixed;bottom:102px;right:96px;z-index:99993;background:#0f1823;border:1px solid rgba(168,197,226,.2);border-radius:16px 16px 4px 16px;padding:11px 14px 11px 13px;max-width:210px;font-family:'Sora',sans-serif;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.9);box-shadow:0 8px 32px rgba(0,0,0,.55);display:flex;align-items:flex-start;gap:8px;cursor:pointer;animation:cbBubIn .4s cubic-bezier(.22,1,.36,1) both;}
+#cb-bubble.cb-bubble-hide{animation:cbBubOut .3s ease forwards;}
+#cb-bubble-x{background:none;border:none;color:rgba(168,197,226,.45);cursor:pointer;font-size:13px;padding:0;line-height:1;flex-shrink:0;margin-top:1px;}
+#cb-bubble-x:hover{color:#fff;}
+/* fenêtre chat */
+#cb-win{position:fixed;bottom:106px;right:24px;z-index:99992;width:345px;height:520px;background:#0d1720;border:1px solid rgba(168,197,226,.14);border-radius:22px;box-shadow:0 24px 64px rgba(0,0,0,.65);display:flex;flex-direction:column;transform-origin:bottom right;overflow:hidden;}
 #cb-win.cb-in{animation:cbIn .38s cubic-bezier(.22,1,.36,1) both;}
 #cb-win.cb-out{animation:cbOut .28s cubic-bezier(.4,0,1,1) both;}
 .cbh{display:flex;align-items:center;gap:10px;padding:13px 15px;background:rgba(168,197,226,.045);border-bottom:1px solid rgba(168,197,226,.09);}
@@ -105,7 +112,7 @@
 .cbh-status::before{content:'● ';font-size:8px;}
 .cbh-x{margin-left:auto;width:30px;height:30px;border:none;background:rgba(168,197,226,.07);border-radius:8px;cursor:pointer;color:rgba(168,197,226,.55);font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .cbh-x:hover{background:rgba(168,197,226,.14);color:#fff;}
-#cb-msgs{flex:1;min-height:0;overflow-y:scroll;padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(90,123,166,.25) transparent;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;}
+#cb-msgs{height:285px;overflow-y:scroll;padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(90,123,166,.25) transparent;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;}
 #cb-msgs::-webkit-scrollbar{width:3px;}
 #cb-msgs::-webkit-scrollbar-thumb{background:rgba(90,123,166,.3);border-radius:3px;}
 .cbm{display:flex;gap:8px;animation:cbMsg .3s cubic-bezier(.22,1,.36,1) both;}
@@ -136,7 +143,9 @@
 @keyframes cbOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.82) translateY(22px)}}
 @keyframes cbMsg{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes cbdd{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-@media(max-width:400px){#cb-win{width:calc(100vw - 16px);right:8px;bottom:96px;}}
+@keyframes cbBubIn{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes cbBubOut{to{opacity:0;transform:translateY(6px) scale(.95)}}
+@media(max-width:400px){#cb-win{width:calc(100vw - 16px);right:8px;bottom:96px;}#cb-bubble{right:84px;max-width:180px;}}
 `;
   document.head.appendChild(css);
 
@@ -150,11 +159,38 @@
   dot.id = 'cb-dot';
   document.body.appendChild(dot);
 
-  const btn = document.createElement('button');
+  // div au lieu de button = zéro style navigateur, zéro carré
+  const btn = document.createElement('div');
   btn.id = 'cb-btn';
+  btn.setAttribute('role', 'button');
+  btn.setAttribute('tabindex', '0');
   btn.setAttribute('aria-label', 'Ouvrir le chat Akino');
-  btn.innerHTML = `<img src="${AVATAR}" alt="Assistant Abilan">`;
+  btn.innerHTML = `<img src="${AVATAR}" alt="Akino">`;
   document.body.appendChild(btn);
+
+  // Bulle de bienvenue
+  const bubble = document.createElement('div');
+  bubble.id = 'cb-bubble';
+  bubble.innerHTML = `Bonjour ! Je suis <strong>Akino</strong>, disponible pour vous aider ou répondre à vos questions 😊 <button id="cb-bubble-x" aria-label="Fermer">✕</button>`;
+  bubble.style.display = 'none';
+  document.body.appendChild(bubble);
+
+  // Afficher la bulle après 3s si le chat n'a pas été ouvert
+  let bubbleShown = false;
+  setTimeout(() => {
+    if (!open && !bubbleShown) {
+      bubbleShown = true;
+      bubble.style.display = 'flex';
+    }
+  }, 3000);
+
+  function hideBubble() {
+    bubble.classList.add('cb-bubble-hide');
+    setTimeout(() => { bubble.style.display = 'none'; }, 280);
+  }
+
+  bubble.addEventListener('click', () => { hideBubble(); openChat(); });
+  document.getElementById('cb-bubble-x').addEventListener('click', e => { e.stopPropagation(); hideBubble(); });
 
   const win = document.createElement('div');
   win.id = 'cb-win';
@@ -235,6 +271,7 @@
 
   function openChat() {
     open = true;
+    hideBubble();
     win.style.display = 'flex';
     win.classList.remove('cb-out');
     win.classList.add('cb-in');
@@ -254,23 +291,25 @@
     setTimeout(() => { win.style.display = 'none'; }, 270);
   }
 
-  // Scroll isolé dans #cb-msgs — empêche la page de scroller
+  // Scroll isolé — hauteur fixe + preventDefault aux bords
+  let _scrollStartY = 0;
   function initScroll() {
     const m = document.getElementById('cb-msgs');
-    if (!m) return;
+    if (!m || m._cbScroll) return;
+    m._cbScroll = true;
     m.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
-    let startY = 0;
-    m.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+    m.addEventListener('touchstart', e => { _scrollStartY = e.touches[0].clientY; }, { passive: true });
     m.addEventListener('touchmove', e => {
-      const dy = e.touches[0].clientY - startY;
-      const atTop    = m.scrollTop <= 0;
-      const atBottom = m.scrollTop + m.clientHeight >= m.scrollHeight - 1;
-      if ((atTop && dy > 0) || (atBottom && dy < 0)) e.preventDefault();
+      const dy  = e.touches[0].clientY - _scrollStartY;
+      const top = m.scrollTop <= 0 && dy > 0;
+      const bot = m.scrollTop + m.clientHeight >= m.scrollHeight - 1 && dy < 0;
+      if (top || bot) e.preventDefault();
       e.stopPropagation();
     }, { passive: false });
   }
 
   btn.onclick = () => open ? closeChat() : openChat();
+  btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') btn.onclick(); });
   document.getElementById('cb-x').onclick = closeChat;
   document.getElementById('cb-go').onclick = send;
   win.querySelector('#cb-inp').addEventListener('keydown', e => { if (e.key === 'Enter') send(); });
