@@ -30,7 +30,7 @@
       answer: () => `Abilan a un vrai parcours terrain, pas que de la théorie 💪<br><br>🏢 <strong>Chef de projet digital — Cabinet d'Étude pour la Rénovation</strong> (alternance, depuis 2025)<br>• Pilotage de l'écosystème web : sites, landing pages, web apps, tunnels de vente<br>• Déploiement de l'identité de marque globale : DA, motion design, print, merchandising<br>• Lead de la stratégie notoriété, SEO local (Google Business Profile) et e-réputation<br><br>🏢 <strong>Graphiste / Motion Designer — WAAT</strong> (alternance 2 ans, 2023–2025)<br>• Vidéos pédagogiques 2D/3D à fort impact : compréhension produit, formats promotionnels<br>• Vidéos d'onboarding et communication interne pour engager les équipes<br>• Animation de mascotte 2D/3D : rigging, modélisation, lip-syncing, incrustation vidéo<br>• Direction artistique globale + intégration outils IA + sound design<br>• Charte graphique pour l'association AFOR<br>• Contenus multi-réseaux : LinkedIn, YouTube, Intranet, site internet<br><br>🎬 <strong>Monteur / Motion Designer — Clutch Rayn Production</strong> (stage 8 semaines, 2022)<br>• Overlays, animations et transitions Twitch sur-mesure<br>• Montage vidéo long format : streaming, récapitulatifs, dérushage<br>• Affiches et illustrations événementielles<br><br>➕ <strong>Depuis 2016</strong> : YouTube @SukiAMV — stratégie de contenu, VFX, communauté<br>➕ <strong>Depuis 2019</strong> : Instagram @abilan_motion — dessin et animation<br>➕ <strong>2021</strong> : développement de son portfolio web sur-mesure`
     },
     {
-      keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte'],
+      keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte','vidéo animée','video animee'],
       answer: () => `Abilan est spécialisé en <strong>Motion Design</strong> depuis 2016 🎬<br><br>Quelques créations directement depuis son portfolio :`
         + grid([
             vid('/images/motion/Coding%20animation.mp4','Coding Animation'),
@@ -46,11 +46,11 @@
       answer: () => `Sur <a href="https://www.youtube.com/@sukiamv" target="_blank"><strong>YouTube @sukiamv</strong></a>, Abilan publie depuis <strong>2016</strong> 🎬<br><br>Deux types de contenu :<br>🎌 <strong>AMV (Anime Music Videos)</strong> : montages créatifs sur des musiques<br>🎓 <strong>Tutoriels After Effects</strong> :<br>&nbsp;&nbsp;• Smooth Zoom In & Out Tutorial<br>&nbsp;&nbsp;• Smooth 3D Camera Movements with 2D Text<br>&nbsp;&nbsp;• Hardcore Twitch Shake Tutorial (sans plugin !)<br><br>Il gère tout de A à Z : SEO YouTube, miniatures, sound design, montage avancé et effets visuels. Allez vous abonner ! ✨`
     },
     {
-      keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire','blender','sound design','figma','canva','anglais'],
+      keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire','blender','sound design','figma','canva','anglais','wordpress','html','css','javascript','outil','connaissance'],
       answer: () => `Ce qui rend Abilan rare, c'est qu'il maîtrise <strong>toute la chaîne créative et digitale</strong> en solo :<br><br>🎬 <strong>Motion & Vidéo</strong> : After Effects, Premiere Pro, DaVinci Resolve, Blender 3D, Adobe Audition<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign, Figma, Canva<br>💻 <strong>Web & Dev</strong> : HTML, CSS, WordPress, Claude AI<br>📊 <strong>Marketing & Digital</strong> : Google Analytics ✅, Google Ads ✅, Prestashop ✅, SEO local, Google Business Profile<br>🤖 <strong>IA</strong> : génération de voix, extension d'images, automatisation créative<br>🌐 <strong>Langues</strong> : Français natif · Anglais B2<br><br>Du brief client jusqu'à la livraison : <strong>un seul interlocuteur, zéro dépendance externe</strong> 🎯`
     },
     {
-      keys: ['service','propose','offre','prestation','travail','mission','commande','tarif','prix','devis','aide','comment abilan','aider'],
+      keys: ['service','propose','offre','prestation','mission','commande','tarif','prix','devis','aider','comment abilan','logo','site web','graphisme','identité visuelle','identite visuelle','design graphique','seo','référencement','referencement','pub','publicité','publicite','communication','marque','brand','freelance','digital manager','tunnel','landing','vidéo','video','stratégie','strategie','community'],
       answer: () => `Abilan maîtrise <strong>tout le spectre du digital créatif</strong> pour faire grandir votre marque :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>Vidéos explicatives, publicités, tutos, intros, animations 2D/3D, sound design. Il gère tout : script, illustration, animation, voix IA, montage. Résultat : vos messages passent en quelques secondes là où du texte échoue.<br><br>🎨 <strong>Identité visuelle & Design graphique</strong><br>Logo, charte graphique, flyers, bannières, supports print et digitaux. Une image qui inspire confiance au premier regard et reste dans les mémoires.<br><br>📱 <strong>Stratégie digitale & Community Management</strong><br>Gestion des réseaux, création de contenu, SEO YouTube, Google Analytics & Ads (certifié). Il transforme votre visibilité en clients réels.<br><br>💻 <strong>Développement web & Applications mobiles</strong><br>Sites WordPress, apps mobiles sur mesure, UI/UX design. Ce portfolio que vous visitez ? Il l'a codé entièrement lui-même.<br><br>📩 Un projet ? Contactez-le, il répond vite ! 🚀`
     },
     {
@@ -102,7 +102,7 @@
       answer: () => `Vous pouvez installer ce site comme une <strong>vraie application</strong> ! 📱<br><br><strong>Sur iPhone (Safari) :</strong> Partager puis <em>"Sur l'écran d'accueil"</em><br><strong>Sur Android (Chrome) :</strong> 3 points puis <em>"Ajouter à l'écran d'accueil"</em><br><br>L'app se lance en plein écran avec splash screen et notifications pour vos transcriptions ✨`
     },
     {
-      keys: ['projet','réalisation','portfolio','travaux','exemple','dernier','récent','behance','warren','vélo','tx coin','voir','montre','affiche'],
+      keys: ['projet','réalisation','portfolio','travaux','exemple','dernier','récent','behance','warren','vélo','tx coin','voir','montre','affiche','création','galerie','réalise','cree','construit'],
       answer: () => `Voici quelques projets d'Abilan :`
         + grid([
             imgt('/images/website/etudereno-fr.png','etudereno.fr'),
@@ -127,6 +127,8 @@
     { label: '👤 Qui est Abilan ?',     trigger: 'qui est abilan' },
     { label: '🛠️ Ses services',         trigger: 'service propose' },
     { label: '💼 Son expérience',       trigger: 'expérience waat' },
+    { label: '🎓 Sa formation',         trigger: 'formation diplôme' },
+    { label: '🔧 Ses compétences',      trigger: 'compétence logiciel' },
     { label: '📧 Le contacter',         trigger: 'contact email' },
     { label: '⚙️ Les outils du Lab',    trigger: 'lab outil' },
     { label: '🌐 Ses réseaux',          trigger: 'réseau instagram' },
