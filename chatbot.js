@@ -23,7 +23,7 @@
     },
     {
       keys: ['qui est','c\'est qui','parle moi','tell me','about','profil','présentation','présente'],
-      answer: () => `<strong>${NOM}</strong> est <strong>${TITRE}</strong> 🚀<br><br>${CV.accroche ? CV.accroche.replace(/\n/g,'<br>') + '<br><br>' : ''}✅ <strong>Mastère Motion Design</strong> — mention Félicitations du jury<br>✅ <strong>MBA Digital Marketing</strong> — EFAP Paris<br>✅ <strong>2 ans chez WAAT</strong> : productions motion design à fort impact<br>✅ <strong>Certifié Google Analytics, Google Ads & Prestashop</strong><br>✅ <strong>Mobile en Île-de-France</strong> — freelance & alternance<br><br><em>"${CV.philosophie || 'Votre visibilité en ligne est votre meilleur commercial.'}"</em> 💡`
+      answer: () => `<strong>${NOM}</strong> est <strong>${TITRE}</strong> 🚀<br><br>${CV.accroche ? CV.accroche.replace(/\n/g,'<br>') + '<br><br>' : ''}✅ <strong>Mastère Motion Design</strong> — mention Félicitations du jury<br>✅ <strong>MBA Digital Marketing</strong> — EFAP Paris<br>✅ <strong>2 ans chez WAAT</strong> : productions motion design à fort impact<br>✅ <strong>Certifié Google Analytics, Google Ads & Prestashop</strong><br>✅ <strong>Mobile en Île-de-France</strong> — freelance & alternance<br><br><em>"${CV.philosophie || 'Votre visibilité en ligne est votre meilleur commercial.'}"</em> 💡` + skillVidHtml()
     },
     {
       keys: ['expérience','poste','entreprise','emploi','waat','alternance','travaillé','travaille','carrière','cabinet','rénovation'],
@@ -47,11 +47,11 @@
     },
     {
       keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire','blender','sound design','figma','canva','anglais','wordpress','html','css','javascript','outil','connaissance'],
-      answer: () => `Ce qui rend Abilan rare, c'est qu'il maîtrise <strong>toute la chaîne créative et digitale</strong> en solo :<br><br>🎬 <strong>Motion & Vidéo</strong> : After Effects, Premiere Pro, DaVinci Resolve, Blender 3D, Adobe Audition<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign, Figma, Canva<br>💻 <strong>Web & Dev</strong> : HTML, CSS, WordPress, Claude AI<br>📊 <strong>Marketing & Digital</strong> : Google Analytics ✅, Google Ads ✅, Prestashop ✅, SEO local, Google Business Profile<br>🤖 <strong>IA</strong> : génération de voix, extension d'images, automatisation créative<br>🌐 <strong>Langues</strong> : Français natif · Anglais B2<br><br>Du brief client jusqu'à la livraison : <strong>un seul interlocuteur, zéro dépendance externe</strong> 🎯`
+      answer: () => `Ce qui rend Abilan rare, c'est qu'il maîtrise <strong>toute la chaîne créative et digitale</strong> en solo :<br><br>🎬 <strong>Motion & Vidéo</strong> : After Effects, Premiere Pro, DaVinci Resolve, Blender 3D, Adobe Audition<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign, Figma, Canva<br>💻 <strong>Web & Dev</strong> : HTML, CSS, WordPress, Claude AI<br>📊 <strong>Marketing & Digital</strong> : Google Analytics ✅, Google Ads ✅, Prestashop ✅, SEO local, Google Business Profile<br>🤖 <strong>IA</strong> : génération de voix, extension d'images, automatisation créative<br>🌐 <strong>Langues</strong> : Français natif · Anglais B2<br><br>Du brief client jusqu'à la livraison : <strong>un seul interlocuteur, zéro dépendance externe</strong> 🎯` + skillVidHtml()
     },
     {
       keys: ['service','propose','offre','prestation','mission','commande','tarif','prix','devis','aider','comment abilan','logo','site web','graphisme','identité visuelle','identite visuelle','design graphique','seo','référencement','referencement','pub','publicité','publicite','communication','marque','brand','freelance','digital manager','tunnel','landing','vidéo','video','stratégie','strategie','community'],
-      answer: () => `Abilan maîtrise <strong>tout le spectre du digital créatif</strong> pour faire grandir votre marque :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>Vidéos explicatives, publicités, tutos, intros, animations 2D/3D, sound design. Il gère tout : script, illustration, animation, voix IA, montage. Résultat : vos messages passent en quelques secondes là où du texte échoue.<br><br>🎨 <strong>Identité visuelle & Design graphique</strong><br>Logo, charte graphique, flyers, bannières, supports print et digitaux. Une image qui inspire confiance au premier regard et reste dans les mémoires.<br><br>📱 <strong>Stratégie digitale & Community Management</strong><br>Gestion des réseaux, création de contenu, SEO YouTube, Google Analytics & Ads (certifié). Il transforme votre visibilité en clients réels.<br><br>💻 <strong>Développement web & Applications mobiles</strong><br>Sites WordPress, apps mobiles sur mesure, UI/UX design. Ce portfolio que vous visitez ? Il l'a codé entièrement lui-même.<br><br>📩 Un projet ? Contactez-le, il répond vite ! 🚀`
+      answer: () => `Abilan maîtrise <strong>tout le spectre du digital créatif</strong> pour faire grandir votre marque :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>Vidéos explicatives, publicités, tutos, intros, animations 2D/3D, sound design. Il gère tout : script, illustration, animation, voix IA, montage. Résultat : vos messages passent en quelques secondes là où du texte échoue.<br><br>🎨 <strong>Identité visuelle & Design graphique</strong><br>Logo, charte graphique, flyers, bannières, supports print et digitaux. Une image qui inspire confiance au premier regard et reste dans les mémoires.<br><br>📱 <strong>Stratégie digitale & Community Management</strong><br>Gestion des réseaux, création de contenu, SEO YouTube, Google Analytics & Ads (certifié). Il transforme votre visibilité en clients réels.<br><br>💻 <strong>Développement web & Applications mobiles</strong><br>Sites WordPress, apps mobiles sur mesure, UI/UX design. Ce portfolio que vous visitez ? Il l'a codé entièrement lui-même.<br><br>📩 Un projet ? Contactez-le, il répond vite ! 🚀` + skillVidHtml()
     },
     {
       keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france','linkedin','linktree'],
@@ -83,7 +83,7 @@
     },
     {
       keys: ['lab','outil','gratuit','fonctionnalité','feature'],
-      answer: () => `<strong>Abilan Lab</strong> est son terrain d'expérimentation 🧪<br><br>Sa philosophie : <em>"Je construis d'abord pour moi. Quand un outil me fait gagner du temps, je le publie."</em><br><br>3 outils gratuits disponibles :<br>🎙️ <a href="/abilanlab/transcription/"><strong>Transcription Audio</strong></a> : audio et vidéo en texte<br>🖼️ <a href="/abilanlab/filigrane-remover/"><strong>Filigrane Remover</strong></a> : supprime les filigranes (Canva, Shutterstock...)<br>✨ <a href="/abilanlab/image-extender/"><strong>Image Extender</strong></a> : étend vos images avec l'IA<br><br>Voulez-vous que je vous explique l'un d'eux ?`
+      answer: () => `<strong>Abilan Lab</strong> est le terrain d'expérimentation d'<strong>${NOM}</strong> 🧪<br><br>C'est là qu'il démontre concrètement ses compétences en <strong>développement web</strong> et en <strong>intégration IA</strong> : quand un outil lui fait gagner du temps, il le code, le peaufine et le publie gratuitement.<br><br>3 outils disponibles :<br>🎙️ <a href="/abilanlab/transcription/"><strong>Transcription Audio</strong></a> — audio et vidéo en texte, multilingue<br>🖼️ <a href="/abilanlab/filigrane-remover/"><strong>Filigrane Remover</strong></a> — supprime les filigranes (Canva, Shutterstock...)<br>✨ <a href="/abilanlab/image-extender/"><strong>Image Extender</strong></a> — étend vos images avec l'IA<br><br>Ces outils montrent qu'Abilan ne fait pas que du design : il <strong>code et déploie</strong> des produits digitaux fonctionnels. Voulez-vous en savoir plus sur l'un d'eux ?`
     },
     {
       keys: ['transcri','audio','whisper','sous-titre','srt','dicter','enregistrement','vocal'],
@@ -286,6 +286,25 @@
     document.body.appendChild(lb);
   }
 
+  // ── Vidéo auto à la première réponse compétences ───
+  const SKILL_VIDS = [
+    '/images/motion/Coding%20animation.mp4',
+    '/images/motion/Hey%20Alexa.mp4',
+    '/images/motion/basketball%20match.mp4',
+    '/images/motion/MascotteAnimation2d.mp4',
+    '/images/motion/can\'t%20see.mp4',
+    '/images/motion/radio_1.mp4',
+  ];
+  let _skillVidShown = false; // true une fois la première vidéo montrée dans la session
+
+  function skillVidHtml() {
+    if (_skillVidShown) return '';
+    _skillVidShown = true;
+    const src = SKILL_VIDS[Math.floor(Math.random() * SKILL_VIDS.length)];
+    return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.4);letter-spacing:.05em">▶ Une création d'Abilan</small>`
+      + `<video src="${src}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;width:100%;border-radius:8px;margin-top:4px;max-height:130px;object-fit:cover;"></video>`;
+  }
+
   // Helpers HTML médias
   // Vidéo GIF-like : autoplay+loop sans son, pointer-events:none bloque tout clic/fullscreen
   const vid = (src, t='') => `<video src="${src}" title="${t}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"></video>`;
@@ -366,6 +385,7 @@
 
   function closeChat() {
     open = false;
+    _skillVidShown = false; // reset pour la prochaine ouverture
     win.classList.remove('cb-in');
     win.classList.add('cb-out');
     setTimeout(() => { win.style.display = 'none'; }, 270);
