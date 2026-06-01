@@ -23,7 +23,15 @@
     },
     {
       keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte'],
-      answer: () => `Abilan est spécialisé en <strong>Motion Design</strong> depuis 2016 🎬<br><br>Ses réalisations notables :<br>🎥 <strong>Recrutement WAAT</strong> : vidéo pédagogique sur le processus de recrutement (52 réactions LinkedIn)<br>⚡ <strong>Recharge WAAT</strong> : vidéo explicative sur la recharge en copropriété (41 réactions)<br>🏀 <strong>Basketball Match</strong> : animation sportive dynamique<br>🤖 <strong>Hey Alexa</strong> : animation autour de l'assistant vocal<br>🎭 <strong>Animation mascotte 2D/3D</strong> avec rigging, lip-syncing et incrustation vidéo<br>🪙 <strong>Tx Coin</strong> : vidéo motion design (Behance)<br><br>Visible sur <a href="https://www.youtube.com/@sukiamv" target="_blank">YouTube @sukiamv</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> 🎨`
+      answer: () => `Abilan est spécialisé en <strong>Motion Design</strong> depuis 2016 🎬<br><br>Quelques créations directement depuis son portfolio :`
+        + grid([
+            vid('/images/motion/Coding%20animation.mp4','Coding Animation'),
+            vid('/images/motion/Hey%20Alexa.mp4','Hey Alexa'),
+            vid('/images/motion/basketball%20match.mp4','Basketball Match'),
+            vid('/images/motion/MascotteAnimation2d.mp4','Mascotte 2D'),
+          ])
+        + `<br>Vidéos pédagogiques chez WAAT (recrutement, recharge copropriété), rigging & lip-syncing de mascotte 2D/3D.<br><br>`
+        + chips([['YouTube @sukiamv','https://www.youtube.com/@sukiamv'],['Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
       keys: ['youtube','yt','chaine','chaîne','suki','sukiamv','amv','tuto','tutoriel','abonné','abonne','vidéo youtube'],
@@ -86,8 +94,14 @@
       answer: () => `Vous pouvez installer ce site comme une <strong>vraie application</strong> ! 📱<br><br><strong>Sur iPhone (Safari) :</strong> Partager puis <em>"Sur l'écran d'accueil"</em><br><strong>Sur Android (Chrome) :</strong> 3 points puis <em>"Ajouter à l'écran d'accueil"</em><br><br>L'app se lance en plein écran avec splash screen et notifications pour vos transcriptions ✨`
     },
     {
-      keys: ['projet','réalisation','portfolio','travaux','exemple','dernier','récent','behance','warren','vélo','tx coin'],
-      answer: () => `Les projets d'Abilan :<br><br>📱 <strong>App Suivi de Chantier</strong> : dashboard mobile temps réel pour le BTP<br>🌐 <strong>etudereno.fr</strong> : site WordPress entreprise de rénovation<br>🎬 <strong>Vidéo recrutement WAAT</strong> : motion design interne (52 réactions)<br>⚡ <strong>Recharge copropriété WAAT</strong> : vidéo pédagogique (41 réactions)<br>🪙 <strong>Tx Coin</strong> : vidéo motion design sur Behance<br>🏙️ <strong>Mon vélo urbain</strong> : projet design (Behance)<br><br>+34 réalisations sur <a href="https://abilanbalakumaran.github.io/" target="_blank">son portfolio</a> 🎨`
+      keys: ['projet','réalisation','portfolio','travaux','exemple','dernier','récent','behance','warren','vélo','tx coin','voir','montre','affiche'],
+      answer: () => `Voici quelques projets d'Abilan :`
+        + grid([
+            imgt('/images/website/etudereno-fr.png','etudereno.fr'),
+            imgt('/images/website/app/application-suivi-de-chantier-dashboardtestnew.png','App Suivi Chantier'),
+          ])
+        + `<br>📱 <strong>App Suivi de Chantier</strong> : dashboard BTP temps réel<br>🌐 <strong>etudereno.fr</strong> : site WordPress entreprise de rénovation<br>🎬 <strong>Motion Design WAAT</strong> : vidéos pédagogiques internes<br>+34 réalisations au total !<br><br>`
+        + chips([['Portfolio complet','https://abilanbalakumaran.github.io/'],['Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
       keys: ['formation','étude','diplôme','école','fonderie','mastère','mba','upec','icademie','bachelor','dut','parcours','cursus','bac'],
@@ -168,6 +182,18 @@
 #cb-inp:focus{border-color:rgba(90,123,166,.4);}
 #cb-go{width:36px;height:36px;border:none;background:linear-gradient(135deg,#2d4263,#5a7ba6);border-radius:10px;cursor:pointer;color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s,box-shadow .2s;}
 #cb-go:hover{transform:scale(1.06);box-shadow:0 4px 16px rgba(45,66,99,.45);}
+/* ── Médias dans les bulles ── */
+.cbm-b img{max-width:100%;border-radius:8px;margin-top:8px;display:block;cursor:pointer;}
+.cbm-b video{max-width:100%;border-radius:8px;margin-top:8px;display:block;max-height:150px;object-fit:cover;cursor:pointer;}
+.cb-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px;}
+.cb-grid img,.cb-grid video{width:100%;height:85px;object-fit:cover;border-radius:7px;display:block;cursor:pointer;transition:transform .2s;}
+.cb-grid img:hover,.cb-grid video:hover{transform:scale(1.03);}
+.cb-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.cb-chip-link{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(168,197,226,.07);border:1px solid rgba(168,197,226,.14);border-radius:100px;font-size:11px;color:#a8c5e2;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.cb-chip-link:hover{background:rgba(90,123,166,.2);color:#fff;}
+/* Lightbox */
+#cb-lb{position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;cursor:zoom-out;animation:cbIn .2s ease;}
+#cb-lb img,#cb-lb video{max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain;}
 @keyframes cbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @keyframes cbRing{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.9);opacity:0}}
 @keyframes cbDotPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.45);opacity:.65}}
@@ -223,6 +249,42 @@
   document.body.appendChild(win);
 
   /* ── Helpers ───────────────────────────────────── */
+  /* ── Scanner de page ─────────────────────────────
+     Collecte tous les liens et images présents sur la page. */
+  let _pageLinks = [], _pageImages = [];
+
+  function scanPage() {
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href') || '';
+      if (!href || href.startsWith('#') || href.startsWith('javascript')) return;
+      const label = (a.getAttribute('aria-label') || a.textContent || '').trim().replace(/\s+/g,' ');
+      if (label.length > 1 && label.length < 80) _pageLinks.push({ href: a.href, label });
+    });
+    document.querySelectorAll('img[src]').forEach(img => {
+      const src = img.src;
+      if (!src || src.includes('data:') || src.includes('fiole.png') || src.includes('chatbot')) return;
+      _pageImages.push({ src, alt: (img.alt || '').trim() });
+    });
+    _pageLinks  = [...new Map(_pageLinks.map(x  => [x.href, x])).values()];
+    _pageImages = [...new Map(_pageImages.map(x => [x.src,  x])).values()];
+  }
+
+  // Lightbox
+  function openLightbox(src, isVideo) {
+    const lb = document.createElement('div'); lb.id = 'cb-lb';
+    lb.innerHTML = isVideo
+      ? `<video src="${src}" autoplay controls style="max-width:90vw;max-height:85vh;border-radius:12px"></video>`
+      : `<img src="${src}" style="max-width:90vw;max-height:85vh;border-radius:12px">`;
+    lb.onclick = () => lb.remove();
+    document.body.appendChild(lb);
+  }
+
+  // Helpers HTML médias
+  const vid  = (src, t='') => `<video src="${src}" title="${t}" autoplay loop muted playsinline></video>`;
+  const imgt = (src, a='') => `<img src="${src}" alt="${a}" loading="lazy">`;
+  const grid = items => `<div class="cb-grid">${items.join('')}</div>`;
+  const chips = links => `<div class="cb-links">${links.map(([l,h])=>`<a href="${h}" target="_blank" class="cb-chip-link">${l}</a>`).join('')}</div>`;
+
   const msgs = () => document.getElementById('cb-msgs');
   const inp  = () => document.getElementById('cb-inp');
 
@@ -291,6 +353,11 @@
       setTimeout(() => addMsg(`Bonjour ! 👋 Bienvenue sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant : je peux vous parler de son profil, ses services, ses outils ou vous aider à le contacter. Comment puis-je vous aider ? 😊`, 'b'), 350);
     }
     initScroll();
+    // Lightbox sur clic média dans le chat
+    msgs().addEventListener('click', e => {
+      const el = e.target.closest('.cbm-b img, .cbm-b video');
+      if (el) openLightbox(el.src || el.currentSrc, el.tagName === 'VIDEO');
+    });
     setTimeout(() => inp().focus(), 400);
   }
 
@@ -316,6 +383,13 @@
       if (top || bot) e.preventDefault();
       e.stopPropagation();
     }, { passive: false });
+  }
+
+  // Scanner la page au chargement
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scanPage);
+  } else {
+    scanPage();
   }
 
   btn.onclick = () => open ? closeChat() : openChat();
