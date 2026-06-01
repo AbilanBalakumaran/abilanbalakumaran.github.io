@@ -11,15 +11,15 @@
   const KB = [
     {
       keys: ['bonjour','salut','hello','coucou','bonsoir','hey','hi'],
-      answer: () => `Bonjour ! 👋 Ravi de vous accueillir sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant, posez-moi n'importe quelle question sur son profil, ses services ou ses outils. Je suis là pour vous aider ! 😊`
+      answer: () => `Bonjour ! 👋 Bienvenue !<br><br>Je suis <strong>Akino</strong>, l'assistant d'<strong>Abilan Balakumaran</strong> — Digital Manager & Motion Designer.<br><br>Que vous cherchiez à booster votre image de marque, créer des vidéos percutantes ou développer votre présence en ligne, vous êtes au bon endroit 🎯<br><br>Comment puis-je vous aider ?`
     },
     {
       keys: ['qui est','c\'est qui','parle moi','tell me','about','profil','présentation','présente'],
-      answer: () => `<strong>Abilan Balakumaran</strong> est <strong>Digital Manager & Motion Designer</strong> basé en Île-de-France 🎨<br><br>Sa mission : allier stratégie digitale et créativité visuelle pour donner vie aux marques.<br><br>Actuellement en <strong>MBA Digital Marketing & Business</strong> et diplômé d'un <strong>Mastère en Motion Design</strong> (mention Félicitations du jury), il accompagne les entreprises dans leur présence en ligne avec une approche qui mêle curiosité, rigueur et adaptabilité.<br><br><em>"Votre visibilité en ligne est votre meilleur commercial !"</em>`
+      answer: () => `<strong>Abilan Balakumaran</strong> est le profil rare qui combine <strong>créativité visuelle</strong> et <strong>stratégie digitale</strong> 🚀<br><br>✅ <strong>Motion Designer certifié</strong> (Mastère avec félicitations du jury)<br>✅ <strong>En MBA Digital Marketing</strong> pour comprendre vos enjeux business<br>✅ <strong>2 ans d'alternance chez WAAT</strong> : vidéos qui ont généré des dizaines de réactions et amélioré la communication interne d'une vraie entreprise<br>✅ <strong>Certifié Google Analytics & Ads</strong><br><br>Sa philosophie : <em>"Votre visibilité en ligne est votre meilleur commercial."</em><br>Ce n'est pas qu'un slogan, c'est ce qu'il prouve chaque jour avec ses clients 💡`
     },
     {
       keys: ['expérience','poste','entreprise','emploi','waat','alternance','travaillé','travaille','carrière','cabinet','rénovation'],
-      answer: () => `Voici le parcours professionnel d'Abilan :<br><br>🏢 <strong>Chef de projet digital</strong> chez Cabinet d'Étude pour la Rénovation (alternance, sept. 2025 – aujourd'hui)<br><br>🏢 <strong>Graphiste / Motion Designer</strong> chez WAAT (alternance, sept. 2023 – juin 2025)<br>Vidéos pédagogiques en motion design, animation de mascotte 2D/3D, sound design, charte graphique AFOR, contenus pour LinkedIn, YouTube et Intranet<br><br>🎬 <strong>Monteur / Motion Designer</strong> chez Clutch Rayn Production (stage, mai–juin 2022)<br>Overlays, intros Twitch, vidéos événementielles, affiches`
+      answer: () => `Abilan a prouvé ses compétences en entreprise :<br><br>🏢 <strong>Chef de projet digital</strong> — Cabinet d'Étude pour la Rénovation<br>→ En poste depuis sept. 2025, il pilote la stratégie digitale d'une entreprise BTP<br><br>🏢 <strong>Graphiste / Motion Designer</strong> — WAAT (solutions de recharge VE)<br>→ 1 an 10 mois : vidéos pédagogiques vues par des milliers de personnes, animation de mascotte 2D/3D, sound design, charte graphique, contenus multi-réseaux<br><br>🎬 <strong>Motion Designer</strong> — Clutch Rayn Production<br>→ Intros Twitch, vidéos esport, affiches événementielles<br><br>Pas que de la théorie : du <strong>vrai terrain</strong>, de vrais clients, de vrais résultats 💪`
     },
     {
       keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte'],
@@ -42,12 +42,12 @@
       answer: () => `Les compétences d'Abilan couvrent tout le pipeline créatif :<br><br>🎬 <strong>Motion & Vidéo</strong> : After Effects, Premiere Pro, DaVinci Resolve, Blender (3D)<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign<br>🔊 <strong>Sound Design</strong> : Adobe Audition, habillages sonores, spatialisation audio<br>💻 <strong>Web</strong> : HTML/CSS/JS, WordPress, UI/UX<br>📊 <strong>Digital</strong> : Google Analytics, Google Ads, SEO YouTube, Community Management<br>🤖 <strong>IA</strong> : génération de voix, extension d'images, automatisation créative`
     },
     {
-      keys: ['service','propose','offre','prestation','travail','mission','commande','tarif','prix','devis','aide','comment abilan'],
-      answer: () => `Abilan accompagne les entreprises sur <strong>4 axes</strong> :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong> : vidéos pédagogiques, publicités, présentations, tutos<br>🎨 <strong>Design graphique & Identité visuelle</strong> : logos, chartes graphiques, flyers, bannières<br>📱 <strong>Stratégie digitale & Community Management</strong> : gestion des réseaux, création de contenu, SEO<br>💻 <strong>Développement web & Applications</strong> : sites WordPress, apps mobiles, UI/UX<br><br>Expérimenté chez <strong>WAAT</strong> et <strong>Cabinet d'Étude pour la Rénovation</strong>. Pour un projet, écrivez-lui ! 😊`
+      keys: ['service','propose','offre','prestation','travail','mission','commande','tarif','prix','devis','aide','comment abilan','aider'],
+      answer: () => `Voici comment Abilan peut transformer votre business :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>→ Une vidéo bien pensée capte l'attention en 3 secondes et explique ce que 10 pages de texte ne feront jamais. Abilan le fait pour LinkedIn, YouTube, votre site, vos événements.<br><br>🎨 <strong>Identité visuelle & Design graphique</strong><br>→ Logo, charte, flyers, bannières : votre image doit inspirer confiance au premier regard. Il crée des identités qui marquent les esprits.<br><br>📱 <strong>Stratégie digitale & Réseaux sociaux</strong><br>→ Certifié Google Analytics et Google Ads. Il ne publie pas au hasard, il construit une stratégie qui génère de la visibilité et des clients.<br><br>💻 <strong>Développement web & Applications</strong><br>→ Sites WordPress, apps mobiles, interfaces UI/UX. Ce portfolio en est la preuve : du code propre, un design soigné.<br><br>📩 Prêt à démarrer ? Écrivez-lui directement ! 🚀`
     },
     {
       keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france','linkedin'],
-      answer: () => `Pour contacter Abilan :<br><br>📧 <a href="mailto:Abilan.Balakumaran@gmail.com"><strong>Abilan.Balakumaran@gmail.com</strong></a><br>💼 <a href="https://www.linkedin.com/in/abilan-balakumaran/" target="_blank"><strong>LinkedIn</strong></a> (1 123 abonnés)<br><br>Il est <strong>mobile en Île-de-France</strong>, disponible en freelance et répond rapidement. N'hésitez pas ! 🙂`
+      answer: () => `Abilan répond vite et est à l'écoute de chaque projet 🤝<br><br>📧 <a href="mailto:Abilan.Balakumaran@gmail.com"><strong>Abilan.Balakumaran@gmail.com</strong></a><br>💼 <a href="https://www.linkedin.com/in/abilan-balakumaran/" target="_blank"><strong>LinkedIn</strong></a> — 1 123 abonnés<br><br>Il est <strong>mobile en Île-de-France</strong> et disponible pour des missions freelance ou des collaborations.<br><br>💡 <em>Pas de question trop petite : si vous avez un projet créatif ou digital en tête, c'est exactement pour ça qu'il est là !</em>`
     },
     {
       keys: ['réseau','instagram','behance','social','suivre','communauté','actif','créateur','publie','poste'],
@@ -368,12 +368,30 @@
     setTimeout(() => { win.style.display = 'none'; }, 270);
   }
 
-  // Scroll : uniquement CSS, pas de JS touchmove (bloque le scroll natif iOS)
+  // ── Scroll fix iOS/PWA ─────────────────────────────
+  // Technique "document touchmove lock" : le seul qui fonctionne
+  // sur iOS PWA avec un élément position:fixed
+  let _touchZone = null; // 'msgs' | 'win' | null
+
+  document.addEventListener('touchstart', e => {
+    if (!open) { _touchZone = null; return; }
+    _touchZone = e.target.closest('#cb-msgs') ? 'msgs'
+               : e.target.closest('#cb-win')  ? 'win'
+               : null;
+  }, { passive: true });
+
+  document.addEventListener('touchmove', e => {
+    if (_touchZone === 'win') {
+      // Touche sur le chat mais PAS sur la zone de scroll : bloquer la page
+      e.preventDefault();
+    }
+    // _touchZone === 'msgs' : le navigateur gère le scroll natif, on ne touche à rien
+  }, { passive: false });
+
   function initScroll() {
     const m = document.getElementById('cb-msgs');
     if (!m || m._cbScroll) return;
     m._cbScroll = true;
-    // Desktop uniquement : stopper la roue de souris
     m.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
   }
 
