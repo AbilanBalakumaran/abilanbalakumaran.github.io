@@ -43,7 +43,23 @@
     },
     {
       keys: ['réseau','instagram','behance','social','suivre','communauté','actif','créateur','publie','poste'],
-      answer: () => `Retrouvez Abilan sur ses réseaux :<br><br>📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank"><strong>Instagram @abilan_motion</strong></a> : créations graphiques et motion<br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank"><strong>YouTube @sukiamv</strong></a> : AMV et tutoriels After Effects depuis 2016<br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank"><strong>Behance AbilanBalakumaran</strong></a> : portfolio de projets<br>💼 <a href="https://www.linkedin.com/in/abilan-balakumaran/" target="_blank"><strong>LinkedIn</strong></a> : 1 123 abonnés, posts réguliers sur le motion design<br><br>Abonnez-vous pour suivre ses créations ! ✨`
+      answer: () => {
+        const icons = { 'instagram.com':'📸','youtube.com':'🎬','behance.net':'🎨','linkedin.com':'💼','mail.google.com':'📧','mailto':'📧' };
+        const links = Array.from(document.querySelectorAll('.tp-social-btn'));
+        let html = 'Retrouvez Abilan sur ses réseaux :<br><br>';
+        if (links.length) {
+          links.forEach(a => {
+            const href = a.href || '';
+            const label = (a.getAttribute('aria-label') || a.textContent || '').replace(/Abilan Balakumaran\s?/i,'').trim();
+            const icon = Object.entries(icons).find(([k]) => href.includes(k));
+            html += `${icon ? icon[1] : '🔗'} <a href="${href}" target="_blank"><strong>${label}</strong></a><br>`;
+          });
+        } else {
+          html += `📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank">Instagram @abilan_motion</a><br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank">YouTube @sukiamv</a><br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a><br>`;
+        }
+        html += '<br>Abonnez-vous pour suivre ses créations ! ✨';
+        return html;
+      }
     },
     {
       keys: ['certification','google','analytics','ads','certifié'],
