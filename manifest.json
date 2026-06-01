@@ -1,0 +1,57 @@
+{
+  "name": "Abilan Lab — Portfolio",
+  "short_name": "Abilan Lab",
+  "description": "Portfolio de Abilan Balakumaran — Design, Motion, Outils digitaux.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1823",
+  "theme_color": "#0f1823",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/images/fiole.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/fiole.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-preview.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Abilan Lab — Portfolio"
+    }
+  ],
+  "categories": ["portfolio", "utilities", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Transcription Audio",
+      "short_name": "Transcription",
+      "description": "Transcrire un audio ou une vidéo",
+      "url": "/abilanlab/transcription/",
+      "icons": [{ "src": "/images/fiole.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Filigrane Remover",
+      "short_name": "Filigrane",
+      "url": "/abilanlab/filigrane-remover/",
+      "icons": [{ "src": "/images/fiole.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Image Extender",
+      "short_name": "Extender",
+      "url": "/abilanlab/image-extender/",
+      "icons": [{ "src": "/images/fiole.png", "sizes": "192x192" }]
+    }
+  ]
+}

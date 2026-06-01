@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filigrane Remover — Abilan Lab</title>
+<link rel="icon"             type="image/png" sizes="32x32" href="../../images/fiole.png">
+<link rel="icon"             type="image/png" sizes="16x16" href="../../images/fiole.png">
+<link rel="apple-touch-icon" sizes="180x180"                href="../../images/fiole.png">
+
+<!-- ─── SEO ─── -->
+<meta name="description" content="Suppresseur de filigrane en ligne — 100% local, aucune donnée envoyée. Supprimez les filigranes de vos images directement dans le navigateur, gratuitement.">
+<meta name="keywords" content="suppresseur filigrane, supprimer filigrane image, watermark remover en ligne, outil gratuit, client-side, Abilan Lab, Abilan Balakumaran">
+<meta name="author" content="Abilan Balakumaran">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#0f1823">
+<link rel="canonical" href="https://abilanbalakumaran.github.io/abilanlab/filigrane-remover/">
+
+<!-- ─── Open Graph ─── -->
+<meta property="og:type"         content="website">
+<meta property="og:url"          content="https://abilanbalakumaran.github.io/abilanlab/filigrane-remover/">
+<meta property="og:title"        content="Suppresseur de Filigrane — Abilan Lab">
+<meta property="og:description"  content="Supprimez les filigranes de vos images en ligne. 100% local, aucun fichier envoyé à un serveur.">
+<meta property="og:image"        content="https://abilanbalakumaran.github.io/og-preview.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"       content="fr_FR">
+<meta property="og:site_name"    content="Abilan Lab">
+
+<!-- ─── Twitter Card ─── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Suppresseur de Filigrane — Abilan Lab">
+<meta name="twitter:description" content="Supprimez les filigranes de vos images en ligne. 100% local, aucun fichier envoyé.">
+<meta name="twitter:image"       content="https://abilanbalakumaran.github.io/og-preview.png">
+
+<!-- ─── JSON-LD ─── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Suppresseur de Filigrane",
+  "applicationCategory": "MultimediaApplication",
+  "url": "https://abilanbalakumaran.github.io/abilanlab/filigrane-remover/",
+  "description": "Outil web client-side pour supprimer les filigranes d'images directement dans le navigateur. Gratuit, aucune donnée envoyée.",
+  "operatingSystem": "Navigateur Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "author": { "@id": "https://abilanbalakumaran.github.io/#abilan" },
+  "isPartOf": { "@type": "WebSite", "@id": "https://abilanbalakumaran.github.io/#website" },
+  "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Portfolio",               "item": "https://abilanbalakumaran.github.io/" },
+    { "@type": "ListItem", "position": 2, "name": "Le Lab",                  "item": "https://abilanbalakumaran.github.io/abilanlab/" },
+    { "@type": "ListItem", "position": 3, "name": "Suppresseur de Filigrane","item": "https://abilanbalakumaran.github.io/abilanlab/filigrane-remover/" }
+  ]}
+}
+</script>
+
+<!-- ─── PWA ─── -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Abilan Lab">
+<link rel="apple-touch-icon" href="/images/fiole.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Variables globales ── */
+:root {
+    --bd:   #0f1823;
+    --bp:   #2d4263;
+    --bm:   #3e5c7a;
+    --bl:   #5a7ba6;
+    --bpa:  #7a9cc6;
+    --bs:   #a8c5e2;
+    --wh:   #ffffff;
+    --nav-white:    #ffffff;
+    --nav-blue-300: #a8c5e2;
+    --nav-blue-400: #7a9cc6;
+    --nav-blue-500: #5a7ba6;
+    --nav-blue-600: #3e5c7a;
+    --nav-height:   68px;
+    --nav-font:     'Sora', sans-serif;
+    --nav-mono:     'JetBrains Mono', monospace;
+    --wm-bd:  #0f1823;
+    --wm-bp:  #2d4263;
+    --wm-bm:  #3e5c7a;
+    --wm-bl:  #5a7ba6;
+    --wm-bpa: #7a9cc6;
+    --wm-bs:  #a8c5e2;
+    --wm-wh:  #ffffff;
+    --wm-font: 'Sora', sans-serif;
+    --wm-mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Sora', sans-serif;
+    background: #0f1823;
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#wm-tool { flex: 1; }
+a { color: inherit; text-decoration: none; }
+
+/* ── Background layers ── */
+#wm-dot-grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(168,197,226,.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.wm-orb {
+    position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0;
+}
+.wm-orb-1 {
+    width: 650px; height: 650px; top: -200px; left: -150px;
+    background: radial-gradient(circle, rgba(45,66,99,.65) 0%, transparent 70%);
+    animation: wm-orb-drift 22s ease-in-out infinite;
+}
+.wm-orb-2 {
+    width: 550px; height: 550px; bottom: -120px; right: -100px;
+    background: radial-gradient(circle, rgba(62,92,122,.45) 0%, transparent 70%);
+    animation: wm-orb-drift 28s ease-in-out infinite reverse;
+}
+.wm-orb-3 {
+    width: 300px; height: 300px; top: 40%; left: 55%;
+    background: radial-gradient(circle, rgba(107,155,209,.12) 0%, transparent 70%);
+    animation: wm-orb-drift 18s ease-in-out infinite 5s;
+}
+@keyframes wm-orb-drift {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33%     { transform: translate(30px,-40px) scale(1.05); }
+    66%     { transform: translate(-20px,22px) scale(0.97); }
+}
+#wm-grain {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; opacity: .032;
+    mix-blend-mode: screen; width: 100%; height: 100%;
+}
+
+/* ── Nav checkbox ── */
+.tp-nav-toggle-cb { display: none; }
+
+#tp-nav-header a,
+#tp-nav-header label,
+.tp-mobile-link,
+.tp-nav-burger {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#tp-nav-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 99999;
+    height: var(--nav-height);
+    background: rgba(15, 24, 35, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(168,197,226,0.1);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+    font-family: var(--nav-font);
+    animation: nav-slide-in 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes nav-slide-in {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+}
+#tp-nav-header.scrolled {
+    background: rgba(10,16,24,0.95);
+    border-bottom-color: rgba(168,197,226,0.15);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+}
+
+.tp-nav-topline {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #2d4263 15%, #5a7ba6 40%, #a8c5e2 50%, #5a7ba6 60%, #2d4263 85%, transparent 100%);
+    animation: line-glow 4s ease-in-out infinite;
+}
+@keyframes line-glow { 0%,100%{opacity:.6} 50%{opacity:1} }
+
+.tp-nav-inner {
+    max-width: 1340px; margin: 0 auto;
+    height: var(--nav-height);
+    padding: 0 clamp(1rem, 4vw, 2.5rem);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+
+.tp-nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none !important; flex-shrink: 0; transition: opacity 0.2s;
+}
+.tp-nav-brand:hover { opacity: 0.85; }
+.tp-nav-logo-icon {
+    width: 36px; height: 36px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(107,155,209,0.4));
+    transition: transform 0.3s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+.tp-nav-brand:hover .tp-nav-logo-icon { transform: rotate(-6deg) scale(1.08); }
+.tp-nav-brand-text { display: flex; flex-direction: column; gap: 1px; line-height: 1; }
+.tp-nav-brand-name { font-size: 15px; font-weight: 700; color: var(--nav-white); letter-spacing: -0.02em; }
+.tp-nav-brand-sub  { font-family: var(--nav-mono); font-size: 9px; color: var(--nav-blue-400); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.tp-nav-links { display: flex; align-items: center; gap: 4px; margin: 0 auto; }
+.tp-nav-link {
+    position: relative; display: flex; align-items: center; gap: 6px;
+    padding: 8px 16px; font-size: 14px; font-weight: 500;
+    color: rgba(168,197,226,0.6); text-decoration: none !important;
+    border-radius: 10px; transition: all 0.25s ease; letter-spacing: 0.01em;
+}
+.tp-nav-link:hover         { color: var(--nav-white); background: rgba(168,197,226,0.07); }
+.tp-nav-link--active       { color: var(--nav-white); background: rgba(90,123,166,0.15); }
+.tp-nav-link--active::after {
+    content: ''; position: absolute; bottom: 4px; left: 50%;
+    transform: translateX(-50%); width: 16px; height: 2px;
+    background: linear-gradient(90deg, #5a7ba6, #a8c5e2); border-radius: 2px;
+}
+.tp-nav-link-dot {
+    width: 5px; height: 5px; border-radius: 50%; background: var(--nav-blue-500);
+    opacity: 0; transform: scale(0); transition: all 0.2s ease; flex-shrink: 0;
+}
+.tp-nav-link--active .tp-nav-link-dot,
+.tp-nav-link:hover   .tp-nav-link-dot { opacity: 1; transform: scale(1); }
+.tp-nav-link--active .tp-nav-link-dot { background: var(--nav-blue-300); box-shadow: 0 0 6px rgba(168,197,226,0.6); }
+
+.tp-nav-status {
+    display: flex; align-items: center; gap: 6px; padding: 5px 12px;
+    background: rgba(107,166,141,0.1); border: 1px solid rgba(107,166,141,0.2);
+    border-radius: 100px; flex-shrink: 0;
+}
+.tp-nav-status-dot {
+    width: 6px; height: 6px; background: #6ba68d; border-radius: 50%;
+    box-shadow: 0 0 6px rgba(107,166,141,0.7);
+    animation: status-pulse 2.5s ease-in-out infinite;
+}
+@keyframes status-pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.7} }
+.tp-nav-status-label { font-family: var(--nav-mono); font-size: 11px; color: #6ba68d; letter-spacing: 0.05em; text-transform: uppercase; }
+
+.tp-nav-burger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: rgba(168,197,226,0.06); border: 1px solid rgba(168,197,226,0.15);
+    border-radius: 10px; cursor: pointer; flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none; -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.tp-nav-burger:hover { background: rgba(168,197,226,0.12); border-color: rgba(168,197,226,0.3); }
+.tp-burger-bar {
+    display: block; width: 18px; height: 1.5px;
+    background: var(--nav-blue-300); border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.68,-0.55,0.265,1.55);
+    transform-origin: center;
+}
+
+.tp-nav-toggle-cb:checked ~ .tp-mobile-menu {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(2) { transform: scaleX(0); opacity: 0; }
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.tp-mobile-menu {
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    height: calc(100dvh - 68px);
+    background: rgba(10, 16, 26, 0.98);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    padding: 40px 28px 48px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transform: translateX(100%);
+    opacity: 0; pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
+    z-index: 99998; overflow: hidden;
+}
+.tp-mobile-menu::before {
+    content: ''; position: absolute; bottom: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(90,123,166,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.tp-mobile-nav { display: flex; flex-direction: column; gap: 8px; }
+.tp-mobile-link {
+    display: flex; align-items: center; gap: 18px; padding: 18px 16px;
+    font-family: var(--nav-font); font-size: 28px; font-weight: 700;
+    color: rgba(168,197,226,0.35); text-decoration: none !important;
+    border-radius: 14px; letter-spacing: -0.03em;
+    transition: all 0.3s ease; border-left: 2px solid transparent;
+    position: relative; overflow: hidden;
+}
+.tp-mobile-link::before {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(168,197,226,0.04);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease; border-radius: 14px;
+}
+.tp-mobile-link:hover::before,
+.tp-mobile-link--active::before { transform: scaleX(1); }
+.tp-mobile-link:hover   { color: var(--nav-white); border-left-color: var(--nav-blue-500); padding-left: 24px; }
+.tp-mobile-link--active { color: var(--nav-white); border-left-color: var(--nav-blue-300); padding-left: 24px; }
+
+.tp-mobile-link-num {
+    font-family: var(--nav-mono); font-size: 11px; color: var(--nav-blue-600);
+    letter-spacing: 0.05em; min-width: 24px; align-self: flex-start; margin-top: 8px;
+}
+.tp-mobile-link--active .tp-mobile-link-num,
+.tp-mobile-link:hover   .tp-mobile-link-num { color: var(--nav-blue-400); }
+.tp-mobile-arrow {
+    margin-left: auto; opacity: 0; transform: translateX(-6px);
+    transition: all 0.25s ease; color: var(--nav-blue-400); flex-shrink: 0;
+}
+.tp-mobile-link:hover   .tp-mobile-arrow,
+.tp-mobile-link--active .tp-mobile-arrow { opacity: 1; transform: translateX(0); }
+
+.tp-mobile-footer {
+    display: flex; align-items: center; gap: 10px;
+    padding-top: 20px; border-top: 1px solid rgba(168,197,226,0.08);
+}
+.tp-mobile-footer-text   { font-family: var(--nav-mono); font-size: 11px; color: rgba(168,197,226,0.25); }
+.tp-mobile-status-dot    { width: 5px; height: 5px; background: #6ba68d; border-radius: 50%; animation: status-pulse 2.5s ease-in-out infinite; }
+.tp-mobile-footer-status { font-family: var(--nav-mono); font-size: 11px; color: rgba(107,166,141,0.6); letter-spacing: 0.04em; text-transform: uppercase; }
+
+.tp-nav-spacer { height: 68px; display: block; }
+
+/* ── Nav : liens toujours visibles avec hiérarchie ── */
+.tp-nav-links { display: flex; align-items: center; gap: 2px; }
+.tp-nav-status { display: flex; }
+.tp-nav-link--sub { font-size: 12px !important; padding: 5px 11px !important; color: rgba(168,197,226,0.42) !important; }
+.tp-nav-link--sub:hover { color: rgba(168,197,226,0.8) !important; background: rgba(168,197,226,0.06) !important; }
+.tp-nav-link--sub.tp-nav-link--active { color: rgba(168,197,226,0.85) !important; background: rgba(90,123,166,0.1) !important; }
+.tp-nav-link--sub.tp-nav-link--active::after { width: 10px !important; }
+.tp-nav-sep { color: rgba(168,197,226,0.2); font-size: 13px; margin: 0 1px; pointer-events: none; user-select: none; }
+.tp-mobile-link--parent { font-size: 32px; color: rgba(168,197,226,0.7) !important; }
+.tp-mobile-link--child { font-size: 18px !important; padding: 10px 16px !important; padding-left: 44px !important; color: rgba(168,197,226,0.4) !important; border-left-color: transparent !important; }
+.tp-mobile-link--child:hover { color: rgba(168,197,226,0.9) !important; padding-left: 50px !important; border-left-color: rgba(62,92,122,1) !important; }
+.tp-mobile-link--child.tp-mobile-link--active { color: #fff !important; padding-left: 50px !important; border-left-color: #a8c5e2 !important; }
+.tp-mobile-link--child .tp-mobile-link-num { font-size: 9px; }
+@media(max-width:900px) { .tp-nav-links,.tp-nav-status{display:none} .tp-nav-burger{display:flex} }
+@media (max-width: 700px) { .tp-nav-link--sub { display: none; } .tp-nav-sep { display: none; } }
+@media (max-width: 480px) {
+    .tp-nav-brand-sub { display: none; }
+    .tp-nav-inner { padding: 0 1rem; }
+    .tp-mobile-link { font-size: 22px; }
+}
+
+/* ══ Outil ══ */
+#wm-tool {
+    font-family: var(--wm-font);
+    max-width: 960px;
+    margin: 24px auto;
+    color: var(--wm-wh);
+    line-height: 1.5;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+    position: relative;
+    z-index: 1;
+}
+
+#wm-cv-loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(168,197,226,.55);
+    font-family: var(--wm-mono);
+    font-size: .85rem;
+    letter-spacing: .04em;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(168,197,226,.15);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+}
+
+#wm-upload-zone {
+    border: 2px dashed rgba(90,123,166,.35);
+    border-radius: 24px;
+    padding: 56px 24px;
+    text-align: center;
+    background: rgba(255,255,255,.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba(168,197,226,.15);
+    transition: border-color .2s, background .2s, box-shadow .4s;
+    position: relative;
+    overflow: hidden;
+}
+#wm-upload-zone::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--wm-bl), var(--wm-bs), transparent);
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+#wm-upload-zone.wm-drag-over {
+    border-color: var(--wm-bl);
+    background: rgba(90,123,166,.12);
+    box-shadow: 0 10px 40px rgba(10,18,32,.45), 0 0 28px rgba(107,155,209,.35);
+}
+#wm-upload-zone.wm-drag-over::before { opacity: 1; }
+#wm-upload-zone:hover {
+    border-color: rgba(168,197,226,.28);
+    background: rgba(255,255,255,.10);
+    box-shadow: 0 10px 40px rgba(10,18,32,.45), 0 0 28px rgba(107,155,209,.35);
+}
+#wm-upload-zone label { cursor: pointer; display: block; }
+#wm-upload-zone svg  { display: block; margin: 0 auto 16px; stroke: rgba(168,197,226,.4); }
+#wm-upload-zone p    { margin: 4px 0; font-size: 1rem; color: rgba(168,197,226,.75); }
+#wm-upload-zone input[type="file"] { display: none; }
+.wm-hint { color: rgba(168,197,226,.4) !important; font-size: .85rem !important; font-family: var(--wm-mono); }
+
+#wm-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 14px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(168,197,226,.15);
+    border-radius: 16px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    position: relative;
+    backdrop-filter: blur(12px);
+}
+#wm-toolbar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(90,123,166,.3), transparent);
+}
+.wm-tool-group   { display: flex; flex-direction: column; gap: 6px; }
+.wm-group-right  { margin-left: auto; flex-direction: row; align-items: center; gap: 10px; }
+.wm-group-label  {
+    font-family: var(--wm-mono);
+    font-size: .65rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .1em;
+    color: rgba(168,197,226,.35);
+}
+.wm-btn-row { display: flex; gap: 6px; }
+
+.wm-tool-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px;
+    border: 1px solid rgba(168,197,226,.15); border-radius: 10px;
+    background: rgba(168,197,226,.05);
+    font-family: var(--wm-font); font-size: .82rem; font-weight: 500;
+    color: rgba(168,197,226,.6);
+    cursor: pointer; transition: all .2s;
+}
+.wm-tool-btn:hover {
+    border-color: rgba(90,123,166,.4);
+    color: var(--wm-bs);
+    background: rgba(90,123,166,.1);
+}
+.wm-tool-btn.wm-active {
+    background: linear-gradient(135deg, var(--wm-bp), var(--wm-bl));
+    border-color: var(--wm-bl);
+    color: var(--wm-wh);
+    box-shadow: 0 4px 16px rgba(45,66,99,.4);
+}
+.wm-action-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px;
+    border: 1px solid rgba(168,197,226,.15); border-radius: 10px;
+    background: rgba(168,197,226,.05);
+    font-family: var(--wm-font); font-size: .82rem; font-weight: 500;
+    color: rgba(168,197,226,.6);
+    cursor: pointer; transition: all .2s;
+}
+.wm-action-btn:hover {
+    border-color: rgba(168,197,226,.3);
+    background: rgba(168,197,226,.1);
+    color: var(--wm-bs);
+}
+.wm-btn-auto {
+    border-color: rgba(159,122,234,.3);
+    color: rgba(159,122,234,.8);
+}
+.wm-btn-auto:hover {
+    background: rgba(159,122,234,.1);
+    border-color: rgba(159,122,234,.5);
+    color: #c4b5fd;
+}
+.wm-btn-auto.wm-detecting {
+    background: linear-gradient(135deg, #553c9a, #6b46c1);
+    color: #fff; border-color: #6b46c1;
+    animation: wm-pulse 1s ease-in-out infinite;
+}
+@keyframes wm-pulse { 0%,100%{opacity:1} 50%{opacity:.65} }
+
+.wm-brush-row { display: flex; align-items: center; gap: 8px; }
+.wm-brush-row input[type="range"] {
+    width: 100px;
+    accent-color: var(--wm-bl);
+    appearance: auto;
+}
+#wm-brush-px, #wm-sens-label {
+    font-family: var(--wm-mono);
+    font-size: .78rem; font-weight: 500;
+    color: rgba(168,197,226,.5);
+    min-width: 34px;
+}
+
+#wm-tool button { cursor: pointer; transition: opacity .15s, transform .1s; }
+#wm-tool button:hover  { opacity: .88; }
+#wm-tool button:active { transform: scale(.97); }
+#wm-tool button:disabled { opacity: .3; cursor: not-allowed; pointer-events: none; }
+
+.wm-btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px; border: none; border-radius: 12px;
+    background: linear-gradient(135deg, var(--wm-bp), var(--wm-bl));
+    color: var(--wm-wh);
+    font-family: var(--wm-font); font-size: .9rem; font-weight: 600;
+    box-shadow: 0 4px 20px rgba(45,66,99,.45);
+    transition: all .25s;
+}
+.wm-btn-primary:hover {
+    background: linear-gradient(135deg, var(--wm-bm), var(--wm-bpa));
+    box-shadow: 0 8px 30px rgba(45,66,99,.6);
+    transform: translateY(-2px);
+}
+.wm-btn-secondary {
+    padding: 11px 18px;
+    border: 1px solid rgba(168,197,226,.15); border-radius: 12px;
+    background: rgba(168,197,226,.06);
+    color: var(--wm-bs);
+    font-family: var(--wm-font); font-size: .85rem; font-weight: 500;
+    transition: all .2s;
+}
+.wm-btn-secondary:hover {
+    background: rgba(168,197,226,.11);
+    border-color: rgba(168,197,226,.3);
+    transform: translateY(-1px);
+}
+.wm-btn-outline {
+    padding: 11px 18px;
+    border: 1px solid rgba(90,123,166,.35); border-radius: 12px;
+    background: rgba(90,123,166,.07);
+    color: var(--wm-bs);
+    font-family: var(--wm-font); font-size: .85rem; font-weight: 500;
+    transition: all .2s;
+}
+.wm-btn-outline:hover {
+    background: rgba(90,123,166,.14);
+    border-color: var(--wm-bl);
+}
+
+.wm-instructions {
+    background: rgba(246,173,85,.06);
+    border-left: 3px solid rgba(246,173,85,.5);
+    padding: 10px 14px; border-radius: 8px;
+    margin-bottom: 12px; font-size: .85rem;
+    color: rgba(246,173,85,.85);
+    font-family: var(--wm-font);
+    transition: background .2s, border-color .2s;
+}
+.wm-instructions.mode-eraser {
+    background: rgba(252,129,129,.06);
+    border-left-color: rgba(252,129,129,.5);
+    color: rgba(252,129,129,.85);
+}
+.wm-instructions.mode-auto {
+    background: rgba(159,122,234,.07);
+    border-left-color: rgba(159,122,234,.5);
+    color: rgba(196,181,253,.85);
+}
+
+#wm-canvas-container {
+    position: relative; display: inline-block; max-width: 100%;
+    border: 1px solid rgba(168,197,226,.12); border-radius: 14px; overflow: hidden;
+    line-height: 0; cursor: none;
+    box-shadow: 0 8px 40px rgba(0,0,0,.35);
+}
+#wm-canvas-image { display: block; max-width: 100%; height: auto; }
+#wm-canvas-mask  { position: absolute; top:0; left:0; width:100%; height:100%; }
+#wm-cursor {
+    position: absolute; pointer-events: none; border-radius: 50%;
+    transform: translate(-50%,-50%); display: none; z-index: 10;
+}
+#wm-cursor.brush-cursor  { border: 2px solid rgba(220,38,38,.85); background: rgba(220,38,38,.12); }
+#wm-cursor.eraser-cursor { border: 2px solid rgba(168,197,226,.6); background: rgba(168,197,226,.1); }
+
+#wm-canvas-result {
+    display: block; max-width: 100%; border-radius: 14px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.4); margin: 0 auto 24px;
+}
+.wm-spinner {
+    width: 44px; height: 44px;
+    border: 3px solid rgba(168,197,226,.1);
+    border-top-color: var(--wm-bl);
+    border-radius: 50%; animation: wm-spin .75s linear infinite; margin: 0 auto 16px;
+}
+@keyframes wm-spin { to { transform: rotate(360deg); } }
+
+#wm-status { text-align: center; padding: 40px 20px; }
+#wm-status-text {
+    font-size: .95rem; font-weight: 500;
+    color: rgba(168,197,226,.6);
+    font-family: var(--wm-mono); letter-spacing: .03em;
+}
+#wm-result { margin-top: 28px; text-align: center; }
+#wm-result h3 {
+    font-size: 1rem; font-weight: 600; margin-bottom: 18px;
+    color: rgba(107,166,141,.9);
+    font-family: var(--wm-mono); letter-spacing: .05em;
+}
+#wm-result-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+/* ══ SPLIT LAYOUT ══ */
+#wm-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.wm-panel-label {
+    font-family: var(--wm-mono);
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(168,197,226,.3);
+    margin-bottom: 12px;
+    display: block;
+}
+
+#wm-panel-result { min-width: 0; }
+#wm-panel-result #wm-status { text-align: center; padding: 40px 20px; }
+#wm-panel-result #wm-result { text-align: center; margin-top: 0; }
+#wm-panel-result #wm-result h3 { text-align: left; margin-bottom: 14px; }
+#wm-canvas-result { display: block; max-width: 100%; border-radius: 14px; box-shadow: 0 8px 40px rgba(0,0,0,.4); margin: 0 auto 20px; }
+#wm-result-actions { display: flex; justify-content: flex-start; gap: 10px; flex-wrap: wrap; }
+
+#wm-result-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 260px;
+    border: 1px dashed rgba(90,123,166,.2);
+    border-radius: 14px;
+    color: rgba(168,197,226,.3);
+    text-align: center;
+    padding: 40px 24px;
+}
+#wm-result-placeholder p {
+    font-size: .95rem; font-weight: 500;
+    color: rgba(168,197,226,.35); margin: 0;
+}
+#wm-result-placeholder span {
+    font-family: var(--wm-mono); font-size: .72rem;
+    color: rgba(168,197,226,.2); letter-spacing: .04em;
+}
+
+#wm-mobile-tabs { display: none; }
+
+@media (max-width: 768px) {
+    #wm-split { display: block; }
+    #wm-mobile-tabs {
+        display: flex; gap: 8px; margin-bottom: 18px;
+    }
+    .wm-tab {
+        flex: 1; display: inline-flex; align-items: center; justify-content: center;
+        gap: 7px; padding: 11px 16px; border-radius: 12px;
+        border: 1px solid rgba(168,197,226,.15); background: rgba(168,197,226,.05);
+        color: rgba(168,197,226,.45); font-family: var(--wm-font); font-size: .85rem;
+        font-weight: 600; cursor: pointer; transition: all .2s;
+    }
+    .wm-tab.wm-tab-active {
+        background: linear-gradient(135deg, var(--wm-bp), var(--wm-bl));
+        border-color: var(--wm-bl); color: var(--wm-wh);
+        box-shadow: 0 4px 16px rgba(45,66,99,.4);
+    }
+    .wm-tab:disabled { opacity: .3; cursor: not-allowed; pointer-events: none; }
+    .wm-panel { display: none; }
+    .wm-panel.wm-panel-active { display: block; }
+    #wm-toolbar { gap: 10px; padding: 12px 14px; }
+    .wm-group-right { margin-left: 0; width: 100%; flex-wrap: wrap; }
+    .wm-btn-primary { width: 100%; justify-content: center; }
+    #wm-result-actions { flex-direction: column; }
+    #wm-result-actions .wm-btn-primary,
+    #wm-result-actions .wm-btn-outline,
+    #wm-result-actions .wm-btn-secondary { width: 100%; justify-content: center; }
+}
+
+/* ══ Footer ══ */
+#tp-page-footer {
+    --tp-bg-hero:      #0f1823;
+    --tp-blue-300:     #a8c5e2;
+    --tp-white:        #ffffff;
+    --tp-font-display: 'Sora', sans-serif;
+    --tp-font-mono:    'JetBrains Mono', monospace;
+    font-family: var(--tp-font-display);
+    background: var(--tp-bg-hero);
+    position: relative; z-index: 1;
+}
+.tp-footer { background: var(--tp-bg-hero); padding: 2rem 2rem 3rem; }
+.tp-footer-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 1.5rem; text-align: center;
+    border-top: 1px solid rgba(168,197,226,0.12); padding-top: 2.5rem;
+}
+.tp-footer-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(168,197,226,0.45); margin: 0; }
+.tp-footer-socials { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.tp-social-btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px;
+    background: rgba(168,197,226,0.06); border: 1px solid rgba(168,197,226,0.15);
+    border-radius: 100px; text-decoration: none; font-size: 13px; font-weight: 500;
+    color: var(--tp-blue-300); transition: background .2s, border-color .2s;
+}
+.tp-social-btn:hover { background: rgba(168,197,226,0.14); border-color: rgba(168,197,226,0.35); color: var(--tp-blue-300); }
+.tp-footer-copy { font-family: var(--tp-font-mono); font-size: 11px; color: rgba(168,197,226,0.25); letter-spacing: 0.02em; margin: 0; }
+@media(max-width:480px){
+    .tp-footer { padding: 1.5rem 1rem 2.5rem; }
+    .tp-social-btn { padding: 8px 14px; font-size: 12px; }
+}
+/* ── Fil d'ariane ── */
+.tp-breadcrumb { position:sticky;top:68px;z-index:999;background:rgba(10,16,24,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(168,197,226,.08); }
+.tp-breadcrumb-inner { max-width:1340px;margin:0 auto;padding:8px clamp(1rem,4vw,2.5rem);display:flex;align-items:center;gap:8px;font-family:var(--nav-font,'Sora',sans-serif);font-size:.75rem; }
+.tp-breadcrumb-link { color:rgba(168,197,226,.45);text-decoration:none;transition:color .2s; }
+.tp-breadcrumb-link:hover { color:rgba(168,197,226,.85); }
+.tp-breadcrumb-sep { color:rgba(168,197,226,.2);user-select:none; }
+.tp-breadcrumb-current { color:rgba(168,197,226,.75);font-weight:500; }
+@media (max-width:480px) { .tp-breadcrumb-inner { padding:8px 1rem;font-size:.7rem; } }
+</style>
+</head>
+<body>
+
+<div id="wm-dot-grid" aria-hidden="true"></div>
+<div class="wm-orb wm-orb-1" aria-hidden="true"></div>
+<div class="wm-orb wm-orb-2" aria-hidden="true"></div>
+<div class="wm-orb wm-orb-3" aria-hidden="true"></div>
+<canvas id="wm-grain" aria-hidden="true"></canvas>
+
+<!-- ══ HEADER ══ -->
+<input type="checkbox" id="tp-nav-toggle" class="tp-nav-toggle-cb" aria-hidden="true">
+
+<header id="tp-nav-header">
+    <div class="tp-nav-topline" aria-hidden="true"></div>
+    <div class="tp-nav-inner">
+        <a href="../" class="tp-nav-brand" aria-label="Accueil">
+            <div class="tp-nav-logo-icon" aria-hidden="true">
+                <img src="../../images/fiole.png" alt="Abilan Lab logo" width="36" height="36" style="object-fit:contain;">
+            </div>
+            <div class="tp-nav-brand-text">
+                <span class="tp-nav-brand-name">Abilan Lab</span>
+                <span class="tp-nav-brand-sub">Digital &amp; Motion</span>
+            </div>
+        </a>
+
+        <nav class="tp-nav-links" aria-label="Navigation principale">
+            <a href="../../" class="tp-nav-link" data-nav="portfolio">
+                <span class="tp-nav-link-dot" aria-hidden="true"></span>
+                Portfolio
+            </a>
+            <a href="../" class="tp-nav-link" data-nav="lab">
+                <span class="tp-nav-link-dot" aria-hidden="true"></span>
+                Le Lab
+            </a>
+        </nav>
+
+        <div class="tp-nav-status" aria-label="Statut du service">
+            <span class="tp-nav-status-dot" aria-hidden="true"></span>
+            <span class="tp-nav-status-label">Live</span>
+        </div>
+
+        <label for="tp-nav-toggle" class="tp-nav-burger" aria-label="Ouvrir le menu">
+            <span class="tp-burger-bar"></span>
+            <span class="tp-burger-bar"></span>
+            <span class="tp-burger-bar"></span>
+        </label>
+    </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="tp-mobile-menu" id="tp-mobile-menu">
+    <nav class="tp-mobile-nav">
+        <a href="../../" class="tp-mobile-link" data-nav="portfolio">
+            <span class="tp-mobile-link-num">01</span>
+            <span>Portfolio</span>
+            <svg class="tp-mobile-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="../" class="tp-mobile-link" data-nav="lab">
+            <span class="tp-mobile-link-num">02</span>
+            <span>Le Lab</span>
+            <svg class="tp-mobile-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+    </nav>
+    <div class="tp-mobile-footer">
+        <span class="tp-mobile-footer-text">© 2026 Abilan Lab</span>
+        <span class="tp-mobile-status-dot" aria-hidden="true"></span>
+        <span class="tp-mobile-footer-status">Service online</span>
+    </div>
+</div>
+
+<div class="tp-nav-spacer"></div>
+
+<nav class="tp-breadcrumb" aria-label="Fil d'ariane">
+    <div class="tp-breadcrumb-inner">
+        <a href="../../" class="tp-breadcrumb-link">Portfolio</a>
+        <span class="tp-breadcrumb-sep" aria-hidden="true">/</span>
+        <a href="../" class="tp-breadcrumb-link">Le Lab</a>
+        <span class="tp-breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="tp-breadcrumb-current">Filigrane Remover</span>
+    </div>
+</nav>
+
+<!-- ══ OUTIL ══ -->
+<div id="wm-tool" style="padding-top:2.5rem">
+
+    <!-- Header explicatif -->
+    <div style="text-align:center; padding: 2rem 0 2.5rem; max-width: 720px; margin: 0 auto;">
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:rgba(90,123,166,.12);border:1px solid rgba(90,123,166,.25);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#a8c5e2;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;">
+            <span style="width:5px;height:5px;background:#5a7ba6;border-radius:50%;display:inline-block;box-shadow:0 0 6px rgba(90,123,166,.7);"></span>
+            Outil client-side — aucune donnée envoyée
+        </div>
+        <h1 style="font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;background:linear-gradient(135deg,#ffffff 0%,#a8c5e2 60%,#5a7ba6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Suppresseur de Filigrane</h1>
+        <p style="font-size:clamp(.95rem,2.5vw,1.1rem);font-weight:300;color:rgba(168,197,226,.7);line-height:1.7;margin-bottom:2rem;">
+            Supprimez les filigranes de vos images directement dans le navigateur.<br>
+            Vos fichiers ne quittent jamais votre appareil.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:.5rem;">
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 18px;background:rgba(168,197,226,.05);border:1px solid rgba(168,197,226,.12);border-radius:14px;text-align:left;min-width:200px;">
+                <span style="font-size:22px;">1️⃣</span>
+                <div>
+                    <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px;">Importez une image</div>
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(168,197,226,.45);">PNG, JPG, WEBP</div>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 18px;background:rgba(168,197,226,.05);border:1px solid rgba(168,197,226,.12);border-radius:14px;text-align:left;min-width:200px;">
+                <span style="font-size:22px;">2️⃣</span>
+                <div>
+                    <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px;">Peignez le filigrane</div>
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(168,197,226,.45);">Pinceau rouge ou Auto (Canva)</div>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 18px;background:rgba(168,197,226,.05);border:1px solid rgba(168,197,226,.12);border-radius:14px;text-align:left;min-width:200px;">
+                <span style="font-size:22px;">3️⃣</span>
+                <div>
+                    <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px;">Supprimez &amp; téléchargez</div>
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(168,197,226,.45);">Export PNG sans filigrane</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wm-cv-loading">
+        <div class="wm-spinner"></div>
+        <p>// chargement du moteur IA... (première fois uniquement)</p>
+    </div>
+
+    <div id="wm-upload-zone" style="display:none;">
+        <label for="wm-file-input">
+            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24"
+                 fill="none" stroke="rgba(168,197,226,.4)" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <p><strong>Cliquez ici</strong> ou glissez une image</p>
+            <p class="wm-hint">PNG, JPG, WEBP &mdash; Filigranes Canva, Shutterstock, Adobe Stock...</p>
+            <input type="file" id="wm-file-input" accept="image/*">
+        </label>
+    </div>
+
+    <!-- Split view -->
+    <div id="wm-split" style="display:none;">
+
+        <!-- Onglets mobile uniquement -->
+        <div id="wm-mobile-tabs">
+            <button id="wm-tab-edit" class="wm-tab wm-tab-active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19c-1 1-3 1-4 0L3 14c-1-1-1-3 0-4L14 3l7 7-9 9z"/></svg>
+                Original
+            </button>
+            <button id="wm-tab-res" class="wm-tab" disabled>
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-5"/></svg>
+                Résultat
+            </button>
+        </div>
+
+        <!-- Panneau gauche : éditeur -->
+        <div id="wm-workspace" class="wm-panel wm-panel-active">
+            <div class="wm-panel-label">// original</div>
+
+            <div id="wm-toolbar">
+                <div class="wm-tool-group">
+                    <span class="wm-group-label">Outil</span>
+                    <div class="wm-btn-row">
+                        <button id="wm-tool-brush" type="button" class="wm-tool-btn wm-active" title="Pinceau">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19c-1 1-3 1-4 0L3 14c-1-1-1-3 0-4L14 3l7 7-9 9z"/><path d="M5 21c0-1.5 2-3 3-2"/></svg>
+                            Pinceau
+                        </button>
+                        <button id="wm-tool-eraser" type="button" class="wm-tool-btn" title="Gomme">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 20H7L3 16l10-10 7 7-3 4"/><path d="M6 11l7 7"/></svg>
+                            Gomme
+                        </button>
+                    </div>
+                </div>
+
+                <div class="wm-tool-group">
+                    <span class="wm-group-label">Taille</span>
+                    <div class="wm-brush-row">
+                        <input type="range" id="wm-brush-size" min="5" max="120" value="25">
+                        <span id="wm-brush-px">25px</span>
+                    </div>
+                </div>
+
+                <div class="wm-tool-group">
+                    <span class="wm-group-label">Détection</span>
+                    <div class="wm-btn-row">
+                        <button id="wm-btn-autodetect" type="button" class="wm-action-btn wm-btn-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                            Auto (Canva)
+                        </button>
+                        <button id="wm-btn-clear" type="button" class="wm-action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                            Effacer
+                        </button>
+                    </div>
+                </div>
+
+                <div class="wm-tool-group" id="wm-sens-group" style="display:none;">
+                    <span class="wm-group-label">Sensibilité</span>
+                    <div class="wm-brush-row">
+                        <input type="range" id="wm-sensitivity" min="1" max="5" value="3" step="1">
+                        <span id="wm-sens-label">Moy</span>
+                    </div>
+                </div>
+
+                <div class="wm-tool-group wm-group-right">
+                    <button id="wm-btn-remove" type="button" class="wm-btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-5"/></svg>
+                        Supprimer le filigrane
+                    </button>
+                    <button id="wm-btn-reset" type="button" class="wm-btn-secondary">Nouvelle image</button>
+                </div>
+            </div>
+
+            <div id="wm-instructions" class="wm-instructions">
+                <span id="wm-instr-text">
+                    <strong>Mode Pinceau :</strong> Peignez en rouge sur le filigrane, puis cliquez sur <em>Supprimer le filigrane</em>.
+                    Utilisez <strong>Auto (Canva)</strong> pour détecter automatiquement les filigranes semi-transparents.
+                </span>
+            </div>
+
+            <div id="wm-canvas-container">
+                <canvas id="wm-canvas-image"></canvas>
+                <canvas id="wm-canvas-mask"></canvas>
+                <div id="wm-cursor"></div>
+            </div>
+        </div>
+
+        <!-- Panneau droit : résultat -->
+        <div id="wm-panel-result" class="wm-panel">
+            <div class="wm-panel-label">// résultat</div>
+
+            <div id="wm-status" style="display:none;">
+                <div class="wm-spinner"></div>
+                <p id="wm-status-text">Suppression en cours...</p>
+            </div>
+
+            <div id="wm-result" style="display:none;">
+                <h3>&#10003; Filigrane supprimé</h3>
+                <canvas id="wm-canvas-result"></canvas>
+                <div id="wm-result-actions">
+                    <button id="wm-btn-download" type="button" class="wm-btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Télécharger PNG
+                    </button>
+                    <button id="wm-btn-retouch" type="button" class="wm-btn-outline">&#9999; Retoucher encore</button>
+                    <button id="wm-btn-reset-2" type="button" class="wm-btn-secondary">Nouvelle image</button>
+                </div>
+            </div>
+
+            <div id="wm-result-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(168,197,226,.2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <p>Le résultat s'affichera ici</p>
+                <span>Peignez le filigrane puis lancez la suppression</span>
+            </div>
+        </div>
+
+    </div>
+
+</div><!-- /#wm-tool -->
+
+<!-- ══ FOOTER GLOBAL ══ -->
+<div id="tp-page-footer">
+    <footer class="tp-footer">
+        <div class="tp-footer-inner">
+            <p class="tp-footer-label">Me contacter</p>
+            <div class="tp-footer-socials">
+                <a href="https://www.instagram.com/abilan_motion/?hl=fr" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+                    Instagram
+                </a>
+                <a href="https://www.youtube.com/@sukiamv" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="5" stroke="currentColor" stroke-width="1.8"/><polygon points="10,8.5 16,12 10,15.5" fill="currentColor"/></svg>
+                    YouTube
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=Abilan.Balakumaran@gmail.com" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    Gmail
+                </a>
+                <a href="https://www.behance.net/AbilanBalakumaran" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><text x="12" y="17" font-size="15" font-weight="800" text-anchor="middle" font-family="Arial Black,sans-serif" fill="currentColor">Be</text></svg>
+                    Behance
+                </a>
+            </div>
+            <p class="tp-footer-copy">© 2026 — Abilan BALAKUMARAN</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Nav active state + scroll -->
+<script>
+(function () {
+  function run() {
+    document.querySelectorAll('.tp-nav-link[data-nav="filigrane"]').forEach(function(el){ el.classList.add('tp-nav-link--active'); });
+    var header = document.getElementById('tp-nav-header');
+    if (header) {
+      window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+    }
+  }
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
+})();
+</script>
+
+<!-- OpenCV Module défini AVANT le chargement du script -->
+<script>
+window.Module = {
+    onRuntimeInitialized: function() {
+        if (typeof window._wmCvReady === 'function') window._wmCvReady();
+    }
+};
+</script>
+<script async src="https://docs.opencv.org/4.9.0/opencv.js" id="wm-opencv-script"></script>
+
+<script>
+(function () {
+    'use strict';
+
+    var MAX_DIM        = 1400;
+    var INPAINT_RADIUS = 8;
+
+    var cvReady     = false;
+    var currentTool = 'brush';
+
+    var cvLoading         = document.getElementById('wm-cv-loading');
+    var uploadZone        = document.getElementById('wm-upload-zone');
+    var fileInput         = document.getElementById('wm-file-input');
+    var splitDiv          = document.getElementById('wm-split');
+    var workspace         = document.getElementById('wm-workspace');
+    var panelResult       = document.getElementById('wm-panel-result');
+    var resultPlaceholder = document.getElementById('wm-result-placeholder');
+    var tabEdit           = document.getElementById('wm-tab-edit');
+    var tabRes            = document.getElementById('wm-tab-res');
+    var canvasImg     = document.getElementById('wm-canvas-image');
+    var canvasMask    = document.getElementById('wm-canvas-mask');
+    var ctxImg        = canvasImg.getContext('2d');
+    var ctxMask       = canvasMask.getContext('2d', { willReadFrequently: true });
+    var brushInput    = document.getElementById('wm-brush-size');
+    var brushLabel    = document.getElementById('wm-brush-px');
+    var sensInput     = document.getElementById('wm-sensitivity');
+    var sensLabel     = document.getElementById('wm-sens-label');
+    var sensGroup     = document.getElementById('wm-sens-group');
+    var btnToolBrush  = document.getElementById('wm-tool-brush');
+    var btnToolEraser = document.getElementById('wm-tool-eraser');
+    var btnAutoDetect = document.getElementById('wm-btn-autodetect');
+    var btnClear      = document.getElementById('wm-btn-clear');
+    var btnRemove     = document.getElementById('wm-btn-remove');
+    var btnReset      = document.getElementById('wm-btn-reset');
+    var instrDiv      = document.getElementById('wm-instructions');
+    var instrText     = document.getElementById('wm-instr-text');
+    var ctnr          = document.getElementById('wm-canvas-container');
+    var cursorEl      = document.getElementById('wm-cursor');
+    var statusDiv     = document.getElementById('wm-status');
+    var statusText    = document.getElementById('wm-status-text');
+    var resultDiv     = document.getElementById('wm-result');
+    var canvasResult  = document.getElementById('wm-canvas-result');
+    var btnDownload   = document.getElementById('wm-btn-download');
+    var btnRetouch    = document.getElementById('wm-btn-retouch');
+    var btnReset2     = document.getElementById('wm-btn-reset-2');
+
+    /* Switch panneau mobile */
+    function showPanel(which) {
+        if (which === 'edit') {
+            workspace.classList.add('wm-panel-active');
+            panelResult.classList.remove('wm-panel-active');
+            tabEdit.classList.add('wm-tab-active');
+            tabRes.classList.remove('wm-tab-active');
+        } else {
+            panelResult.classList.add('wm-panel-active');
+            workspace.classList.remove('wm-panel-active');
+            tabRes.classList.add('wm-tab-active');
+            tabEdit.classList.remove('wm-tab-active');
+        }
+    }
+    tabEdit.addEventListener('click', function(){ showPanel('edit'); });
+    tabRes.addEventListener('click',  function(){ showPanel('result'); });
+
+    var isDrawing = false;
+
+    /* OpenCV ready */
+    function onCvReady() {
+        if (cvReady) return;
+        cvReady = true;
+        clearInterval(cvCheck);
+        cvLoading.style.display  = 'none';
+        uploadZone.style.display = 'block';
+    }
+    window._wmCvReady = onCvReady;
+    var cvCheck = setInterval(function () {
+        if (typeof cv !== 'undefined' && cv.Mat) onCvReady();
+    }, 300);
+
+    /* Upload */
+    uploadZone.addEventListener('dragover',  function(e){ e.preventDefault(); uploadZone.classList.add('wm-drag-over'); });
+    uploadZone.addEventListener('dragleave', function(){ uploadZone.classList.remove('wm-drag-over'); });
+    uploadZone.addEventListener('drop', function(e) {
+        e.preventDefault(); uploadZone.classList.remove('wm-drag-over');
+        var f = e.dataTransfer.files[0];
+        if (f && f.type.startsWith('image/')) loadImage(f);
+    });
+    fileInput.addEventListener('change', function(){ if (fileInput.files[0]) loadImage(fileInput.files[0]); });
+
+    function loadImage(file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var img = new Image();
+            img.onload = function() {
+                var w = img.naturalWidth, h = img.naturalHeight;
+                if (w > MAX_DIM || h > MAX_DIM) {
+                    var r = Math.min(MAX_DIM/w, MAX_DIM/h);
+                    w = Math.round(w*r); h = Math.round(h*r);
+                }
+                canvasImg.width = canvasMask.width = w;
+                canvasImg.height = canvasMask.height = h;
+                ctxImg.drawImage(img, 0, 0, w, h);
+                ctxMask.clearRect(0, 0, w, h);
+                uploadZone.style.display      = 'none';
+                splitDiv.style.display        = '';
+                resultDiv.style.display       = 'none';
+                statusDiv.style.display       = 'none';
+                resultPlaceholder.style.display = 'flex';
+                tabRes.disabled = true;
+                showPanel('edit');
+                setTool('brush');
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    /* Outils */
+    function setTool(tool) {
+        currentTool = tool;
+        btnToolBrush.classList.toggle('wm-active',  tool === 'brush');
+        btnToolEraser.classList.toggle('wm-active', tool === 'eraser');
+        cursorEl.className = tool === 'brush' ? 'brush-cursor' : 'eraser-cursor';
+        updateCursorSize();
+        instrDiv.className = 'wm-instructions' + (tool === 'eraser' ? ' mode-eraser' : '');
+        instrText.innerHTML = tool === 'brush'
+            ? '<strong>Mode Pinceau :</strong> Peignez en rouge sur le filigrane, puis cliquez sur <em>Supprimer le filigrane</em>. Ou utilisez <strong>Auto (Canva)</strong> pour la d&eacute;tection automatique.'
+            : '<strong>Mode Gomme :</strong> Cliquez sur les zones rouges pour les retirer du masque &mdash; id&eacute;al pour affiner la s&eacute;lection.';
+    }
+    btnToolBrush.addEventListener('click',  function(){ setTool('brush'); });
+    btnToolEraser.addEventListener('click', function(){ setTool('eraser'); });
+
+    /* Sensibilité label */
+    var sensLabels = ['Faible','Basse','Moy','Haute','Max'];
+    sensInput.addEventListener('input', function(){
+        sensLabel.textContent = sensLabels[parseInt(sensInput.value,10)-1];
+    });
+
+    /* Curseur */
+    function updateCursorSize() {
+        var s = parseInt(brushInput.value, 10);
+        var rect = ctnr.getBoundingClientRect();
+        var scale = canvasMask.width / rect.width;
+        var d = s / scale;
+        cursorEl.style.width  = d + 'px';
+        cursorEl.style.height = d + 'px';
+    }
+    ctnr.addEventListener('mouseenter', function(){ cursorEl.style.display = 'block'; updateCursorSize(); });
+    ctnr.addEventListener('mouseleave', function(){ cursorEl.style.display = 'none'; });
+    ctnr.addEventListener('mousemove',  function(e) {
+        var r = ctnr.getBoundingClientRect();
+        cursorEl.style.left = (e.clientX - r.left) + 'px';
+        cursorEl.style.top  = (e.clientY - r.top)  + 'px';
+    });
+    brushInput.addEventListener('input', function(){
+        brushLabel.textContent = brushInput.value + 'px';
+        updateCursorSize();
+    });
+
+    /* Dessin masque */
+    function getPos(e) {
+        var rect = canvasMask.getBoundingClientRect();
+        var sx = canvasMask.width  / rect.width;
+        var sy = canvasMask.height / rect.height;
+        var cx = e.touches ? e.touches[0].clientX : e.clientX;
+        var cy = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: (cx - rect.left)*sx, y: (cy - rect.top)*sy };
+    }
+    function paint(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+        var pos = getPos(e);
+        var r   = parseInt(brushInput.value, 10) / 2;
+        if (currentTool === 'brush') {
+            ctxMask.globalCompositeOperation = 'source-over';
+            ctxMask.fillStyle = 'rgba(220,38,38,.75)';
+        } else {
+            ctxMask.globalCompositeOperation = 'destination-out';
+            ctxMask.fillStyle = 'rgba(0,0,0,1)';
+        }
+        ctxMask.beginPath();
+        ctxMask.arc(pos.x, pos.y, r, 0, Math.PI*2);
+        ctxMask.fill();
+        ctxMask.globalCompositeOperation = 'source-over';
+    }
+    canvasMask.addEventListener('mousedown',  function(e){ isDrawing=true; paint(e); });
+    canvasMask.addEventListener('mousemove',  paint);
+    canvasMask.addEventListener('mouseup',    function(){ isDrawing=false; });
+    canvasMask.addEventListener('mouseleave', function(){ isDrawing=false; });
+    canvasMask.addEventListener('touchstart', function(e){ isDrawing=true; paint(e); }, {passive:false});
+    canvasMask.addEventListener('touchmove',  paint, {passive:false});
+    canvasMask.addEventListener('touchend',   function(){ isDrawing=false; });
+
+    btnClear.addEventListener('click', function(){
+        ctxMask.clearRect(0, 0, canvasMask.width, canvasMask.height);
+    });
+
+    /* Détection automatique Canva */
+    btnAutoDetect.addEventListener('click', function(){
+        if (!cvReady) { alert('OpenCV se charge encore, patientez.'); return; }
+
+        sensGroup.style.display = 'flex';
+        btnAutoDetect.classList.add('wm-detecting');
+        btnAutoDetect.innerHTML = '... Analyse...';
+        btnAutoDetect.disabled  = true;
+        instrDiv.className = 'wm-instructions mode-auto';
+        instrText.innerHTML = '<strong>Détection Canva en cours...</strong> Analyse des patterns semi-transparents.';
+
+        setTimeout(function(){
+            var mats = [];
+            function M(){ var m = new cv.Mat(); mats.push(m); return m; }
+            function del(){ mats.forEach(function(m){ try{ m.delete(); }catch(e){} }); mats=[]; }
+
+            try {
+                var sens = parseInt(sensInput.value, 10);
+
+                var thrHigh   = [245, 240, 232, 220, 205][sens-1];
+                var thrLow    = [20,  25,  30,  38,  48][sens-1];
+                var satMax    = [30,  40,  55,  70,  90][sens-1];
+                var diffThr   = [18,  14,  10,  7,   4][sens-1];
+                var dilSize   = [3,   4,   5,   6,   8][sens-1];
+                var dilIter   = 3;
+
+                var src  = cv.imread(canvasImg); mats.push(src);
+                var W = src.cols, H = src.rows;
+
+                var gray = M(); cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY);
+                var hsv  = M(); cv.cvtColor(src, hsv,  cv.COLOR_RGBA2RGB);
+                var hsvC = M(); cv.cvtColor(hsv, hsvC, cv.COLOR_RGB2HSV);
+
+                var thrBright = M(); cv.threshold(gray, thrBright, thrHigh, 255, cv.THRESH_BINARY);
+                var thrDark   = M(); cv.threshold(gray, thrDark,   thrLow,  255, cv.THRESH_BINARY_INV);
+                var passA     = M(); cv.bitwise_or(thrBright, thrDark, passA);
+
+                var offsets = [
+                    {dx: Math.round(W*0.12), dy: 0},
+                    {dx: 0, dy: Math.round(H*0.12)},
+                    {dx: Math.round(W*0.12), dy: Math.round(H*0.08)},
+                    {dx:-Math.round(W*0.12), dy: Math.round(H*0.08)}
+                ];
+                var passB = M(); passB.create(H, W, cv.CV_8UC1); passB.setTo(new cv.Scalar(0));
+                offsets.forEach(function(off){
+                    var shifted = M();
+                    shifted.create(H, W, cv.CV_8UC1);
+                    shifted.setTo(new cv.Scalar(128));
+                    var dx = off.dx, dy = off.dy;
+                    var srcX = Math.max(0,-dx), srcY = Math.max(0,-dy);
+                    var dstX = Math.max(0, dx), dstY = Math.max(0, dy);
+                    var rW = W - Math.abs(dx), rH = H - Math.abs(dy);
+                    if (rW > 0 && rH > 0) {
+                        var roiSrc = gray.roi(new cv.Rect(srcX, srcY, rW, rH));
+                        var roiDst = shifted.roi(new cv.Rect(dstX, dstY, rW, rH));
+                        roiSrc.copyTo(roiDst);
+                        roiSrc.delete(); roiDst.delete();
+                    }
+                    var diff = M(); cv.absdiff(gray, shifted, diff);
+                    var dthr = M(); cv.threshold(diff, dthr, diffThr, 255, cv.THRESH_BINARY_INV);
+                    var nonTrivS = M(); cv.threshold(shifted, nonTrivS, 10, 255, cv.THRESH_BINARY);
+                    var nonTrivG = M(); cv.threshold(gray,    nonTrivG, 10, 255, cv.THRESH_BINARY);
+                    cv.bitwise_and(dthr, nonTrivS, dthr);
+                    cv.bitwise_and(dthr, nonTrivG, dthr);
+                    cv.bitwise_or(passB, dthr, passB);
+                });
+
+                var hsvChans = new cv.MatVector(); mats.push(hsvChans);
+                cv.split(hsvC, hsvChans);
+                var chanS = hsvChans.get(1); mats.push(chanS);
+                var lowSat = M(); cv.threshold(chanS, lowSat, satMax, 255, cv.THRESH_BINARY_INV);
+
+                var edges = M(); cv.Canny(gray, edges, 40, 120);
+                var edgeDil = M();
+                var kEdge = cv.Mat.ones(3,3,cv.CV_8U); mats.push(kEdge);
+                cv.dilate(edges, edgeDil, kEdge, new cv.Point(-1,-1), 4);
+
+                var passC = M(); cv.bitwise_and(lowSat, edgeDil, passC);
+
+                var blurLarge = M();
+                var blurSz = Math.max(31, Math.round(Math.min(W,H)*0.08) | 1);
+                if (blurSz % 2 === 0) blurSz++;
+                cv.GaussianBlur(gray, blurLarge, new cv.Size(blurSz,blurSz), 0);
+                var diffLocal = M(); cv.absdiff(gray, blurLarge, diffLocal);
+                var diffLow   = M(); cv.threshold(diffLocal, diffLow, diffThr, 255, cv.THRESH_BINARY_INV);
+                var diffNonZ  = M(); cv.threshold(diffLocal, diffNonZ, 2, 255, cv.THRESH_BINARY);
+                var passD     = M(); cv.bitwise_and(diffLow, diffNonZ, passD);
+
+                var accum = M(); accum.create(H, W, cv.CV_32F); accum.setTo(new cv.Scalar(0));
+                var pAf = M(); passA.convertTo(pAf, cv.CV_32F, 1.0/255);
+                var pBf = M(); passB.convertTo(pBf, cv.CV_32F, 1.0/255);
+                var pCf = M(); passC.convertTo(pCf, cv.CV_32F, 1.0/255);
+                var pDf = M(); passD.convertTo(pDf, cv.CV_32F, 1.0/255);
+
+                var w1=0.20, w2=0.40, w3=0.25, w4=0.15;
+                cv.addWeighted(accum, 1, pAf, w1, 0, accum);
+                cv.addWeighted(accum, 1, pBf, w2, 0, accum);
+                cv.addWeighted(accum, 1, pCf, w3, 0, accum);
+                cv.addWeighted(accum, 1, pDf, w4, 0, accum);
+
+                var fusionThr = [0.65, 0.55, 0.42, 0.30, 0.20][sens-1];
+                var accumU8 = M(); accum.convertTo(accumU8, cv.CV_8U, 255);
+                var fusedU8 = Math.round(fusionThr * 255);
+                var fused = M(); cv.threshold(accumU8, fused, fusedU8, 255, cv.THRESH_BINARY);
+
+                var kClose = cv.Mat.ones(7,7,cv.CV_8U); mats.push(kClose);
+                var closed = M();
+                cv.morphologyEx(fused, closed, cv.MORPH_CLOSE, kClose, new cv.Point(-1,-1), 3);
+                var kOpen  = cv.Mat.ones(5,5,cv.CV_8U); mats.push(kOpen);
+                var opened = M();
+                cv.morphologyEx(closed, opened, cv.MORPH_OPEN, kOpen, new cv.Point(-1,-1), 2);
+
+                var kDil = cv.Mat.ones(dilSize*2+1, dilSize*2+1, cv.CV_8U); mats.push(kDil);
+                var dil  = M(); cv.dilate(opened, dil, kDil, new cv.Point(-1,-1), dilIter);
+
+                var imgData = ctxMask.getImageData(0, 0, W, H);
+                var px = imgData.data;
+                var detected = 0;
+                for (var i = 0; i < dil.data.length; i++) {
+                    if (dil.data[i] > 127) {
+                        var p = i*4;
+                        px[p]=220; px[p+1]=38; px[p+2]=38; px[p+3]=185;
+                        detected++;
+                    }
+                }
+                ctxMask.putImageData(imgData, 0, 0);
+
+                var pct = Math.round(detected / (W*H) * 100);
+                instrDiv.className = 'wm-instructions';
+
+                if (detected < 300) {
+                    instrText.innerHTML = '&#9888; <strong>Aucun filigrane d&eacute;tect&eacute;</strong> avec cette sensibilit&eacute;. '
+                        + 'Augmentez la <strong>sensibilit&eacute;</strong> ou utilisez le pinceau manuellement.';
+                } else if (pct > 75) {
+                    instrText.innerHTML = '&#9888; <strong>S&eacute;lection très large (' + pct + '%).</strong> '
+                        + 'R&eacute;duisez la sensibilit&eacute; ou utilisez la <strong>Gomme</strong> pour affiner, puis lancez la suppression.';
+                } else {
+                    instrText.innerHTML = '&#10003; <strong>Filigrane d&eacute;tect&eacute;</strong> &mdash; ' + pct + '% de l\'image. '
+                        + 'Affinez avec la <strong>Gomme</strong> si besoin, puis cliquez sur <em>Supprimer le filigrane</em>.';
+                }
+
+            } catch(err) {
+                console.error('Auto-detect Canva:', err);
+                instrDiv.className = 'wm-instructions';
+                instrText.innerHTML = '&#9888; Erreur d&eacute;tection. Utilisez le pinceau manuellement.';
+            } finally {
+                del();
+                btnAutoDetect.classList.remove('wm-detecting');
+                btnAutoDetect.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg> Auto (Canva)';
+                btnAutoDetect.disabled  = false;
+            }
+        }, 80);
+    });
+
+    /* Vérif masque */
+    function hasMask() {
+        var d = ctxMask.getImageData(0, 0, canvasMask.width, canvasMask.height).data;
+        for (var i=3; i<d.length; i+=4) { if (d[i]>20) return true; }
+        return false;
+    }
+
+    /* INPAINTING */
+    btnRemove.addEventListener('click', function(){
+        if (!cvReady) { alert('OpenCV se charge encore.'); return; }
+        if (!hasMask()) { alert('Peignez d\'abord sur le filigrane (ou utilisez Auto Canva).'); return; }
+
+        statusDiv.style.display       = 'block';
+        resultDiv.style.display       = 'none';
+        resultPlaceholder.style.display = 'none';
+        statusText.textContent        = 'Suppression en cours...';
+        btnRemove.disabled            = true;
+        if (window.innerWidth <= 768) { showPanel('result'); }
+
+        setTimeout(function(){
+            var src=null, bgr=null, mask=null, dst=null, rgba=null;
+            try {
+                src  = cv.imread(canvasImg);
+                bgr  = new cv.Mat(); cv.cvtColor(src, bgr, cv.COLOR_RGBA2BGR);
+
+                var W = canvasMask.width, H = canvasMask.height;
+                var vis  = ctxMask.getImageData(0, 0, W, H);
+                var mdat = new Uint8Array(W * H);
+                for (var i=0; i<vis.data.length; i+=4) {
+                    mdat[i/4] = (vis.data[i+3] > 20) ? 255 : 0;
+                }
+                mask = new cv.Mat(H, W, cv.CV_8UC1);
+                mask.data.set(mdat);
+
+                dst  = new cv.Mat();
+                cv.inpaint(bgr, mask, dst, INPAINT_RADIUS, cv.INPAINT_TELEA);
+
+                rgba = new cv.Mat(); cv.cvtColor(dst, rgba, cv.COLOR_BGR2RGBA);
+                canvasResult.width  = canvasImg.width;
+                canvasResult.height = canvasImg.height;
+                cv.imshow(canvasResult, rgba);
+
+                statusDiv.style.display         = 'none';
+                resultDiv.style.display         = 'block';
+                resultPlaceholder.style.display = 'none';
+                tabRes.disabled = false;
+                if (window.innerWidth <= 768) { showPanel('result'); }
+
+            } catch(err) {
+                var msg = (err && err.message) ? err.message
+                        : (typeof err === 'number') ? 'Code OpenCV : '+err : JSON.stringify(err);
+                statusDiv.style.display         = 'none';
+                resultPlaceholder.style.display = 'flex';
+                if (window.innerWidth <= 768) { showPanel('edit'); }
+                alert('Erreur : ' + msg);
+                console.error(err);
+            } finally {
+                [src,bgr,mask,dst,rgba].forEach(function(m){ if(m) try{m.delete();}catch(e){} });
+                btnRemove.disabled = false;
+            }
+        }, 100);
+    });
+
+    /* Retoucher encore */
+    btnRetouch.addEventListener('click', function(){
+        ctxImg.drawImage(canvasResult, 0, 0);
+        ctxMask.clearRect(0, 0, canvasMask.width, canvasMask.height);
+        resultDiv.style.display         = 'none';
+        resultPlaceholder.style.display = 'flex';
+        setTool('brush');
+        instrText.innerHTML = '&#9999; <strong>Retouche :</strong> Image mise &agrave; jour. Repeignez les zones restantes puis relancez.';
+        if (window.innerWidth <= 768) { showPanel('edit'); }
+    });
+
+    /* Reset */
+    function resetTool() {
+        uploadZone.style.display        = 'block';
+        splitDiv.style.display          = 'none';
+        resultDiv.style.display         = 'none';
+        statusDiv.style.display         = 'none';
+        sensGroup.style.display         = 'none';
+        resultPlaceholder.style.display = 'flex';
+        tabRes.disabled = true;
+        showPanel('edit');
+        fileInput.value = '';
+        setTool('brush');
+    }
+    btnReset.addEventListener('click',  resetTool);
+    btnReset2.addEventListener('click', resetTool);
+
+    /* Télécharger */
+    btnDownload.addEventListener('click', function(){
+        var a = document.createElement('a');
+        a.download = 'image-sans-filigrane.png';
+        a.href     = canvasResult.toDataURL('image/png');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+
+})();
+</script>
+
+<!-- Grain animé -->
+<script>
+(function(){
+    var c = document.getElementById('wm-grain');
+    if (!c) return;
+    var ctx = c.getContext('2d');
+    var W, H;
+    function resize(){ W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+    function tick(){
+        var img = ctx.createImageData(W, H);
+        var d = img.data;
+        for (var i = 0; i < d.length; i += 4) {
+            var v = (Math.random() * 255) | 0;
+            d[i] = d[i+1] = d[i+2] = v; d[i+3] = 255;
+        }
+        ctx.putImageData(img, 0, 0);
+        requestAnimationFrame(tick);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    tick();
+})();
+</script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .catch(err => console.warn('[SW]', err));
+  document.addEventListener('click', function askOnce() {
+    if (Notification.permission === 'default') Notification.requestPermission();
+    document.removeEventListener('click', askOnce);
+  }, { once: true });
+}
+</script>
+</body>
+</html>
+ 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <!-- ══ Page principale ══ -->
+  <url>
+    <loc>https://abilanbalakumaran.github.io/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+
+    <!-- Images clés pour Google Images -->
+    <image:image>
+      <image:loc>https://abilanbalakumaran.github.io/images/fiole.png</image:loc>
+      <image:title>Logo Abilan Balakumaran — Digital Manager et Motion Designer</image:title>
+      <image:caption>Identité visuelle d'Abilan Balakumaran, Motion Designer freelance</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://abilanbalakumaran.github.io/images/og-preview.png</image:loc>
+      <image:title>Portfolio Abilan Balakumaran — Digital Manager et Motion Designer</image:title>
+      <image:caption>Portfolio complet : motion design, animation vidéo, identité visuelle, projets BTP</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://abilanbalakumaran.github.io/images/Design_graphique/Calin_doux/page%20de%20couverture.jpg</image:loc>
+      <image:title>Projet Câlin Doux — couverture éditoriale par Abilan Balakumaran</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://abilanbalakumaran.github.io/images/Design_graphique/StorySaga/exterieur.jpg</image:loc>
+      <image:title>Projet StorySaga — identité visuelle par Abilan Balakumaran</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://abilanbalakumaran.github.io/images/website/etudereno-fr.png</image:loc>
+      <image:title>Site etudereno.fr — développement web BTP par Abilan Balakumaran</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://abilanbalakumaran.github.io/images/website/app/application-suivi-de-chantier-projet.png</image:loc>
+      <image:title>Application suivi de chantier — conçue par Abilan Balakumaran</image:title>
+    </image:image>
+
+    <!-- Vidéos MP4 hébergées sur GitHub -->
+    <video:video>
+      <video:thumbnail_loc>https://abilanbalakumaran.github.io/images/fiole.png</video:thumbnail_loc>
+      <video:title>Animation Motion Design Basketball — Abilan Balakumaran</video:title>
+      <video:description>Animation motion design réalisée par Abilan Balakumaran, Digital Manager et Motion Designer.</video:description>
+      <video:content_loc>https://abilanbalakumaran.github.io/images/motion/basketball%20match.mp4</video:content_loc>
+      <video:duration>30</video:duration>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:uploader info="https://abilanbalakumaran.github.io/">Abilan Balakumaran</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abilanbalakumaran.github.io/images/fiole.png</video:thumbnail_loc>
+      <video:title>Animation Motion Design Coding — Abilan Balakumaran</video:title>
+      <video:description>Animation coding motion design réalisée par Abilan Balakumaran.</video:description>
+      <video:content_loc>https://abilanbalakumaran.github.io/images/motion/Coding%20animation.mp4</video:content_loc>
+      <video:duration>30</video:duration>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:uploader info="https://abilanbalakumaran.github.io/">Abilan Balakumaran</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abilanbalakumaran.github.io/images/fiole.png</video:thumbnail_loc>
+      <video:title>Animation 2D Mascotte — Motion Design par Abilan Balakumaran</video:title>
+      <video:description>Animation 2D de mascotte réalisée par Abilan Balakumaran, spécialiste motion design.</video:description>
+      <video:content_loc>https://abilanbalakumaran.github.io/images/motion/MascotteAnimation2d.mp4</video:content_loc>
+      <video:duration>30</video:duration>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:uploader info="https://abilanbalakumaran.github.io/">Abilan Balakumaran</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abilanbalakumaran.github.io/images/fiole.png</video:thumbnail_loc>
+      <video:title>Animation Motion Design Radio — Abilan Balakumaran</video:title>
+      <video:description>Animation radio conçue par Abilan Balakumaran dans le cadre de son portfolio.</video:description>
+      <video:content_loc>https://abilanbalakumaran.github.io/images/motion/radio_1.mp4</video:content_loc>
+      <video:duration>30</video:duration>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:uploader info="https://abilanbalakumaran.github.io/">Abilan Balakumaran</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abilanbalakumaran.github.io/images/fiole.png</video:thumbnail_loc>
+      <video:title>Hey Alexa — Animation Motion Design par Abilan Balakumaran</video:title>
+      <video:description>Animation Hey Alexa réalisée par Abilan Balakumaran, motion designer.</video:description>
+      <video:content_loc>https://abilanbalakumaran.github.io/images/motion/Hey%20Alexa.mp4</video:content_loc>
+      <video:duration>30</video:duration>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:uploader info="https://abilanbalakumaran.github.io/">Abilan Balakumaran</video:uploader>
+    </video:video>
+
+  </url>
+
+  <!-- ══ Le Lab — hub ══ -->
+  <url>
+    <loc>https://abilanbalakumaran.github.io/abilanlab/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ══ Transcription Audio & Vidéo ══ -->
+  <url>
+    <loc>https://abilanbalakumaran.github.io/abilanlab/transcription/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ══ Extension d'Image ══ -->
+  <url>
+    <loc>https://abilanbalakumaran.github.io/abilanlab/image-extender/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ══ Suppresseur de Filigrane ══ -->
+  <url>
+    <loc>https://abilanbalakumaran.github.io/abilanlab/filigrane-remover/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

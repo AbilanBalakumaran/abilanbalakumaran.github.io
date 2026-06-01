@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Lab — Abilan Lab</title>
+<link rel="icon"             type="image/png" sizes="32x32" href="../images/fiole.png">
+<link rel="icon"             type="image/png" sizes="16x16" href="../images/fiole.png">
+<link rel="apple-touch-icon" sizes="180x180"                href="../images/fiole.png">
+
+<!-- ─── SEO ─── -->
+<meta name="description" content="Le Lab d'Abilan Balakumaran : terrain d'expérimentation web. Outils créatifs client-side — suppresseur de filigrane, extension d'image, transcription audio. Gratuit, aucune donnée envoyée.">
+<meta name="keywords" content="Abilan Lab, outils web créatifs, suppresseur filigrane, extension image, transcription audio, motion design tools, Abilan Balakumaran">
+<meta name="author" content="Abilan Balakumaran">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#0f1823">
+<link rel="canonical" href="https://abilanbalakumaran.github.io/abilanlab/">
+
+<!-- ─── Open Graph ─── -->
+<meta property="og:type"         content="website">
+<meta property="og:url"          content="https://abilanbalakumaran.github.io/abilanlab/">
+<meta property="og:title"        content="Le Lab — Abilan Balakumaran">
+<meta property="og:description"  content="Terrain d'expérimentation d'Abilan Balakumaran. Outils web créatifs : suppresseur de filigrane, extension d'image, transcription audio.">
+<meta property="og:image"        content="https://abilanbalakumaran.github.io/og-preview.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"    content="Le Lab — Abilan Balakumaran">
+<meta property="og:locale"       content="fr_FR">
+<meta property="og:site_name"    content="Abilan Lab">
+
+<!-- ─── Twitter Card ─── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Le Lab — Abilan Balakumaran">
+<meta name="twitter:description" content="Outils web créatifs d'Abilan Balakumaran : suppresseur de filigrane, extension d'image, transcription audio. Gratuits, 100% locaux.">
+<meta name="twitter:image"       content="https://abilanbalakumaran.github.io/og-preview.png">
+<meta name="twitter:image:alt"   content="Le Lab — Abilan Balakumaran — Outils créatifs gratuits">
+<meta name="twitter:image:alt"   content="Le Lab — Abilan Balakumaran">
+
+<!-- ─── JSON-LD ─── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://abilanbalakumaran.github.io/abilanlab/",
+  "url": "https://abilanbalakumaran.github.io/abilanlab/",
+  "name": "Le Lab — Abilan Balakumaran",
+  "description": "Terrain d'expérimentation : outils web créatifs client-side pour le motion design et la création digitale.",
+  "inLanguage": "fr-FR",
+  "author": { "@id": "https://abilanbalakumaran.github.io/#abilan" },
+  "dateModified": "2026-04-10",
+  "isPartOf": { "@type": "WebSite", "@id": "https://abilanbalakumaran.github.io/#website", "url": "https://abilanbalakumaran.github.io/", "name": "Portfolio Abilan Balakumaran" },
+  "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://abilanbalakumaran.github.io/" },
+    { "@type": "ListItem", "position": 2, "name": "Le Lab",    "item": "https://abilanbalakumaran.github.io/abilanlab/" }
+  ]}
+}
+</script>
+
+<!-- ─── PWA ─── -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Abilan Lab">
+<link rel="apple-touch-icon" href="/images/fiole.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bd:   #0f1823;
+  --bp:   #2d4263;
+  --bm:   #3e5c7a;
+  --bl:   #5a7ba6;
+  --bpa:  #7a9cc6;
+  --bs:   #a8c5e2;
+  --wh:   #ffffff;
+  --nav-height: 68px;
+  --font: 'Sora', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bd);
+  color: var(--wh);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Background layers ── */
+.lab-dot-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(168,197,226,.10) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.lab-orb {
+  position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0;
+}
+.lab-orb-1 {
+  width: 600px; height: 600px; top: -180px; left: -120px;
+  background: radial-gradient(circle, rgba(45,66,99,.7) 0%, transparent 70%);
+  animation: orb-drift 22s ease-in-out infinite;
+}
+.lab-orb-2 {
+  width: 500px; height: 500px; bottom: -100px; right: -80px;
+  background: radial-gradient(circle, rgba(62,92,122,.5) 0%, transparent 70%);
+  animation: orb-drift 28s ease-in-out infinite reverse;
+}
+.lab-orb-3 {
+  width: 280px; height: 280px; top: 40%; left: 55%;
+  background: radial-gradient(circle, rgba(107,155,209,.15) 0%, transparent 70%);
+  animation: orb-drift 18s ease-in-out infinite 5s;
+}
+@keyframes orb-drift {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(28px,-38px) scale(1.05); }
+  66%     { transform: translate(-18px,20px) scale(0.97); }
+}
+
+canvas#lab-grain {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: .03; mix-blend-mode: screen; width: 100%; height: 100%;
+}
+
+/* ── Spacer header ── */
+.lab-spacer { height: var(--nav-height); display: block; }
+
+/* ── Page wrapper ── */
+.lab-wrap {
+  position: relative; z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.lab-hero {
+  position: relative;
+  padding-top: 3rem;
+}
+
+.lab-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(90,123,166,.12);
+  border: 1px solid rgba(90,123,166,.25);
+  border-radius: 100px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--bs);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.lab-hero-tag-dot {
+  width: 5px; height: 5px;
+  background: var(--bl);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(90,123,166,.7);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%     { transform: scale(1.5); opacity: .6; }
+}
+
+.lab-hero-title {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  margin-bottom: 1.5rem;
+}
+.lab-hero-title span {
+  background: linear-gradient(135deg, var(--wh) 0%, var(--bs) 60%, var(--bl) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lab-hero-desc {
+  max-width: 640px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 300;
+  color: rgba(168,197,226,.75);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.lab-hero-desc strong {
+  color: var(--bs);
+  font-weight: 600;
+}
+
+/* Pilliers */
+.lab-pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 3rem;
+}
+.lab-pillar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(168,197,226,.05);
+  border: 1px solid rgba(168,197,226,.12);
+  border-radius: 10px;
+  font-size: 13px;
+  color: rgba(168,197,226,.7);
+  font-family: var(--mono);
+}
+.lab-pillar-icon { font-size: 15px; }
+
+/* Stat bar */
+.lab-stats {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(168,197,226,.08);
+}
+.lab-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lab-stat-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--wh);
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+.lab-stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(168,197,226,.4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════
+   DIVIDER
+══════════════════════════════════════ */
+.lab-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168,197,226,.15), transparent);
+  margin: 2rem 0 4rem;
+}
+
+/* ══════════════════════════════════════
+   SECTION TITRE
+══════════════════════════════════════ */
+.lab-section-header {
+  margin-bottom: 2.5rem;
+}
+.lab-section-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--bl);
+  margin-bottom: .75rem;
+  display: block;
+}
+.lab-section-title {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--wh);
+  margin-bottom: .5rem;
+}
+.lab-section-sub {
+  font-size: 14px;
+  color: rgba(168,197,226,.5);
+  font-weight: 300;
+}
+
+/* ══════════════════════════════════════
+   OUTIL — CARTES
+══════════════════════════════════════ */
+.lab-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+  margin-bottom: 5rem;
+}
+
+.lab-tool-card {
+  background: rgba(168,197,226,.03);
+  border: 1px solid rgba(168,197,226,.1);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s ease, box-shadow .3s ease;
+  cursor: default;
+}
+.lab-tool-card:hover {
+  border-color: rgba(90,123,166,.35);
+  box-shadow: 0 8px 40px rgba(45,66,99,.3);
+}
+.lab-tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--bl), var(--bs), transparent);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.lab-tool-card:hover::before { opacity: 1; }
+
+.lab-tool-card-glow {
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(90,123,166,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.lab-tool-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.lab-tool-icon {
+  width: 48px; height: 48px;
+  background: rgba(90,123,166,.12);
+  border: 1px solid rgba(90,123,166,.2);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.lab-tool-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 10px;
+  background: rgba(107,166,141,.1);
+  border: 1px solid rgba(107,166,141,.2);
+  border-radius: 100px;
+  color: #6ba68d;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.lab-tool-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: .4rem;
+}
+.lab-tool-desc {
+  font-size: 13px;
+  color: rgba(168,197,226,.55);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Boutons d'action */
+.lab-tool-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 20px;
+  border-radius: 12px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all .25s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Bouton principal */
+.lab-btn-primary {
+  background: linear-gradient(135deg, var(--bp), var(--bl));
+  color: var(--wh);
+  box-shadow: 0 4px 20px rgba(45,66,99,.4);
+}
+.lab-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(45,66,99,.6);
+  background: linear-gradient(135deg, var(--bm), var(--bpa));
+}
+.lab-btn-primary:active { transform: translateY(0); }
+
+/* Bouton secondaire */
+.lab-btn-secondary {
+  background: rgba(168,197,226,.06);
+  border: 1px solid rgba(168,197,226,.15);
+  color: var(--bs);
+}
+.lab-btn-secondary:hover {
+  background: rgba(168,197,226,.11);
+  border-color: rgba(168,197,226,.3);
+  transform: translateY(-1px);
+}
+
+.lab-btn-icon {
+  width: 18px; height: 18px; flex-shrink: 0;
+}
+
+/* Séparateur "ou" */
+.lab-btn-or {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(168,197,226,.3);
+  font-size: 12px;
+  font-family: var(--mono);
+  letter-spacing: .06em;
+}
+.lab-btn-or::before,
+.lab-btn-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(168,197,226,.1);
+}
+
+/* Tags formats */
+.lab-tool-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(168,197,226,.07);
+}
+.lab-format-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  background: rgba(168,197,226,.05);
+  border: 1px solid rgba(168,197,226,.1);
+  border-radius: 6px;
+  color: rgba(168,197,226,.45);
+  letter-spacing: .04em;
+}
+
+/* ══════════════════════════════════════
+   MANIFESTE
+══════════════════════════════════════ */
+.lab-manifeste {
+  background: rgba(168,197,226,.03);
+  border: 1px solid rgba(168,197,226,.08);
+  border-radius: 20px;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.lab-manifeste::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--bp) 20%, var(--bl) 50%, var(--bs) 80%, transparent);
+  opacity: .6;
+}
+.lab-manifeste-quote {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(168,197,226,.75);
+  max-width: 720px;
+}
+.lab-manifeste-quote em {
+  font-style: normal;
+  color: var(--wh);
+  font-weight: 600;
+}
+.lab-manifeste-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2rem;
+}
+.lab-manifeste-avatar {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--bp), var(--bl));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--bs);
+  flex-shrink: 0;
+}
+.lab-manifeste-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--wh);
+}
+.lab-manifeste-role {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(168,197,226,.4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ══════════════════════════════════════
+   FOOTER LIGHT
+══════════════════════════════════════ */
+.lab-footer {
+  border-top: 1px solid rgba(168,197,226,.07);
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+.lab-footer-copy {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(168,197,226,.2);
+  letter-spacing: .02em;
+}
+.lab-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(168,197,226,.45);
+  font-weight: 500;
+  transition: color .2s;
+}
+.lab-footer-link:hover { color: var(--bs); }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .lab-tools-grid { grid-template-columns: 1fr; }
+  .lab-stats { gap: 1.5rem; }
+}
+
+/* ══════════════════════════════════════
+   NAV / HEADER
+══════════════════════════════════════ */
+:root {
+    --nav-white:    #ffffff;
+    --nav-blue-300: #a8c5e2;
+    --nav-blue-400: #7a9cc6;
+    --nav-blue-500: #5a7ba6;
+    --nav-blue-600: #3e5c7a;
+    --nav-height:   68px;
+    --nav-font:     'Sora', sans-serif;
+    --nav-mono:     'JetBrains Mono', monospace;
+}
+
+.tp-nav-toggle-cb { display: none; }
+
+#tp-nav-header a,
+#tp-nav-header label,
+.tp-mobile-link,
+.tp-nav-burger {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#tp-nav-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 99999;
+    height: var(--nav-height);
+    background: rgba(15, 24, 35, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(168,197,226,0.1);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+    font-family: var(--nav-font);
+    animation: nav-slide-in 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes nav-slide-in {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+}
+#tp-nav-header.scrolled {
+    background: rgba(10,16,24,0.95);
+    border-bottom-color: rgba(168,197,226,0.15);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+}
+
+.tp-nav-topline {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #2d4263 15%, #5a7ba6 40%, #a8c5e2 50%, #5a7ba6 60%, #2d4263 85%, transparent 100%);
+    animation: line-glow 4s ease-in-out infinite;
+}
+@keyframes line-glow { 0%,100%{opacity:.6} 50%{opacity:1} }
+
+.tp-nav-inner {
+    max-width: 1340px; margin: 0 auto;
+    height: var(--nav-height);
+    padding: 0 clamp(1rem, 4vw, 2.5rem);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+
+.tp-nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none !important; flex-shrink: 0; transition: opacity 0.2s;
+}
+.tp-nav-brand:hover { opacity: 0.85; }
+.tp-nav-logo-icon {
+    width: 36px; height: 36px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(107,155,209,0.4));
+    transition: transform 0.3s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+.tp-nav-brand:hover .tp-nav-logo-icon { transform: rotate(-6deg) scale(1.08); }
+.tp-nav-brand-text { display: flex; flex-direction: column; gap: 1px; line-height: 1; }
+.tp-nav-brand-name { font-size: 15px; font-weight: 700; color: var(--nav-white); letter-spacing: -0.02em; }
+.tp-nav-brand-sub  { font-family: var(--nav-mono); font-size: 9px; color: var(--nav-blue-400); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.tp-nav-links { display: flex; align-items: center; gap: 4px; margin: 0 auto; }
+.tp-nav-link {
+    position: relative; display: flex; align-items: center; gap: 6px;
+    padding: 8px 16px; font-size: 14px; font-weight: 500;
+    color: rgba(168,197,226,0.6); text-decoration: none !important;
+    border-radius: 10px; transition: all 0.25s ease; letter-spacing: 0.01em;
+}
+.tp-nav-link:hover         { color: var(--nav-white); background: rgba(168,197,226,0.07); }
+.tp-nav-link--active       { color: var(--nav-white); background: rgba(90,123,166,0.15); }
+.tp-nav-link--active::after {
+    content: ''; position: absolute; bottom: 4px; left: 50%;
+    transform: translateX(-50%); width: 16px; height: 2px;
+    background: linear-gradient(90deg, #5a7ba6, #a8c5e2); border-radius: 2px;
+}
+.tp-nav-link-dot {
+    width: 5px; height: 5px; border-radius: 50%; background: var(--nav-blue-500);
+    opacity: 0; transform: scale(0); transition: all 0.2s ease; flex-shrink: 0;
+}
+.tp-nav-link--active .tp-nav-link-dot,
+.tp-nav-link:hover   .tp-nav-link-dot { opacity: 1; transform: scale(1); }
+.tp-nav-link--active .tp-nav-link-dot { background: var(--nav-blue-300); box-shadow: 0 0 6px rgba(168,197,226,0.6); }
+
+.tp-nav-status {
+    display: flex; align-items: center; gap: 6px; padding: 5px 12px;
+    background: rgba(107,166,141,0.1); border: 1px solid rgba(107,166,141,0.2);
+    border-radius: 100px; flex-shrink: 0;
+}
+.tp-nav-status-dot {
+    width: 6px; height: 6px; background: #6ba68d; border-radius: 50%;
+    box-shadow: 0 0 6px rgba(107,166,141,0.7);
+    animation: status-pulse 2.5s ease-in-out infinite;
+}
+@keyframes status-pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.7} }
+.tp-nav-status-label { font-family: var(--nav-mono); font-size: 11px; color: #6ba68d; letter-spacing: 0.05em; text-transform: uppercase; }
+
+.tp-nav-burger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: rgba(168,197,226,0.06); border: 1px solid rgba(168,197,226,0.15);
+    border-radius: 10px; cursor: pointer; flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none; -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.tp-nav-burger:hover { background: rgba(168,197,226,0.12); border-color: rgba(168,197,226,0.3); }
+.tp-burger-bar {
+    display: block; width: 18px; height: 1.5px;
+    background: var(--nav-blue-300); border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.68,-0.55,0.265,1.55);
+    transform-origin: center;
+}
+
+.tp-nav-toggle-cb:checked ~ .tp-mobile-menu {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(2) { transform: scaleX(0); opacity: 0; }
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.tp-mobile-menu {
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    height: calc(100dvh - 68px);
+    background: rgba(10, 16, 26, 0.98);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    padding: 40px 28px 48px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transform: translateX(100%);
+    opacity: 0; pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
+    z-index: 99998; overflow: hidden;
+}
+.tp-mobile-menu::before {
+    content: ''; position: absolute; bottom: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(90,123,166,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.tp-mobile-nav { display: flex; flex-direction: column; gap: 8px; }
+.tp-mobile-link {
+    display: flex; align-items: center; gap: 18px; padding: 18px 16px;
+    font-family: var(--nav-font); font-size: 28px; font-weight: 700;
+    color: rgba(168,197,226,0.35); text-decoration: none !important;
+    border-radius: 14px; letter-spacing: -0.03em;
+    transition: all 0.3s ease; border-left: 2px solid transparent;
+    position: relative; overflow: hidden;
+}
+.tp-mobile-link::before {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(168,197,226,0.04);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease; border-radius: 14px;
+}
+.tp-mobile-link:hover::before,
+.tp-mobile-link--active::before { transform: scaleX(1); }
+.tp-mobile-link:hover   { color: var(--nav-white); border-left-color: var(--nav-blue-500); padding-left: 24px; }
+.tp-mobile-link--active { color: var(--nav-white); border-left-color: var(--nav-blue-300); padding-left: 24px; }
+
+.tp-mobile-link-num {
+    font-family: var(--nav-mono); font-size: 11px; color: var(--nav-blue-600);
+    letter-spacing: 0.05em; min-width: 24px; align-self: flex-start; margin-top: 8px;
+}
+.tp-mobile-link--active .tp-mobile-link-num,
+.tp-mobile-link:hover   .tp-mobile-link-num { color: var(--nav-blue-400); }
+.tp-mobile-arrow {
+    margin-left: auto; opacity: 0; transform: translateX(-6px);
+    transition: all 0.25s ease; color: var(--nav-blue-400); flex-shrink: 0;
+}
+.tp-mobile-link:hover   .tp-mobile-arrow,
+.tp-mobile-link--active .tp-mobile-arrow { opacity: 1; transform: translateX(0); }
+
+.tp-mobile-footer {
+    display: flex; align-items: center; gap: 10px;
+    padding-top: 20px; border-top: 1px solid rgba(168,197,226,0.08);
+}
+.tp-mobile-footer-text   { font-family: var(--nav-mono); font-size: 11px; color: rgba(168,197,226,0.25); }
+.tp-mobile-status-dot    { width: 5px; height: 5px; background: #6ba68d; border-radius: 50%; animation: status-pulse 2.5s ease-in-out infinite; }
+.tp-mobile-footer-status { font-family: var(--nav-mono); font-size: 11px; color: rgba(107,166,141,0.6); letter-spacing: 0.04em; text-transform: uppercase; }
+
+.tp-nav-spacer { height: 68px; display: block; }
+
+.tp-nav-links { display: flex; align-items: center; gap: 2px; }
+.tp-nav-status { display: flex; }
+@media(max-width:900px) { .tp-nav-links,.tp-nav-status{display:none} .tp-nav-burger{display:flex} }
+.tp-nav-link--sub { font-size: 12px !important; padding: 5px 11px !important; color: rgba(168,197,226,0.42) !important; }
+.tp-nav-link--sub:hover { color: rgba(168,197,226,0.8) !important; background: rgba(168,197,226,0.06) !important; }
+.tp-nav-link--sub.tp-nav-link--active { color: rgba(168,197,226,0.85) !important; background: rgba(90,123,166,0.1) !important; }
+.tp-nav-link--sub.tp-nav-link--active::after { width: 10px !important; }
+.tp-nav-sep { color: rgba(168,197,226,0.2); font-size: 13px; margin: 0 1px; pointer-events: none; user-select: none; }
+/* Mobile menu : hiérarchie visuelle */
+.tp-mobile-link--parent { font-size: 32px; color: rgba(168,197,226,0.7) !important; }
+.tp-mobile-link--child { font-size: 18px !important; padding: 10px 16px !important; padding-left: 44px !important; color: rgba(168,197,226,0.4) !important; border-left-color: transparent !important; }
+.tp-mobile-link--child:hover { color: rgba(168,197,226,0.9) !important; padding-left: 50px !important; border-left-color: var(--nav-blue-600) !important; }
+.tp-mobile-link--child.tp-mobile-link--active { color: var(--wh) !important; padding-left: 50px !important; border-left-color: var(--bs) !important; }
+.tp-mobile-link--child .tp-mobile-link-num { font-size: 9px; }
+@media (max-width: 700px) { .tp-nav-link--sub { display: none; } .tp-nav-sep { display: none; } }
+@media (max-width: 480px) {
+    .tp-nav-brand-sub { display: none; }
+    .tp-nav-inner { padding: 0 1rem; }
+    .tp-mobile-link { font-size: 22px; }
+}
+
+/* ══════════════════════════════════════
+   FOOTER GLOBAL
+══════════════════════════════════════ */
+#tp-page-footer {
+    --tp-bg-hero:      #0f1823;
+    --tp-blue-300:     #a8c5e2;
+    --tp-white:        #ffffff;
+    --tp-font-display: 'Sora', sans-serif;
+    --tp-font-mono:    'JetBrains Mono', monospace;
+    font-family: var(--tp-font-display);
+    background: var(--tp-bg-hero);
+}
+.tp-footer { background: var(--tp-bg-hero); padding: 2rem 2rem 3rem; }
+.tp-footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(168,197,226,0.12);
+    padding-top: 2.5rem;
+}
+.tp-footer-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(168,197,226,0.45);
+    margin: 0;
+}
+.tp-footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.tp-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(168,197,226,0.06);
+    border: 1px solid rgba(168,197,226,0.15);
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--tp-blue-300);
+    transition: background .2s, border-color .2s;
+}
+.tp-social-btn:hover {
+    background: rgba(168,197,226,0.14);
+    border-color: rgba(168,197,226,0.35);
+    color: var(--tp-blue-300);
+}
+.tp-footer-copy {
+    font-family: var(--tp-font-mono);
+    font-size: 11px;
+    color: rgba(168,197,226,0.25);
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+@media(max-width:480px){
+    .tp-footer { padding: 1.5rem 1rem 2.5rem; }
+    .tp-social-btn { padding: 8px 14px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background décoratif -->
+<div class="lab-dot-grid" aria-hidden="true"></div>
+<div class="lab-orb lab-orb-1" aria-hidden="true"></div>
+<div class="lab-orb lab-orb-2" aria-hidden="true"></div>
+<div class="lab-orb lab-orb-3" aria-hidden="true"></div>
+<canvas id="lab-grain" aria-hidden="true"></canvas>
+
+<!-- ══ HEADER ══ -->
+<input type="checkbox" id="tp-nav-toggle" class="tp-nav-toggle-cb" aria-hidden="true">
+
+<header id="tp-nav-header">
+    <div class="tp-nav-topline" aria-hidden="true"></div>
+    <div class="tp-nav-inner">
+        <a href="../" class="tp-nav-brand" aria-label="Retour au Portfolio">
+            <div class="tp-nav-logo-icon" aria-hidden="true">
+                <img src="../images/fiole.png" alt="Abilan Lab logo" width="36" height="36" style="object-fit:contain;">
+            </div>
+            <div class="tp-nav-brand-text">
+                <span class="tp-nav-brand-name">Abilan Lab</span>
+                <span class="tp-nav-brand-sub">Digital & Motion</span>
+            </div>
+        </a>
+
+        <nav class="tp-nav-links" aria-label="Navigation principale">
+            <a href="../" class="tp-nav-link" data-nav="portfolio">
+                <span class="tp-nav-link-dot" aria-hidden="true"></span>
+                Portfolio
+            </a>
+            <a href="./" class="tp-nav-link" data-nav="lab">
+                <span class="tp-nav-link-dot" aria-hidden="true"></span>
+                Le Lab
+            </a>
+        </nav>
+
+        <div class="tp-nav-status" aria-label="Statut du service">
+            <span class="tp-nav-status-dot" aria-hidden="true"></span>
+            <span class="tp-nav-status-label">Live</span>
+        </div>
+
+        <label for="tp-nav-toggle" class="tp-nav-burger" aria-label="Ouvrir le menu">
+            <span class="tp-burger-bar"></span>
+            <span class="tp-burger-bar"></span>
+            <span class="tp-burger-bar"></span>
+        </label>
+    </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="tp-mobile-menu" id="tp-mobile-menu">
+    <nav class="tp-mobile-nav">
+        <a href="../" class="tp-mobile-link" data-nav="portfolio">
+            <span class="tp-mobile-link-num">01</span>
+            <span>Portfolio</span>
+            <svg class="tp-mobile-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="./" class="tp-mobile-link tp-mobile-link--active" data-nav="lab">
+            <span class="tp-mobile-link-num">02</span>
+            <span>Le Lab</span>
+            <svg class="tp-mobile-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+    </nav>
+    <div class="tp-mobile-footer">
+        <span class="tp-mobile-footer-text">© 2026 Abilan Lab</span>
+        <span class="tp-mobile-status-dot" aria-hidden="true"></span>
+        <span class="tp-mobile-footer-status">Service online</span>
+    </div>
+</div>
+
+<div class="lab-spacer"></div>
+
+<!-- ══ FIL D'ARIANE ══ -->
+<nav class="tp-breadcrumb" aria-label="Fil d'ariane">
+    <div class="tp-breadcrumb-inner">
+        <a href="../" class="tp-breadcrumb-link">Portfolio</a>
+        <span class="tp-breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="tp-breadcrumb-current">Le Lab</span>
+    </div>
+</nav>
+<style>
+/* ── Fil d'ariane ── */
+.tp-breadcrumb { position:sticky;top:68px;z-index:999;background:rgba(10,16,24,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(168,197,226,.08); }
+.tp-breadcrumb-inner { max-width:1340px;margin:0 auto;padding:8px clamp(1rem,4vw,2.5rem);display:flex;align-items:center;gap:8px;font-family:var(--nav-font,'Sora',sans-serif);font-size:.75rem; }
+.tp-breadcrumb-link { color:rgba(168,197,226,.45);text-decoration:none;transition:color .2s; }
+.tp-breadcrumb-link:hover { color:rgba(168,197,226,.85); }
+.tp-breadcrumb-sep { color:rgba(168,197,226,.2);user-select:none; }
+.tp-breadcrumb-current { color:rgba(168,197,226,.75);font-weight:500; }
+@media (max-width:480px) { .tp-breadcrumb-inner { padding:8px 1rem;font-size:.7rem; } }
+</style>
+
+<main>
+  <div class="lab-wrap">
+
+    <!-- ══ HERO ══ -->
+    <section class="lab-hero">
+      <div class="lab-hero-tag">
+        <span class="lab-hero-tag-dot"></span>
+        Espace expérimental
+      </div>
+
+      <h1 class="lab-hero-title">
+        <span>Le Lab.</span>
+      </h1>
+
+      <p class="lab-hero-desc">
+        Le Lab, c'est avant tout <strong>un terrain d'expérimentation</strong>.
+        J'y crée et publie les outils qui m'aident au quotidien dans mes créations
+        des petits programmes taillés pour mes besoins, que je partage ici
+        plutôt que de les garder pour moi.
+        <br><br>
+        Pas de suite logicielle, pas de SaaS. Juste un <strong>hub d'outils concrets</strong>,
+        forgés dans la pratique, testés en conditions réelles.
+      </p>
+
+      <div class="lab-pillars">
+        <div class="lab-pillar"><span class="lab-pillar-icon">🧪</span> Expérimenter</div>
+        <div class="lab-pillar"><span class="lab-pillar-icon">🔧</span> Construire</div>
+        <div class="lab-pillar"><span class="lab-pillar-icon">📡</span> Publier</div>
+        <div class="lab-pillar"><span class="lab-pillar-icon">♻️</span> Itérer</div>
+      </div>
+
+      <div class="lab-stats" id="labStats">
+        <div class="lab-stat-item">
+          <span class="lab-stat-num" data-target="3" data-suffix="">00</span>
+          <span class="lab-stat-label">Outils en ligne</span>
+        </div>
+        <div class="lab-stat-item">
+          <span class="lab-stat-num" data-target="inf">∞</span>
+          <span class="lab-stat-label">Expérimentations</span>
+        </div>
+        <div class="lab-stat-item">
+          <span class="lab-stat-num" data-target="100" data-suffix="%">0%</span>
+          <span class="lab-stat-label">Usage personnel d'abord</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="lab-divider" aria-hidden="true"></div>
+
+    <!-- ══ OUTILS ══ -->
+    <section>
+      <div class="lab-section-header">
+        <span class="lab-section-tag">// outils disponibles</span>
+        <h2 class="lab-section-title">Les outils du Lab</h2>
+        <p class="lab-section-sub">Chaque outil est né d'un vrai besoin de production.</p>
+      </div>
+
+      <div class="lab-tools-grid">
+
+        <!-- ── CARTE TRANSCRIPTION ── -->
+        <div class="lab-tool-card">
+          <div class="lab-tool-card-glow" aria-hidden="true"></div>
+
+          <div class="lab-tool-header">
+            <div class="lab-tool-icon">🎙️</div>
+            <span class="lab-tool-badge">Actif</span>
+          </div>
+
+          <h3 class="lab-tool-name">Transcription Audio</h3>
+          <p class="lab-tool-desc">
+            Transforme n'importe quel fichier audio ou une vidéo YouTube / Instagram
+            en texte brut prêt à l'emploi. Propulsé par l'IA.
+          </p>
+
+          <div class="lab-tool-actions">
+            <a href="transcription/" class="lab-btn lab-btn-primary">
+              <svg class="lab-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="12" y1="18" x2="12" y2="12"/>
+                <line x1="9" y1="15" x2="15" y2="15"/>
+              </svg>
+              Importer un fichier audio
+            </a>
+
+            <div class="lab-btn-or">ou</div>
+
+            <a href="transcription/" class="lab-btn lab-btn-secondary">
+              <svg class="lab-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="10 8 16 12 10 16 10 8"/>
+              </svg>
+              URL YouTube / Instagram
+            </a>
+          </div>
+
+          <div class="lab-tool-formats">
+            <span class="lab-format-tag">MP3</span>
+            <span class="lab-format-tag">MP4</span>
+            <span class="lab-format-tag">WAV</span>
+            <span class="lab-format-tag">M4A</span>
+            <span class="lab-format-tag">youtube.com</span>
+            <span class="lab-format-tag">instagram.com</span>
+          </div>
+        </div>
+
+        <!-- ── CARTE IMAGE EXTENDER ── -->
+        <div class="lab-tool-card">
+          <div class="lab-tool-card-glow" aria-hidden="true"></div>
+          <div class="lab-tool-header">
+            <div class="lab-tool-icon">🖼️</div>
+            <span class="lab-tool-badge">Actif</span>
+          </div>
+          <h3 class="lab-tool-name">Extension d'image</h3>
+          <p class="lab-tool-desc">
+            Agrandissez n'importe quelle image en remplissant automatiquement
+            les zones vides. Mode rapide (local) ou génératif via IA pour un
+            résultat réaliste.
+          </p>
+          <div class="lab-tool-actions">
+            <a href="image-extender/" class="lab-btn lab-btn-primary">
+              <svg class="lab-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <path d="M3 12h18M12 3v18"/>
+              </svg>
+              Étendre une image
+            </a>
+          </div>
+          <div class="lab-tool-formats">
+            <span class="lab-format-tag">PNG</span>
+            <span class="lab-format-tag">JPG</span>
+            <span class="lab-format-tag">WEBP</span>
+            <span class="lab-format-tag">Mode rapide</span>
+            <span class="lab-format-tag">Mode IA</span>
+          </div>
+        </div>
+
+        <!-- ── CARTE FILIGRANE REMOVER ── -->
+        <div class="lab-tool-card">
+          <div class="lab-tool-card-glow" aria-hidden="true"></div>
+          <div class="lab-tool-header">
+            <div class="lab-tool-icon">🖼️</div>
+            <span class="lab-tool-badge">Actif</span>
+          </div>
+          <h3 class="lab-tool-name">Filigrane Remover</h3>
+          <p class="lab-tool-desc">
+            Supprime les filigranes de tes images en quelques clics.
+            Optimisé pour les filigranes Canva, Shutterstock et Adobe Stock.
+            Détection automatique et pinceau manuel.
+          </p>
+          <div class="lab-tool-actions">
+            <a href="filigrane-remover/" class="lab-btn lab-btn-primary">
+              <svg class="lab-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+              Supprimer un filigrane
+            </a>
+          </div>
+          <div class="lab-tool-formats">
+            <span class="lab-format-tag">PNG</span>
+            <span class="lab-format-tag">JPG</span>
+            <span class="lab-format-tag">WEBP</span>
+            <span class="lab-format-tag">Canva</span>
+            <span class="lab-format-tag">Shutterstock</span>
+            <span class="lab-format-tag">Adobe Stock</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ MANIFESTE ══ -->
+    <div class="lab-manifeste">
+      <p class="lab-manifeste-quote">
+        "Je construis d'abord pour <em>moi</em>. Quand un outil me fait gagner du temps,
+        je le nettoie, je le documente, et je le publie ici.
+        Le Lab, c'est ma façon de <em>travailler en public</em>."
+      </p>
+      <div class="lab-manifeste-author">
+        <div class="lab-manifeste-avatar">AB</div>
+        <div>
+          <div class="lab-manifeste-name">Abilan BALAKUMARAN</div>
+          <div class="lab-manifeste-role">Digital Manager & Motion Designer</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ FOOTER PAGE ══ -->
+    <footer class="lab-footer">
+      <span class="lab-footer-copy">© 2026 Abilan Lab</span>
+      <a href="https://abilanbalakumaran.github.io" class="lab-footer-link">abilanbalakumaran.github.io</a>
+    </footer>
+
+  </div>
+</main>
+
+<!-- ══ FOOTER GLOBAL ══ -->
+<div id="tp-page-footer">
+    <footer class="tp-footer">
+        <div class="tp-footer-inner">
+            <p class="tp-footer-label">Me contacter</p>
+            <div class="tp-footer-socials">
+                <a href="https://www.instagram.com/abilan_motion/?hl=fr" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+                    Instagram
+                </a>
+                <a href="https://www.youtube.com/@sukiamv" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="5" stroke="currentColor" stroke-width="1.8"/><polygon points="10,8.5 16,12 10,15.5" fill="currentColor"/></svg>
+                    YouTube
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=Abilan.Balakumaran@gmail.com" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    Gmail
+                </a>
+                <a href="https://www.behance.net/AbilanBalakumaran" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><text x="12" y="17" font-size="15" font-weight="800" text-anchor="middle" font-family="Arial Black,sans-serif" fill="currentColor">Be</text></svg>
+                    Behance
+                </a>
+            </div>
+            <p class="tp-footer-copy">© 2026 — Abilan BALAKUMARAN</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+/* ── Active state : toutes les pages du lab marquent Le Lab actif ── */
+(function () {
+  function run() {
+    /* Sur cette page (index), on force l'actif sur "lab" */
+    document.querySelectorAll('.tp-nav-link[data-nav="lab"]').forEach(function(el){ el.classList.add('tp-nav-link--active'); });
+    document.querySelectorAll('.tp-mobile-link[data-nav="lab"]').forEach(function(el){ el.classList.add('tp-mobile-link--active'); });
+    var header = document.getElementById('tp-nav-header');
+    if (header) {
+      window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+    }
+  }
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
+})();
+
+/* ── Compteurs animés ── */
+(function () {
+  function animateCounter(el) {
+    var target  = parseInt(el.dataset.target, 10);
+    var suffix  = el.dataset.suffix || '';
+    if (isNaN(target)) return;
+    var duration = 1200;
+    var start    = performance.now();
+    function step(now) {
+      var p   = Math.min((now - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      var val  = Math.round(ease * target);
+      el.textContent = (target <= 9 ? String(val).padStart(2, '0') : val) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function animateInf(el) {
+    el.style.transition = 'opacity .4s ease';
+    el.style.opacity = '0';
+    setTimeout(function() { el.style.opacity = '1'; }, 50);
+  }
+
+  var statsEl = document.getElementById('labStats');
+  if (!statsEl) return;
+
+  var nums = statsEl.querySelectorAll('.lab-stat-num');
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      nums.forEach(function(el) {
+        if (el.dataset.target === 'inf') animateInf(el);
+        else animateCounter(el);
+      });
+    });
+  }, { threshold: 0.5 });
+
+  io.observe(statsEl);
+})();
+
+/* ── Grain canvas ── */
+(function () {
+  var c = document.getElementById('lab-grain');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var w, h;
+  function resize() { w = c.width = window.innerWidth; h = c.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  function draw() {
+    var img = ctx.createImageData(w, h);
+    for (var i = 0; i < img.data.length; i += 4) {
+      var v = Math.random() * 255 | 0;
+      img.data[i] = img.data[i+1] = img.data[i+2] = v;
+      img.data[i+3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .catch(err => console.warn('[SW]', err));
+  document.addEventListener('click', function askOnce() {
+    if (Notification.permission === 'default') Notification.requestPermission();
+    document.removeEventListener('click', askOnce);
+  }, { once: true });
+}
+</script>
+</body>
+</html>
+ 

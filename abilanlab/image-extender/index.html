@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Étendre une image — Abilan Lab</title>
+<link rel="icon"             type="image/png" sizes="32x32" href="../../images/fiole.png">
+<link rel="icon"             type="image/png" sizes="16x16" href="../../images/fiole.png">
+<link rel="apple-touch-icon" sizes="180x180"                href="../../images/fiole.png">
+
+<!-- ─── SEO ─── -->
+<meta name="description" content="Extension d'image en ligne — agrandissez vos photos en remplissant intelligemment les zones ajoutées par miroir ou par IA générative (outpainting). 100% gratuit, traitement local, aucune donnée envoyée. Par Abilan Lab.">
+<meta name="keywords" content="extension image, agrandir image, outpainting, inpainting, remplissage image IA, agrandir photo, image extender, fond étendu, IA générative image, outil en ligne gratuit, Abilan Lab, Abilan Balakumaran">
+<meta name="author" content="Abilan Balakumaran">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#0f1823">
+<link rel="canonical" href="https://abilanbalakumaran.github.io/abilanlab/image-extender/">
+
+<!-- ─── Open Graph ─── -->
+<meta property="og:type"         content="website">
+<meta property="og:url"          content="https://abilanbalakumaran.github.io/abilanlab/image-extender/">
+<meta property="og:title"        content="Extension d'Image — Abilan Lab">
+<meta property="og:description"  content="Agrandissez vos images en remplissant automatiquement les zones ajoutées. Outil gratuit, 100% local ou mode IA.">
+<meta property="og:image"        content="https://abilanbalakumaran.github.io/og-preview.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"    content="Extension d'Image — Abilan Lab — Outpainting gratuit, local ou IA">
+<meta property="og:locale"       content="fr_FR">
+<meta property="og:site_name"    content="Abilan Lab">
+
+<!-- ─── Twitter Card ─── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Extension d'Image — Abilan Lab">
+<meta name="twitter:description" content="Agrandissez vos photos intelligemment par miroir ou IA générative (outpainting). 100% local, gratuit, aucune donnée envoyée.">
+<meta name="twitter:image"       content="https://abilanbalakumaran.github.io/og-preview.png">
+<meta name="twitter:image:alt"   content="Extension d'Image — Abilan Lab — Outpainting gratuit">
+
+<!-- ─── JSON-LD ─── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Extension d'Image",
+  "applicationCategory": "MultimediaApplication",
+  "url": "https://abilanbalakumaran.github.io/abilanlab/image-extender/",
+  "description": "Outil web pour agrandir les images en remplissant les zones ajoutées par miroir intelligent ou IA générative (outpainting). 100% local, gratuit, aucune donnée envoyée.",
+  "operatingSystem": "Navigateur Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "author": { "@id": "https://abilanbalakumaran.github.io/#abilan" },
+  "datePublished": "2025-06-01",
+  "dateModified": "2026-04-10",
+  "inLanguage": "fr-FR",
+  "isPartOf": { "@type": "WebSite", "@id": "https://abilanbalakumaran.github.io/#website" },
+  "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Portfolio",       "item": "https://abilanbalakumaran.github.io/" },
+    { "@type": "ListItem", "position": 2, "name": "Le Lab",          "item": "https://abilanbalakumaran.github.io/abilanlab/" },
+    { "@type": "ListItem", "position": 3, "name": "Extension d'Image","item": "https://abilanbalakumaran.github.io/abilanlab/image-extender/" }
+  ]}
+}
+</script>
+
+<!-- ─── PWA ─── -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Abilan Lab">
+<link rel="apple-touch-icon" href="/images/fiole.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bd:   #0f1823;
+    --bp:   #2d4263;
+    --bm:   #3e5c7a;
+    --bl:   #5a7ba6;
+    --bpa:  #7a9cc6;
+    --bs:   #a8c5e2;
+    --wh:   #ffffff;
+    --nav-white:    #ffffff;
+    --nav-blue-300: #a8c5e2;
+    --nav-blue-400: #7a9cc6;
+    --nav-blue-500: #5a7ba6;
+    --nav-blue-600: #3e5c7a;
+    --nav-height:   68px;
+    --nav-font:     'Sora', sans-serif;
+    --nav-mono:     'JetBrains Mono', monospace;
+    --lofi-success: #6ba68d;
+    --lofi-error:   #c77d8e;
+    --transition-smooth: cubic-bezier(0.4,0,0.2,1);
+    --transition-bounce: cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Sora', sans-serif; background: var(--bd); color: var(--wh); overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: inherit; text-decoration: none; }
+
+/* ── Background ── */
+.ie-dot-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(168,197,226,.12) 1px, transparent 1px); background-size: 32px 32px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
+.ie-orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+.ie-orb-1 { width:600px;height:600px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(45,66,99,.7) 0%,transparent 70%);animation:orb-drift 22s ease-in-out infinite; }
+.ie-orb-2 { width:500px;height:500px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(62,92,122,.5) 0%,transparent 70%);animation:orb-drift 28s ease-in-out infinite reverse; }
+.ie-orb-3 { width:280px;height:280px;top:40%;left:55%;background:radial-gradient(circle,rgba(107,155,209,.15) 0%,transparent 70%);animation:orb-drift 18s ease-in-out infinite 5s; }
+@keyframes orb-drift { 0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(28px,-38px) scale(1.05);}66%{transform:translate(-18px,20px) scale(0.97);} }
+canvas#ie-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;mix-blend-mode:screen;width:100%;height:100%; }
+
+/* ── Nav ── */
+.tp-nav-toggle-cb { display:none; }
+#tp-nav-header a,#tp-nav-header label,.tp-mobile-link,.tp-nav-burger { -webkit-tap-highlight-color:transparent; }
+#tp-nav-header { position:fixed;top:0;left:0;right:0;z-index:99999;height:var(--nav-height);background:rgba(15,24,35,0.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(168,197,226,0.1);box-shadow:0 4px 32px rgba(0,0,0,0.3);font-family:var(--nav-font);animation:nav-slide-in 0.6s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes nav-slide-in { from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;} }
+#tp-nav-header.scrolled { background:rgba(10,16,24,0.95);border-bottom-color:rgba(168,197,226,0.15);box-shadow:0 4px 40px rgba(0,0,0,0.5); }
+.tp-nav-topline { position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,#2d4263 15%,#5a7ba6 40%,#a8c5e2 50%,#5a7ba6 60%,#2d4263 85%,transparent 100%);animation:line-glow 4s ease-in-out infinite; }
+@keyframes line-glow { 0%,100%{opacity:.6}50%{opacity:1} }
+.tp-nav-inner { max-width:1340px;margin:0 auto;height:var(--nav-height);padding:0 clamp(1rem,4vw,2.5rem);display:flex;align-items:center;justify-content:space-between;gap:24px; }
+.tp-nav-brand { display:flex;align-items:center;gap:12px;text-decoration:none !important;flex-shrink:0;transition:opacity 0.2s; }
+.tp-nav-brand:hover { opacity:0.85; }
+.tp-nav-logo-icon { width:36px;height:36px;border-radius:10px;overflow:hidden;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(107,155,209,0.4));transition:transform 0.3s cubic-bezier(0.68,-0.55,0.265,1.55); }
+.tp-nav-brand:hover .tp-nav-logo-icon { transform:rotate(-6deg) scale(1.08); }
+.tp-nav-brand-text { display:flex;flex-direction:column;gap:1px;line-height:1; }
+.tp-nav-brand-name { font-size:15px;font-weight:700;color:var(--nav-white);letter-spacing:-0.02em; }
+.tp-nav-brand-sub  { font-family:var(--nav-mono);font-size:9px;color:var(--nav-blue-400);letter-spacing:0.08em;text-transform:uppercase; }
+.tp-nav-links { display:flex;align-items:center;gap:2px;margin:0 auto; }
+.tp-nav-link { position:relative;display:flex;align-items:center;gap:6px;padding:8px 16px;font-size:14px;font-weight:500;color:rgba(168,197,226,0.6);text-decoration:none !important;border-radius:10px;transition:all 0.25s ease;letter-spacing:0.01em; }
+.tp-nav-link:hover { color:var(--nav-white);background:rgba(168,197,226,0.07); }
+.tp-nav-link--active { color:var(--nav-white);background:rgba(90,123,166,0.15); }
+.tp-nav-link--active::after { content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:16px;height:2px;background:linear-gradient(90deg,#5a7ba6,#a8c5e2);border-radius:2px; }
+.tp-nav-link-dot { width:5px;height:5px;border-radius:50%;background:var(--nav-blue-500);opacity:0;transform:scale(0);transition:all 0.2s ease;flex-shrink:0; }
+.tp-nav-link--active .tp-nav-link-dot,.tp-nav-link:hover .tp-nav-link-dot { opacity:1;transform:scale(1); }
+.tp-nav-link--active .tp-nav-link-dot { background:var(--nav-blue-300);box-shadow:0 0 6px rgba(168,197,226,0.6); }
+.tp-nav-link--sub { font-size:12px !important;padding:5px 11px !important;color:rgba(168,197,226,0.42) !important; }
+.tp-nav-link--sub:hover { color:rgba(168,197,226,0.8) !important;background:rgba(168,197,226,0.06) !important; }
+.tp-nav-link--sub.tp-nav-link--active { color:rgba(168,197,226,0.85) !important;background:rgba(90,123,166,0.1) !important; }
+.tp-nav-link--sub.tp-nav-link--active::after { width:10px !important; }
+.tp-nav-sep { color:rgba(168,197,226,0.2);font-size:13px;margin:0 1px;pointer-events:none;user-select:none; }
+.tp-nav-status { display:flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(107,166,141,0.1);border:1px solid rgba(107,166,141,0.2);border-radius:100px;flex-shrink:0; }
+.tp-nav-status-dot { width:6px;height:6px;background:#6ba68d;border-radius:50%;box-shadow:0 0 6px rgba(107,166,141,0.7);animation:status-pulse 2.5s ease-in-out infinite; }
+@keyframes status-pulse { 0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.7} }
+.tp-nav-status-label { font-family:var(--nav-mono);font-size:11px;color:#6ba68d;letter-spacing:0.05em;text-transform:uppercase; }
+.tp-nav-burger { display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;background:rgba(168,197,226,0.06);border:1px solid rgba(168,197,226,0.15);border-radius:10px;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;touch-action:manipulation; }
+.tp-nav-burger:hover { background:rgba(168,197,226,0.12);border-color:rgba(168,197,226,0.3); }
+@media(max-width:900px) { .tp-nav-links,.tp-nav-status{display:none} .tp-nav-burger{display:flex} }
+.tp-burger-bar { display:block;width:18px;height:1.5px;background:var(--nav-blue-300);border-radius:2px;transition:all 0.35s cubic-bezier(0.68,-0.55,0.265,1.55);transform-origin:center; }
+.tp-nav-toggle-cb:checked ~ .tp-mobile-menu { transform:translateX(0);opacity:1;pointer-events:auto; }
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(2) { transform:scaleX(0);opacity:0; }
+.tp-nav-toggle-cb:checked ~ #tp-nav-header .tp-burger-bar:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+.tp-mobile-menu { position:fixed;top:68px;left:0;right:0;height:calc(100dvh - 68px);background:rgba(10,16,26,0.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:40px 28px 48px;display:flex;flex-direction:column;justify-content:space-between;transform:translateX(100%);opacity:0;pointer-events:none;transition:transform 0.4s cubic-bezier(0.22,1,0.36,1),opacity 0.3s ease;z-index:99998;overflow:hidden; }
+.tp-mobile-nav { display:flex;flex-direction:column;gap:8px; }
+.tp-mobile-link { display:flex;align-items:center;gap:18px;padding:18px 16px;font-family:var(--nav-font);font-size:28px;font-weight:700;color:rgba(168,197,226,0.35);text-decoration:none !important;border-radius:14px;letter-spacing:-0.03em;transition:all 0.3s ease;border-left:2px solid transparent;position:relative;overflow:hidden; }
+.tp-mobile-link::before { content:'';position:absolute;inset:0;background:rgba(168,197,226,0.04);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;border-radius:14px; }
+.tp-mobile-link:hover::before,.tp-mobile-link--active::before { transform:scaleX(1); }
+.tp-mobile-link:hover { color:var(--nav-white);border-left-color:var(--nav-blue-500);padding-left:24px; }
+.tp-mobile-link--active { color:var(--nav-white);border-left-color:var(--nav-blue-300);padding-left:24px; }
+.tp-mobile-link--parent { font-size:32px;color:rgba(168,197,226,0.7) !important; }
+.tp-mobile-link--child { font-size:18px !important;padding:10px 16px !important;padding-left:44px !important;color:rgba(168,197,226,0.4) !important;border-left-color:transparent !important; }
+.tp-mobile-link--child:hover { color:rgba(168,197,226,0.9) !important;padding-left:50px !important;border-left-color:var(--nav-blue-600) !important; }
+.tp-mobile-link--child.tp-mobile-link--active { color:var(--nav-white) !important;padding-left:50px !important;border-left-color:var(--nav-blue-400) !important; }
+.tp-mobile-link-num { font-family:var(--nav-mono);font-size:11px;color:var(--nav-blue-600);letter-spacing:0.05em;min-width:24px;align-self:flex-start;margin-top:8px; }
+.tp-mobile-link--child .tp-mobile-link-num { font-size:9px; }
+.tp-mobile-link--active .tp-mobile-link-num,.tp-mobile-link:hover .tp-mobile-link-num { color:var(--nav-blue-400); }
+.tp-mobile-arrow { margin-left:auto;opacity:0;transform:translateX(-6px);transition:all 0.25s ease;color:var(--nav-blue-400);flex-shrink:0; }
+.tp-mobile-link:hover .tp-mobile-arrow,.tp-mobile-link--active .tp-mobile-arrow { opacity:1;transform:translateX(0); }
+.tp-mobile-footer { display:flex;align-items:center;gap:10px;padding-top:20px;border-top:1px solid rgba(168,197,226,0.08); }
+.tp-mobile-footer-text { font-family:var(--nav-mono);font-size:11px;color:rgba(168,197,226,0.25); }
+.tp-mobile-status-dot { width:5px;height:5px;background:#6ba68d;border-radius:50%;animation:status-pulse 2.5s ease-in-out infinite; }
+.tp-mobile-footer-status { font-family:var(--nav-mono);font-size:11px;color:rgba(107,166,141,0.6);letter-spacing:0.04em;text-transform:uppercase; }
+.tp-nav-spacer { height:68px;display:block; }
+@media (max-width:700px) { .tp-nav-link--sub,.tp-nav-sep { display:none; } }
+@media (max-width:480px) { .tp-nav-brand-sub { display:none; } .tp-nav-inner { padding:0 1rem; } .tp-mobile-link { font-size:22px; } }
+
+/* ── Footer ── */
+#tp-page-footer { font-family:'Sora',sans-serif;background:var(--bd);position:relative;z-index:1; }
+.tp-footer { background:var(--bd);padding:2rem 2rem 3rem; }
+.tp-footer-inner { max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center;border-top:1px solid rgba(168,197,226,0.12);padding-top:2.5rem; }
+.tp-footer-label { font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(168,197,226,0.45);margin:0; }
+.tp-footer-socials { display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center; }
+.tp-social-btn { display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:rgba(168,197,226,0.06);border:1px solid rgba(168,197,226,0.15);border-radius:100px;font-size:13px;font-weight:500;color:var(--bs);transition:background .2s,border-color .2s; }
+.tp-social-btn:hover { background:rgba(168,197,226,0.14);border-color:rgba(168,197,226,0.35); }
+.tp-footer-copy { font-family:var(--nav-mono);font-size:11px;color:rgba(168,197,226,0.25);letter-spacing:0.02em;margin:0; }
+
+/* ══ Tool ══ */
+#ie-tool { position:relative;max-width:1100px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem) 4rem;z-index:1;flex:1; }
+
+/* Header */
+.ie-header { text-align:center;margin-bottom:48px;animation:fadeInDown 0.8s ease; }
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-24px);}to{opacity:1;transform:translateY(0);} }
+.ie-logo { font-size:72px;margin-bottom:12px;filter:drop-shadow(0 8px 24px rgba(107,155,209,0.4));animation:logoFloat 3s ease-in-out infinite; }
+@keyframes logoFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
+.ie-title { font-size:clamp(22px,5vw,34px);font-weight:700;background:linear-gradient(135deg,var(--bs),var(--bl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;letter-spacing:-0.5px; }
+.ie-subtitle { font-size:15px;color:rgba(168,197,226,.6);font-family:var(--nav-mono); }
+
+/* Bento cards */
+.bento-card { position:relative;background:rgba(255,255,255,.07) !important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(168,197,226,.15) !important;border-radius:20px !important;overflow:hidden;box-shadow:0 4px 20px rgba(10,18,32,.35);transition:all .4s ease;margin-bottom:20px; }
+.bento-card:hover { background:rgba(255,255,255,.10) !important;border-color:rgba(168,197,226,.28) !important;box-shadow:0 10px 40px rgba(10,18,32,.45),0 0 28px rgba(107,155,209,.25) !important; }
+.card-glow { position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(107,155,209,0.1) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;pointer-events:none; }
+.bento-card:hover .card-glow { opacity:1; }
+.card-content { position:relative;padding:28px;z-index:1; }
+.card-title { font-size:14px;font-weight:700;color:var(--bs);margin-bottom:18px;display:flex;align-items:center;gap:8px;font-family:var(--nav-mono);text-transform:uppercase;letter-spacing:0.05em; }
+
+/* Upload zone */
+.ie-upload-zone { border:2px dashed rgba(168,197,226,.2);border-radius:16px;padding:56px 24px;text-align:center;cursor:pointer;transition:all .3s ease;position:relative;background:rgba(168,197,226,.02); }
+.ie-upload-zone:hover,.ie-upload-zone.drag-over { border-color:rgba(90,123,166,.6);background:rgba(90,123,166,.06); }
+.ie-upload-icon { font-size:48px;margin-bottom:16px;display:block; }
+.ie-upload-title { font-size:17px;font-weight:600;color:var(--wh);margin-bottom:8px; }
+.ie-upload-hint { font-size:13px;color:rgba(168,197,226,.5);line-height:1.5; }
+.ie-upload-zone input[type=file] { position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0; }
+
+/* ── Preview canvas ── */
+.ie-preview-wrap { position:relative;width:100%;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.3);border:1px solid rgba(168,197,226,.1);display:flex;align-items:center;justify-content:center;min-height:200px;max-height:460px; }
+#ie-preview-canvas { display:block;max-width:100%;max-height:460px;border-radius:12px; }
+
+/* Controls */
+.ie-controls-grid { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px; }
+@media(max-width:600px){ .ie-controls-grid { grid-template-columns:1fr; } }
+.ie-control-group { display:flex;flex-direction:column;gap:8px; }
+.ie-control-label { font-family:var(--nav-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(168,197,226,.5);display:flex;justify-content:space-between;align-items:center; }
+.ie-control-label span { font-size:12px;color:var(--bs);font-weight:600; }
+.ie-slider { -webkit-appearance:none;appearance:none;width:100%;height:4px;background:rgba(168,197,226,.15);border-radius:4px;outline:none;cursor:pointer; }
+.ie-slider::-webkit-slider-thumb { -webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--bl);cursor:pointer;transition:transform .15s,background .15s;box-shadow:0 0 0 3px rgba(90,123,166,.3); }
+.ie-slider::-webkit-slider-thumb:hover { transform:scale(1.2);background:var(--bs); }
+.ie-slider::-moz-range-thumb { width:16px;height:16px;border-radius:50%;background:var(--bl);cursor:pointer;border:none; }
+
+/* Direction grid */
+.ie-dir-grid { display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:10px;align-items:center;justify-items:center;margin:20px 0; }
+.ie-dir-cell-top    { grid-column:2;grid-row:1; }
+.ie-dir-cell-left   { grid-column:1;grid-row:2; }
+.ie-dir-cell-center { grid-column:2;grid-row:2;background:rgba(168,197,226,.05);border:1px solid rgba(168,197,226,.12);border-radius:10px;padding:12px 16px;font-size:12px;color:rgba(168,197,226,.5);font-family:var(--nav-mono);text-align:center;min-width:80px; }
+.ie-dir-cell-right  { grid-column:3;grid-row:2; }
+.ie-dir-cell-bottom { grid-column:2;grid-row:3; }
+.ie-dir-block { display:flex;flex-direction:column;align-items:center;gap:6px; }
+.ie-dir-arrow { font-size:20px;color:var(--bs); }
+.ie-dir-val { font-family:var(--nav-mono);font-size:13px;color:var(--wh);font-weight:600; }
+.ie-dir-input { width:72px;padding:6px 8px;border:1px solid rgba(168,197,226,.2);border-radius:8px;background:rgba(168,197,226,.06);color:var(--wh);font-size:13px;font-family:'Sora',sans-serif;text-align:center;outline:none;transition:border-color .2s; }
+.ie-dir-input:focus { border-color:rgba(90,123,166,.5); }
+
+/* Method selector */
+.ie-method-selector { display:flex;gap:10px;margin:16px 0; }
+.ie-method-btn { flex:1;padding:12px 16px;border:1px solid rgba(168,197,226,.15);border-radius:12px;background:rgba(168,197,226,.04);cursor:pointer;color:rgba(168,197,226,.5);font-family:'Sora',sans-serif;font-size:13px;font-weight:600;transition:all .2s;text-align:center; }
+.ie-method-btn.active { border-color:var(--bl);background:rgba(90,123,166,.12);color:var(--wh); }
+.ie-method-btn:hover:not(.active) { border-color:rgba(90,123,166,.3);color:rgba(168,197,226,.8); }
+.ie-method-icon { font-size:22px;display:block;margin-bottom:6px; }
+.ie-method-name { font-size:13px;font-weight:700; }
+.ie-method-desc { font-size:11px;color:rgba(168,197,226,.4);font-family:var(--nav-mono);margin-top:3px; }
+
+/* Prompt */
+.ie-prompt-wrap { margin-top:14px;display:none; }
+.ie-prompt-wrap.visible { display:block; }
+.ie-prompt-input { width:100%;padding:10px 14px;border:1px solid rgba(168,197,226,.18);border-radius:10px;background:rgba(168,197,226,.06);color:var(--wh);font-size:13px;font-family:'Sora',sans-serif;outline:none;transition:border-color .2s; }
+.ie-prompt-input:focus { border-color:rgba(90,123,166,.5); }
+.ie-prompt-input::placeholder { color:rgba(168,197,226,.3); }
+.ie-prompt-label { font-family:var(--nav-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(168,197,226,.45);margin-bottom:6px;display:block; }
+
+/* Launch button */
+.ie-launch-btn { width:100%;padding:18px 32px;border:none;border-radius:16px;font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:var(--wh);cursor:pointer;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--bp),var(--bl));transition:all .3s;letter-spacing:.02em; }
+.ie-launch-btn:hover:not(:disabled) { transform:translateY(-2px);box-shadow:0 8px 30px rgba(45,66,99,.5); }
+.ie-launch-btn:disabled { opacity:.5;cursor:not-allowed;transform:none; }
+.ie-launch-btn-shine { position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transform:skewX(-20deg);animation:btn-shine 3s infinite 1s; }
+@keyframes btn-shine { 0%{left:-100%}60%,100%{left:160%} }
+
+/* Progress */
+.ie-progress-wrap { display:none;padding:20px 0; }
+.ie-progress-label { font-size:14px;color:rgba(168,197,226,.7);margin-bottom:12px;text-align:center; }
+.ie-progress-track { height:4px;background:rgba(168,197,226,.1);border-radius:4px;overflow:hidden; }
+.ie-progress-fill { height:100%;width:0%;background:linear-gradient(90deg,var(--bp),var(--bs));border-radius:4px;transition:width .3s ease;position:relative; }
+.ie-progress-fill::after { content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:shimmer 1.5s infinite; }
+@keyframes shimmer { 0%{transform:translateX(-100%)}100%{transform:translateX(200%)} }
+
+/* Error */
+.ie-error { display:none;background:rgba(199,125,142,.08);border:1px solid rgba(199,125,142,.2);border-radius:14px;padding:16px 20px;margin-bottom:16px; }
+.ie-error-text { font-size:14px;color:#e8a0b0; }
+
+/* Result */
+.ie-result-wrap { display:none; }
+
+/* Comparison slider */
+.ie-compare-wrap { position:relative;overflow:hidden;border-radius:14px;background:rgba(0,0,0,.4);border:1px solid rgba(168,197,226,.15);user-select:none;touch-action:none;cursor:ew-resize; }
+.ie-compare-wrap canvas { display:block;max-width:100%;height:auto; }
+#ie-result-canvas { width:100%; }
+.ie-compare-before { position:absolute;inset:0;overflow:hidden;pointer-events:none; }
+.ie-compare-before canvas { position:absolute;top:0;left:0;width:100%;height:auto; }
+.ie-compare-divider { position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,.92);pointer-events:auto;cursor:ew-resize;box-shadow:0 0 0 1px rgba(0,0,0,.3),0 0 16px rgba(0,0,0,.5); }
+.ie-compare-handle { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 16px rgba(0,0,0,.45);transition:transform .15s; }
+.ie-compare-divider:hover .ie-compare-handle,.ie-compare-divider:active .ie-compare-handle { transform:translate(-50%,-50%) scale(1.12); }
+.ie-compare-label { position:absolute;top:14px;padding:4px 10px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;pointer-events:none;border:1px solid rgba(255,255,255,.1); }
+.ie-compare-label-before { left:14px; }
+.ie-compare-label-after { right:14px; }
+
+/* Stats row */
+.ie-stats-row { display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:16px;background:rgba(168,197,226,.04);border:1px solid rgba(168,197,226,.08);border-radius:12px;margin-bottom:16px; }
+.ie-stat-box { text-align:center; }
+.ie-stat-label { font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:rgba(168,197,226,.45);margin-bottom:4px; }
+.ie-stat-val { font-size:15px;font-weight:700;color:var(--wh); }
+.ie-stat-sub { font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.5); }
+.ie-stat-arrow { font-size:20px;color:rgba(168,197,226,.3); }
+
+/* Download row */
+.ie-result-actions { display:flex;gap:10px;margin-top:16px;flex-wrap:wrap; }
+.ie-action-btn { flex:1;min-width:120px;padding:13px 20px;border:none;border-radius:12px;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px; }
+.ie-btn-download-png { background:linear-gradient(135deg,rgba(107,166,141,.25),rgba(107,166,141,.12));border:1px solid rgba(107,166,141,.35);color:#6ba68d; }
+.ie-btn-download-png:hover { background:linear-gradient(135deg,rgba(107,166,141,.38),rgba(107,166,141,.22));transform:translateY(-2px);box-shadow:0 6px 20px rgba(107,166,141,.2); }
+.ie-btn-download-jpg { background:linear-gradient(135deg,rgba(107,155,209,.2),rgba(107,155,209,.08));border:1px solid rgba(107,155,209,.3);color:#6b9bd1; }
+.ie-btn-download-jpg:hover { background:linear-gradient(135deg,rgba(107,155,209,.32),rgba(107,155,209,.16));transform:translateY(-2px);box-shadow:0 6px 20px rgba(107,155,209,.2); }
+.ie-btn-restart { background:rgba(168,197,226,.06);border:1px solid rgba(168,197,226,.12);color:rgba(168,197,226,.6); }
+.ie-btn-restart:hover { background:rgba(168,197,226,.12);color:var(--wh);transform:translateY(-1px); }
+
+/* Hint slider */
+.ie-slider-hint { text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.3);letter-spacing:.05em;margin-top:8px; }
+
+/* Info pills */
+.ie-info-pills { display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px; }
+.ie-pill { display:inline-flex;align-items:center;gap:5px;padding:4px 12px;background:rgba(168,197,226,.06);border:1px solid rgba(168,197,226,.12);border-radius:100px;font-family:var(--nav-mono);font-size:11px;color:rgba(168,197,226,.6); }
+/* ── Fil d'ariane ── */
+.tp-breadcrumb { position:sticky;top:68px;z-index:999;background:rgba(10,16,24,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(168,197,226,.08); }
+.tp-breadcrumb-inner { max-width:1340px;margin:0 auto;padding:8px clamp(1rem,4vw,2.5rem);display:flex;align-items:center;gap:8px;font-family:var(--nav-font,'Sora',sans-serif);font-size:.75rem; }
+.tp-breadcrumb-link { color:rgba(168,197,226,.45);text-decoration:none;transition:color .2s; }
+.tp-breadcrumb-link:hover { color:rgba(168,197,226,.85); }
+.tp-breadcrumb-sep { color:rgba(168,197,226,.2);user-select:none; }
+.tp-breadcrumb-current { color:rgba(168,197,226,.75);font-weight:500; }
+@media (max-width:480px) { .tp-breadcrumb-inner { padding:8px 1rem;font-size:.7rem; } }
+</style>
+</head>
+<body>
+
+<div class="ie-dot-grid" aria-hidden="true"></div>
+<div class="ie-orb ie-orb-1" aria-hidden="true"></div>
+<div class="ie-orb ie-orb-2" aria-hidden="true"></div>
+<div class="ie-orb ie-orb-3" aria-hidden="true"></div>
+<canvas id="ie-grain" aria-hidden="true"></canvas>
+
+<!-- NAV -->
+<input type="checkbox" id="tp-nav-toggle" class="tp-nav-toggle-cb" aria-hidden="true">
+
+<header id="tp-nav-header">
+    <div class="tp-nav-topline" aria-hidden="true"></div>
+    <div class="tp-nav-inner">
+        <a href="../" class="tp-nav-brand" aria-label="Accueil">
+            <div class="tp-nav-logo-icon">
+                <img src="../../images/fiole.png" alt="Abilan Lab logo" width="36" height="36" style="object-fit:contain;">
+            </div>
+            <div class="tp-nav-brand-text">
+                <span class="tp-nav-brand-name">Abilan Lab</span>
+                <span class="tp-nav-brand-sub">Digital &amp; Motion</span>
+            </div>
+        </a>
+        <nav class="tp-nav-links" aria-label="Navigation principale">
+            <a href="../../" class="tp-nav-link" data-nav="portfolio">
+                <span class="tp-nav-link-dot" aria-hidden="true"></span>
+                Portfolio
+            </a>
+            <a href="../" class="tp-nav-link" data-nav="lab">
+                <span class="tp-nav-link-dot" aria-hidden="true"></span>
+                Le Lab
+            </a>
+        </nav>
+        <div class="tp-nav-status" aria-label="Statut du service">
+            <span class="tp-nav-status-dot" aria-hidden="true"></span>
+            <span class="tp-nav-status-label">Live</span>
+        </div>
+        <label for="tp-nav-toggle" class="tp-nav-burger" aria-label="Ouvrir le menu">
+            <span class="tp-burger-bar"></span>
+            <span class="tp-burger-bar"></span>
+            <span class="tp-burger-bar"></span>
+        </label>
+    </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="tp-mobile-menu" id="tp-mobile-menu">
+    <nav class="tp-mobile-nav">
+        <a href="../../" class="tp-mobile-link" data-nav="portfolio">
+            <span class="tp-mobile-link-num">01</span>
+            <span>Portfolio</span>
+            <svg class="tp-mobile-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="../" class="tp-mobile-link" data-nav="lab">
+            <span class="tp-mobile-link-num">02</span>
+            <span>Le Lab</span>
+            <svg class="tp-mobile-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+    </nav>
+    <div class="tp-mobile-footer">
+        <span class="tp-mobile-footer-text">© 2026 Abilan Lab</span>
+        <span class="tp-mobile-status-dot" aria-hidden="true"></span>
+        <span class="tp-mobile-footer-status">Service online</span>
+    </div>
+</div>
+
+<div class="tp-nav-spacer"></div>
+
+<nav class="tp-breadcrumb" aria-label="Fil d'ariane">
+    <div class="tp-breadcrumb-inner">
+        <a href="../../" class="tp-breadcrumb-link">Portfolio</a>
+        <span class="tp-breadcrumb-sep" aria-hidden="true">/</span>
+        <a href="../" class="tp-breadcrumb-link">Le Lab</a>
+        <span class="tp-breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="tp-breadcrumb-current">Extension d'image</span>
+    </div>
+</nav>
+
+<!-- TOOL -->
+<div id="ie-tool" style="padding-top:2.5rem">
+
+    <!-- Header -->
+    <div class="ie-header">
+        <div class="ie-logo">🖼️</div>
+        <h2 class="ie-title">Extension d'image</h2>
+        <p class="ie-subtitle">Agrandissez vos images en remplissant automatiquement le contenu manquant</p>
+    </div>
+
+    <!-- ÉTAPE 1 : Upload -->
+    <div id="ie-step-upload" class="bento-card">
+        <div class="card-glow"></div>
+        <div class="card-content">
+            <div class="ie-upload-zone" id="ie-drop-zone">
+                <span class="ie-upload-icon">📁</span>
+                <p class="ie-upload-title">Déposez votre image ici</p>
+                <p class="ie-upload-hint">PNG, JPG, WEBP — ou cliquez pour parcourir<br>Taille recommandée : moins de 4 000 × 4 000 px</p>
+                <input type="file" id="ie-file-input" accept="image/png,image/jpeg,image/webp,image/jpg">
+            </div>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 2 : Réglages + Aperçu (caché jusqu'au chargement) -->
+    <div id="ie-step-config" style="display:none;">
+
+        <!-- Aperçu interactif -->
+        <div class="bento-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+                <div class="card-title">🔍 Aperçu de l'extension</div>
+                <div class="ie-preview-wrap">
+                    <canvas id="ie-preview-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contrôles d'extension -->
+        <div class="bento-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+                <div class="card-title">↔ Zones à étendre</div>
+
+                <!-- Grille directionnelle intuitive -->
+                <div class="ie-dir-grid">
+                    <div class="ie-dir-cell-top">
+                        <div class="ie-dir-block">
+                            <div class="ie-dir-arrow">↑</div>
+                            <input type="number" class="ie-dir-input" id="ext-top" value="200" min="0" max="2000" step="50">
+                            <div style="font-family:var(--nav-mono);font-size:10px;color:rgba(168,197,226,.4)">px Haut</div>
+                        </div>
+                    </div>
+                    <div class="ie-dir-cell-left">
+                        <div class="ie-dir-block">
+                            <div class="ie-dir-arrow">←</div>
+                            <input type="number" class="ie-dir-input" id="ext-left" value="200" min="0" max="2000" step="50">
+                            <div style="font-family:var(--nav-mono);font-size:10px;color:rgba(168,197,226,.4)">px Gauche</div>
+                        </div>
+                    </div>
+                    <div class="ie-dir-cell-center" id="ie-size-display">
+                        <div style="font-size:10px;font-family:var(--nav-mono);color:rgba(168,197,226,.4);margin-bottom:4px">TAILLE FINALE</div>
+                        <div id="ie-final-size" style="font-size:13px;color:var(--bs);font-weight:700">—</div>
+                    </div>
+                    <div class="ie-dir-cell-right">
+                        <div class="ie-dir-block">
+                            <div class="ie-dir-arrow">→</div>
+                            <input type="number" class="ie-dir-input" id="ext-right" value="200" min="0" max="2000" step="50">
+                            <div style="font-family:var(--nav-mono);font-size:10px;color:rgba(168,197,226,.4)">px Droite</div>
+                        </div>
+                    </div>
+                    <div class="ie-dir-cell-bottom">
+                        <div class="ie-dir-block">
+                            <div class="ie-dir-arrow">↓</div>
+                            <input type="number" class="ie-dir-input" id="ext-bottom" value="200" min="0" max="2000" step="50">
+                            <div style="font-family:var(--nav-mono);font-size:10px;color:rgba(168,197,226,.4)">px Bas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Raccourci : tout étendre de la même valeur -->
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid rgba(168,197,226,.08);margin-top:8px">
+                    <span style="font-size:12px;color:rgba(168,197,226,.5);font-family:var(--nav-mono);text-transform:uppercase;letter-spacing:.06em">Toutes les directions :</span>
+                    <input type="number" id="ext-all" value="" min="0" max="2000" step="50" placeholder="ex: 300" style="width:100px;padding:6px 10px;border:1px solid rgba(168,197,226,.2);border-radius:8px;background:rgba(168,197,226,.06);color:var(--wh);font-size:13px;font-family:'Sora',sans-serif;outline:none;">
+                    <button id="ie-apply-all" style="padding:6px 14px;border:1px solid rgba(90,123,166,.3);border-radius:8px;background:rgba(90,123,166,.1);color:var(--bs);font-size:12px;font-family:'Sora',sans-serif;cursor:pointer;transition:all .2s;font-weight:600">Appliquer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Méthode de remplissage -->
+        <div class="bento-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+                <div class="card-title">✨ Méthode de remplissage</div>
+                <div class="ie-method-selector">
+                    <button class="ie-method-btn active" data-method="local" onclick="setMethod('local')">
+                        <span class="ie-method-icon">⚡</span>
+                        <div class="ie-method-name">Rapide</div>
+                        <div class="ie-method-desc">100% local · instantané</div>
+                    </button>
+                    <button class="ie-method-btn" data-method="ai" onclick="setMethod('ai')">
+                        <span class="ie-method-icon">🤖</span>
+                        <div class="ie-method-name">Génératif (IA)</div>
+                        <div class="ie-method-desc">Contenu réaliste · via API</div>
+                    </button>
+                </div>
+
+                <!-- Description de la méthode sélectionnée -->
+                <div id="ie-method-info-local" style="padding:12px 14px;background:rgba(168,197,226,.04);border-radius:10px;font-size:13px;color:rgba(168,197,226,.6);line-height:1.6">
+                    Le remplissage rapide étend les bords de votre image en miroir et les floutte progressivement. Parfait pour les fonds, paysages, et textures uniformes.
+                </div>
+                <div id="ie-method-info-ai" style="display:none;padding:12px 14px;background:rgba(168,197,226,.04);border-radius:10px;font-size:13px;color:rgba(168,197,226,.6);line-height:1.6">
+                    Le mode IA génère un contenu cohérent et réaliste autour de votre image, même pour des scènes complexes. Nécessite une connexion et le Worker configuré.
+                </div>
+
+                <!-- Prompt (IA only) -->
+                <div class="ie-prompt-wrap" id="ie-prompt-wrap">
+                    <label class="ie-prompt-label" for="ie-prompt">Décrivez ce que vous souhaitez dans les zones vides (optionnel)</label>
+                    <input type="text" id="ie-prompt" class="ie-prompt-input" placeholder="ex: ciel bleu avec nuages, forêt en arrière-plan, mur de briques…">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bouton lancer -->
+        <div class="bento-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+                <!-- Erreur -->
+                <div class="ie-error" id="ie-error">
+                    <p class="ie-error-text" id="ie-error-text"></p>
+                </div>
+
+                <button class="ie-launch-btn" id="ie-launch-btn">
+                    <span class="ie-launch-btn-shine"></span>
+                    <span id="ie-btn-label">🖼️ Étendre l'image</span>
+                </button>
+
+                <!-- Progress -->
+                <div class="ie-progress-wrap" id="ie-progress">
+                    <p class="ie-progress-label" id="ie-progress-label">Traitement en cours…</p>
+                    <div class="ie-progress-track"><div class="ie-progress-fill" id="ie-progress-fill"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RÉSULTAT -->
+    <div class="bento-card ie-result-wrap" id="ie-result-wrap">
+        <div class="card-glow"></div>
+        <div class="card-content">
+            <div class="card-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M20 6L9 17l-5-5" stroke="#6ba68d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Résultat — Glissez pour comparer
+            </div>
+
+            <!-- Stats avant / après -->
+            <div class="ie-stats-row" id="ie-stats-row">
+                <div class="ie-stat-box">
+                    <div class="ie-stat-label">Original</div>
+                    <div class="ie-stat-val" id="ie-stat-orig-size">—</div>
+                    <div class="ie-stat-sub" id="ie-stat-orig-px">—</div>
+                </div>
+                <div class="ie-stat-arrow">→</div>
+                <div class="ie-stat-box">
+                    <div class="ie-stat-label">Étendu</div>
+                    <div class="ie-stat-val" id="ie-stat-new-size">—</div>
+                    <div class="ie-stat-sub" id="ie-stat-new-px">—</div>
+                </div>
+            </div>
+
+            <!-- Comparison slider -->
+            <div class="ie-compare-wrap" id="ie-compare-wrap">
+                <canvas id="ie-result-canvas"></canvas>
+                <div class="ie-compare-before" id="ie-compare-before">
+                    <canvas id="ie-before-canvas"></canvas>
+                </div>
+                <div class="ie-compare-divider" id="ie-compare-divider">
+                    <div class="ie-compare-handle">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7" stroke="#1a2332" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </div>
+                <span class="ie-compare-label ie-compare-label-before">AVANT</span>
+                <span class="ie-compare-label ie-compare-label-after">APRÈS</span>
+            </div>
+            <p class="ie-slider-hint">← Faites glisser le curseur ou cliquez pour comparer avant / après →</p>
+
+            <div class="ie-result-actions">
+                <button class="ie-action-btn ie-btn-download-png" id="ie-btn-download-png">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3v13M7 11l5 5 5-5M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    PNG (sans perte)
+                </button>
+                <button class="ie-action-btn ie-btn-download-jpg" id="ie-btn-download-jpg">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3v13M7 11l5 5 5-5M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    JPEG (allégé)
+                </button>
+                <button class="ie-action-btn ie-btn-restart" id="ie-btn-restart">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 1 2.3 5.6M4 21v-5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Recommencer
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /#ie-tool -->
+
+<!-- FOOTER -->
+<div id="tp-page-footer">
+    <footer class="tp-footer">
+        <div class="tp-footer-inner">
+            <p class="tp-footer-label">Me contacter</p>
+            <div class="tp-footer-socials">
+                <a href="https://www.instagram.com/abilan_motion/?hl=fr" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+                    Instagram
+                </a>
+                <a href="https://www.youtube.com/@sukiamv" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="5" stroke="currentColor" stroke-width="1.8"/><polygon points="10,8.5 16,12 10,15.5" fill="currentColor"/></svg>
+                    YouTube
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=Abilan.Balakumaran@gmail.com" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    Gmail
+                </a>
+                <a href="https://www.behance.net/AbilanBalakumaran" target="_blank" rel="noopener" class="tp-social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><text x="12" y="17" font-size="15" font-weight="800" text-anchor="middle" font-family="Arial Black,sans-serif" fill="currentColor">Be</text></svg>
+                    Behance
+                </a>
+            </div>
+            <p class="tp-footer-copy">© 2026 — Abilan BALAKUMARAN</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Nav active state -->
+<script>
+(function() {
+    function run() {
+        document.querySelectorAll('.tp-nav-link[data-nav="extender"]').forEach(function(el){ el.classList.add('tp-nav-link--active'); });
+        var header = document.getElementById('tp-nav-header');
+        if (header) window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+    }
+    document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
+})();
+</script>
+
+<!-- Grain -->
+<script>
+(function(){
+    var c = document.getElementById('ie-grain');
+    if (!c) return;
+    var ctx = c.getContext('2d'), W, H;
+    function resize(){ W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+    function tick(){ var img = ctx.createImageData(W,H); var d = img.data; for(var i=0;i<d.length;i+=4){var v=Math.random()*255|0;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255;} ctx.putImageData(img,0,0); requestAnimationFrame(tick); }
+    window.addEventListener('resize', resize); resize(); tick();
+})();
+</script>
+
+<!-- Card glow -->
+<script>
+document.querySelectorAll('.bento-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', ((e.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--mouse-y', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+});
+</script>
+
+<!-- Main tool logic -->
+<script>
+(function() {
+'use strict';
+
+// ── Worker URL (même proxy que la transcription) ──
+const WORKER_URL = 'https://wandering-river-a352.mangateamz2.workers.dev';
+
+// ── State ──
+let originalImg = null;  // HTMLImageElement
+let origW = 0, origH = 0;
+let currentMethod = 'local';
+
+const $ = id => document.getElementById(id);
+
+// ── Upload ──
+const dropZone  = $('ie-drop-zone');
+const fileInput = $('ie-file-input');
+
+dropZone.addEventListener('dragover', function(e) { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', function() { dropZone.classList.remove('drag-over'); });
+dropZone.addEventListener('drop', function(e) {
+    e.preventDefault(); dropZone.classList.remove('drag-over');
+    var files = e.dataTransfer.files;
+    if (files && files.length) loadFile(files[0]);
+});
+fileInput.addEventListener('change', function() {
+    if (this.files && this.files[0]) loadFile(this.files[0]);
+});
+
+function loadFile(file) {
+    if (!file.type.startsWith('image/')) { showError('Fichier non supporté. Utilisez PNG, JPG ou WEBP.'); return; }
+    if (file.size > 30 * 1024 * 1024) { showError('Image trop lourde (max 30 Mo). Réduisez sa taille d\'abord.'); return; }
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var img = new Image();
+        img.onload = function() {
+            originalImg = img;
+            origW = img.naturalWidth;
+            origH = img.naturalHeight;
+            $('ie-step-upload').style.display = 'none';
+            $('ie-step-config').style.display  = 'block';
+            $('ie-result-wrap').style.display   = 'none';
+            hideError();
+            updateSizeDisplay();
+            renderPreview();
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+// ── Extension inputs ──
+['ext-top','ext-left','ext-right','ext-bottom'].forEach(function(id) {
+    $(id).addEventListener('input', function() { updateSizeDisplay(); renderPreview(); });
+});
+
+$('ie-apply-all').addEventListener('click', function() {
+    var v = parseInt($('ext-all').value, 10);
+    if (isNaN(v) || v < 0) return;
+    ['ext-top','ext-left','ext-right','ext-bottom'].forEach(function(id) { $(id).value = v; });
+    updateSizeDisplay(); renderPreview();
+});
+
+function getExt() {
+    return {
+        top:    Math.max(0, parseInt($('ext-top').value,10)    || 0),
+        left:   Math.max(0, parseInt($('ext-left').value,10)   || 0),
+        right:  Math.max(0, parseInt($('ext-right').value,10)  || 0),
+        bottom: Math.max(0, parseInt($('ext-bottom').value,10) || 0)
+    };
+}
+
+function updateSizeDisplay() {
+    if (!origW) return;
+    var e = getExt();
+    var newW = origW + e.left + e.right;
+    var newH = origH + e.top + e.bottom;
+    $('ie-final-size').textContent = newW + ' × ' + newH + ' px';
+}
+
+// ── Aperçu ──
+function renderPreview() {
+    if (!originalImg) return;
+    var e = getExt();
+    var canvas = $('ie-preview-canvas');
+    var ctx    = canvas.getContext('2d');
+
+    var totalW = origW + e.left + e.right;
+    var totalH = origH + e.top  + e.bottom;
+
+    // Échelle pour tenir dans le conteneur (max 800px)
+    var maxW = Math.min(window.innerWidth - 80, 800);
+    var maxH = 420;
+    var scale = Math.min(maxW / totalW, maxH / totalH, 1);
+
+    canvas.width  = Math.round(totalW * scale);
+    canvas.height = Math.round(totalH * scale);
+
+    // Fond : zone extension (hachuré)
+    ctx.fillStyle = 'rgba(90,123,166,0.12)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Motif croisillons pour la zone extension
+    ctx.strokeStyle = 'rgba(90,123,166,0.18)';
+    ctx.lineWidth   = 1;
+    var step = 18;
+    for (var x = 0; x < canvas.width; x += step) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + canvas.height, canvas.height); ctx.stroke();
+    }
+    for (var y = 0; y < canvas.height; y += step) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y + canvas.width); ctx.stroke();
+    }
+
+    // Image originale
+    var imgX = Math.round(e.left * scale);
+    var imgY = Math.round(e.top  * scale);
+    var imgW = Math.round(origW  * scale);
+    var imgH = Math.round(origH  * scale);
+    ctx.drawImage(originalImg, imgX, imgY, imgW, imgH);
+
+    // Bordure de l'image originale
+    ctx.strokeStyle = 'rgba(168,197,226,0.4)';
+    ctx.lineWidth   = 1.5;
+    ctx.setLineDash([5, 4]);
+    ctx.strokeRect(imgX + 0.5, imgY + 0.5, imgW - 1, imgH - 1);
+    ctx.setLineDash([]);
+
+    // Labels zones
+    ctx.font      = 'bold 11px "JetBrains Mono", monospace';
+    ctx.fillStyle = 'rgba(168,197,226,0.6)';
+    ctx.textAlign = 'center';
+    if (e.top > 10)    ctx.fillText('+' + e.top    + ' px', canvas.width / 2, Math.max(14, imgY / 2));
+    if (e.bottom > 10) ctx.fillText('+' + e.bottom + ' px', canvas.width / 2, imgY + imgH + Math.max(14, (canvas.height - imgY - imgH) / 2));
+    ctx.textAlign = 'left';
+    if (e.left > 10) {
+        ctx.save(); ctx.translate(Math.max(10, imgX / 2), canvas.height / 2);
+        ctx.rotate(-Math.PI / 2); ctx.fillText('+' + e.left + ' px', -30, 0); ctx.restore();
+    }
+    if (e.right > 10) {
+        ctx.save(); ctx.translate(imgX + imgW + Math.max(10, (canvas.width - imgX - imgW) / 2), canvas.height / 2);
+        ctx.rotate(-Math.PI / 2); ctx.fillText('+' + e.right + ' px', -30, 0); ctx.restore();
+    }
+}
+
+// ── Méthode ──
+window.setMethod = function(method) {
+    currentMethod = method;
+    document.querySelectorAll('.ie-method-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.method === method);
+    });
+    $('ie-method-info-local').style.display = method === 'local' ? 'block' : 'none';
+    $('ie-method-info-ai').style.display    = method === 'ai'    ? 'block' : 'none';
+    $('ie-prompt-wrap').classList.toggle('visible', method === 'ai');
+};
+
+// ── Lancement ──
+$('ie-launch-btn').addEventListener('click', async function() {
+    if (!originalImg) return;
+    var e = getExt();
+    if (e.top === 0 && e.left === 0 && e.right === 0 && e.bottom === 0) {
+        showError('Définissez au moins une zone à étendre (valeur > 0).'); return;
+    }
+    hideError();
+    setProgress(true, 'Préparation…', 5);
+    this.disabled = true;
+    $('ie-btn-label').textContent = '⏳ Traitement…';
+
+    try {
+        var resultCanvas;
+        if (currentMethod === 'ai') {
+            resultCanvas = await processAI(e);
+        } else {
+            resultCanvas = await processLocal(e);
+        }
+        showResult(resultCanvas, e);
+    } catch(err) {
+        showError(err.message || 'Une erreur est survenue.');
+    } finally {
+        setProgress(false);
+        this.disabled = false;
+        $('ie-btn-label').textContent = '🖼️ Étendre l\'image';
+    }
+});
+
+// ══════════════════════════════════════════
+//   MODE LOCAL — Extension intelligente
+// ══════════════════════════════════════════
+async function processLocal(ext) {
+    var { top, left, right, bottom } = ext;
+    var newW = origW + left + right;
+    var newH = origH + top  + bottom;
+
+    if (newW > 8000 || newH > 8000) throw new Error('La taille finale dépasse 8 000 px. Réduisez les valeurs d\'extension.');
+
+    setProgress(true, 'Analyse des couleurs…', 10);
+    await tick();
+
+    var final = document.createElement('canvas');
+    final.width  = newW;
+    final.height = newH;
+    var ctx = final.getContext('2d');
+
+    // ── ÉTAPE 1 : fond flou global (palette dominante de l'image) ──
+    // L'image est étirée sur toute la surface et très flouttée → donne la couleur ambiante
+    {
+        var base = document.createElement('canvas');
+        base.width = newW; base.height = newH;
+        var bc = base.getContext('2d');
+        var pad = Math.max(left, right, top, bottom, 20);
+        var blurPx = Math.max(30, Math.floor(Math.max(newW, newH) * 0.05));
+        bc.filter = 'blur(' + blurPx + 'px)';
+        bc.drawImage(originalImg, -pad, -pad, newW + pad * 2, newH + pad * 2);
+        bc.filter = 'none';
+        ctx.drawImage(base, 0, 0);
+    }
+
+    setProgress(true, 'Extension des bords…', 35);
+    await tick();
+
+    // ── ÉTAPE 2 : bandes d'extension avec fondu directionnel ──
+    // On échantillonne 40% de l'image depuis chaque bord, on étire, on floute,
+    // puis on applique un gradient qui est fort côté original et s'estompe vers l'extérieur.
+    var BX = Math.max(8, Math.min(Math.floor(origW * 0.4), 500)); // largeur bande horizontale
+    var BY = Math.max(8, Math.min(Math.floor(origH * 0.4), 500)); // hauteur bande verticale
+
+    function drawExtension(srcX, srcY, srcW, srcH, dstX, dstY, dstW, dstH, flipH, flipV, innerSide) {
+        if (dstW <= 0 || dstH <= 0) return;
+
+        // Bande miroir étirée
+        var tmp = document.createElement('canvas');
+        tmp.width = dstW; tmp.height = dstH;
+        var tc = tmp.getContext('2d');
+        tc.save();
+        if (flipH) { tc.translate(dstW, 0); tc.scale(-1, 1); }
+        if (flipV) { tc.translate(0, dstH); tc.scale(1, -1); }
+        tc.drawImage(originalImg, srcX, srcY, srcW, srcH, 0, 0, dstW, dstH);
+        tc.restore();
+
+        // Flou adaptatif : proportionnel à la taille de la zone
+        var maxDim = Math.max(dstW, dstH);
+        var blurAmt = innerSide === 'corner'
+            ? Math.max(12, Math.min(70, Math.floor(maxDim * 0.12)))
+            : Math.max(6,  Math.min(45, Math.floor(maxDim * 0.07)));
+
+        var blurred = document.createElement('canvas');
+        blurred.width = dstW; blurred.height = dstH;
+        var blurCtx = blurred.getContext('2d');
+        blurCtx.filter = 'blur(' + blurAmt + 'px)';
+        blurCtx.drawImage(tmp, 0, 0);
+        blurCtx.filter = 'none';
+
+        // Masque de fondu : fort à l'intérieur (côté original), estompé vers l'extérieur
+        var masked = document.createElement('canvas');
+        masked.width = dstW; masked.height = dstH;
+        var mc = masked.getContext('2d');
+        mc.drawImage(blurred, 0, 0);
+
+        var grad;
+        if (innerSide === 'corner') {
+            // Coin : fondu radial depuis le coin intérieur (adjacent à l'original)
+            var cx = (flipH ? 1 : 0) * dstW;
+            var cy = (flipV ? 1 : 0) * dstH;
+            var r  = Math.sqrt(dstW * dstW + dstH * dstH);
+            grad = mc.createRadialGradient(cx, cy, 0, cx, cy, r);
+            grad.addColorStop(0,    'rgba(0,0,0,0.92)');
+            grad.addColorStop(0.45, 'rgba(0,0,0,0.80)');
+            grad.addColorStop(0.80, 'rgba(0,0,0,0.45)');
+            grad.addColorStop(1,    'rgba(0,0,0,0.10)');
+        } else {
+            // Côté : fondu linéaire depuis le bord interne vers l'extérieur
+            var x0 = 0, y0 = 0, x1 = 0, y1 = 0;
+            if (innerSide === 'right')  { x0 = dstW; x1 = 0; }
+            if (innerSide === 'left')   { x0 = 0;    x1 = dstW; }
+            if (innerSide === 'bottom') { y0 = dstH; y1 = 0; }
+            if (innerSide === 'top')    { y0 = 0;    y1 = dstH; }
+            grad = mc.createLinearGradient(x0, y0, x1, y1);
+            grad.addColorStop(0,    'rgba(0,0,0,0.95)');
+            grad.addColorStop(0.55, 'rgba(0,0,0,0.85)');
+            grad.addColorStop(0.85, 'rgba(0,0,0,0.50)');
+            grad.addColorStop(1,    'rgba(0,0,0,0.10)');
+        }
+        mc.globalCompositeOperation = 'destination-in';
+        mc.fillStyle = grad;
+        mc.fillRect(0, 0, dstW, dstH);
+
+        ctx.drawImage(masked, dstX, dstY);
+    }
+
+    // Côtés
+    if (left   > 0) drawExtension(0,          0,          BX, origH,     0,          top,       left,   origH,  true,  false, 'right');
+    if (right  > 0) drawExtension(origW - BX,  0,          BX, origH,     left+origW, top,       right,  origH,  true,  false, 'left');
+    if (top    > 0) drawExtension(0,            0,          origW, BY,    left,       0,         origW,  top,    false, true,  'bottom');
+    if (bottom > 0) drawExtension(0,            origH - BY, origW, BY,    left,       top+origH, origW,  bottom, false, true,  'top');
+    // Coins
+    if (left  > 0 && top    > 0) drawExtension(0,          0,           BX, BY, 0,          0,          left,   top,    true,  true,  'corner');
+    if (right > 0 && top    > 0) drawExtension(origW - BX,  0,           BX, BY, left+origW, 0,          right,  top,    true,  true,  'corner');
+    if (left  > 0 && bottom > 0) drawExtension(0,          origH - BY,  BX, BY, 0,          top+origH,  left,   bottom, true,  true,  'corner');
+    if (right > 0 && bottom > 0) drawExtension(origW - BX,  origH - BY,  BX, BY, left+origW, top+origH,  right,  bottom, true,  true,  'corner');
+
+    setProgress(true, 'Fusion et lissage des jointures…', 78);
+    await tick();
+
+    // ── ÉTAPE 3 : image originale au premier plan ──
+    ctx.drawImage(originalImg, left, top);
+
+    // ── ÉTAPE 4 : lissage de la jointure (fine bande de fondu sur le bord de l'original) ──
+    var FEATHER = Math.max(6, Math.min(28, Math.floor(Math.min(origW, origH) * 0.02)));
+    ctx.save();
+    if (left > 0) {
+        var gFL = ctx.createLinearGradient(left, 0, left + FEATHER, 0);
+        gFL.addColorStop(0, 'rgba(0,0,0,0.35)'); gFL.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = gFL;
+        ctx.fillRect(left, top, FEATHER, origH);
+    }
+    if (right > 0) {
+        var gFR = ctx.createLinearGradient(left + origW, 0, left + origW - FEATHER, 0);
+        gFR.addColorStop(0, 'rgba(0,0,0,0.35)'); gFR.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = gFR;
+        ctx.fillRect(left + origW - FEATHER, top, FEATHER, origH);
+    }
+    if (top > 0) {
+        var gFT = ctx.createLinearGradient(0, top, 0, top + FEATHER);
+        gFT.addColorStop(0, 'rgba(0,0,0,0.35)'); gFT.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = gFT;
+        ctx.fillRect(left, top, origW, FEATHER);
+    }
+    if (bottom > 0) {
+        var gFB = ctx.createLinearGradient(0, top + origH, 0, top + origH - FEATHER);
+        gFB.addColorStop(0, 'rgba(0,0,0,0.35)'); gFB.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = gFB;
+        ctx.fillRect(left, top + origH - FEATHER, origW, FEATHER);
+    }
+    ctx.restore();
+
+    // Redessiner l'image originale une seconde fois pour combler les pixels effacés par feather
+    ctx.drawImage(originalImg, left, top);
+
+    setProgress(true, 'Finalisation…', 95);
+    await tick();
+
+    return final;
+}
+
+// Pause pour laisser le navigateur respirer (évite le freeze de l'UI)
+function tick() { return new Promise(function(r){ setTimeout(r, 0); }); }
+
+// ══════════════════════════════════════════
+//   MODE IA — Via Cloudflare Worker proxy
+// ══════════════════════════════════════════
+async function processAI(ext) {
+    var { top, left, right, bottom } = ext;
+    var prompt = $('ie-prompt').value.trim();
+
+    setProgress(true, 'Envoi à l\'IA…', 15);
+
+    // Convertir l'image en blob PNG
+    var srcCanvas = document.createElement('canvas');
+    srcCanvas.width  = origW;
+    srcCanvas.height = origH;
+    srcCanvas.getContext('2d').drawImage(originalImg, 0, 0);
+
+    var imgBlob = await new Promise(function(resolve) {
+        srcCanvas.toBlob(resolve, 'image/png');
+    });
+
+    var fd = new FormData();
+    fd.append('image', imgBlob, 'image.png');
+    fd.append('left',   left);
+    fd.append('right',  right);
+    fd.append('up',     top);
+    fd.append('down',   bottom);
+    if (prompt) fd.append('prompt', prompt);
+    fd.append('creativity', '0.5');
+    fd.append('output_format', 'png');
+
+    setProgress(true, 'Génération en cours (peut prendre 10-30 s)…', 30);
+
+    var res = await fetch(WORKER_URL + '/api/stability/outpaint', { method: 'POST', body: fd });
+
+    if (res.status === 404) {
+        throw new Error('Le mode IA n\'est pas encore configuré sur le Worker. Utilisez le mode Rapide, ou ajoutez l\'endpoint /api/stability/outpaint à votre Cloudflare Worker.');
+    }
+    if (!res.ok) {
+        var errBody = await res.json().catch(function(){ return {}; });
+        throw new Error(errBody.message || errBody.error || 'Erreur API Stability (' + res.status + ')');
+    }
+
+    setProgress(true, 'Réception du résultat…', 85);
+
+    var resultBlob = await res.blob();
+    var resultUrl  = URL.createObjectURL(resultBlob);
+
+    return await new Promise(function(resolve, reject) {
+        var img = new Image();
+        img.onload = function() {
+            var canvas = document.createElement('canvas');
+            canvas.width  = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            canvas.getContext('2d').drawImage(img, 0, 0);
+            URL.revokeObjectURL(resultUrl);
+            resolve(canvas);
+        };
+        img.onerror = function() { reject(new Error('Impossible de décoder l\'image résultante.')); };
+        img.src = resultUrl;
+    });
+}
+
+// ── Résultat + Slider avant/après ──
+function showResult(canvas, ext) {
+    var newW = origW + ext.left + ext.right;
+    var newH = origH + ext.top  + ext.bottom;
+
+    // Draw result canvas
+    var rc = $('ie-result-canvas');
+    rc.width = canvas.width; rc.height = canvas.height;
+    rc.getContext('2d').drawImage(canvas, 0, 0);
+
+    // Draw "before" canvas (original centered in the extended frame)
+    var bc = $('ie-before-canvas');
+    bc.width = canvas.width; bc.height = canvas.height;
+    var bctx = bc.getContext('2d');
+    bctx.fillStyle = '#0f1823';
+    bctx.fillRect(0, 0, bc.width, bc.height);
+    // Scale original to match canvas scale
+    var scale = canvas.width / newW;
+    bctx.drawImage(originalImg, Math.round(ext.left * scale), Math.round(ext.top * scale),
+        Math.round(origW * scale), Math.round(origH * scale));
+    // Dashed border around original area
+    bctx.strokeStyle = 'rgba(168,197,226,0.35)';
+    bctx.lineWidth = 1.5;
+    bctx.setLineDash([5,4]);
+    bctx.strokeRect(Math.round(ext.left*scale)+0.5, Math.round(ext.top*scale)+0.5,
+        Math.round(origW*scale)-1, Math.round(origH*scale)-1);
+    bctx.setLineDash([]);
+
+    // Stats
+    function fmtSize(bytes) {
+        if (!bytes) return '—';
+        return bytes < 1048576 ? (bytes/1024).toFixed(0)+' Ko' : (bytes/1048576).toFixed(1)+' Mo';
+    }
+    $('ie-stat-orig-size').textContent = origW + ' × ' + origH;
+    $('ie-stat-orig-px').textContent   = (origW * origH / 1000000).toFixed(1) + ' MP';
+    $('ie-stat-new-size').textContent  = newW  + ' × ' + newH;
+    $('ie-stat-new-px').textContent    = (newW * newH / 1000000).toFixed(1) + ' MP';
+
+    $('ie-result-wrap').style.display = 'block';
+    setupCompareSlider();
+    setTimeout(function(){ $('ie-result-wrap').scrollIntoView({ behavior:'smooth', block:'start' }); }, 100);
+}
+
+function setupCompareSlider() {
+    var wrap    = $('ie-compare-wrap');
+    var before  = $('ie-compare-before');
+    var divider = $('ie-compare-divider');
+    var pos = 0.5;
+
+    function apply(pct) {
+        pos = Math.max(0.04, Math.min(0.96, pct));
+        var w = wrap.offsetWidth;
+        var x = Math.round(pos * w);
+        divider.style.left  = x + 'px';
+        before.style.width  = x + 'px';
+        // Stretch before-canvas to full wrap width so clip reveals correctly
+        var bc = $('ie-before-canvas');
+        bc.style.width  = w + 'px';
+        bc.style.height = 'auto';
+    }
+
+    // Init after layout
+    requestAnimationFrame(function(){ apply(0.5); });
+    window.addEventListener('resize', function(){ apply(pos); });
+
+    // Click on wrap (outside handle)
+    wrap.addEventListener('click', function(e) {
+        if (e.target === divider || divider.contains(e.target)) return;
+        apply((e.clientX - wrap.getBoundingClientRect().left) / wrap.offsetWidth);
+    });
+
+    // Mouse drag on divider
+    divider.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        var move = function(e) { apply((e.clientX - wrap.getBoundingClientRect().left) / wrap.offsetWidth); };
+        var up   = function()  { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+        window.addEventListener('mousemove', move);
+        window.addEventListener('mouseup', up);
+    });
+
+    // Touch drag on divider
+    divider.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        var move = function(e) { apply((e.touches[0].clientX - wrap.getBoundingClientRect().left) / wrap.offsetWidth); };
+        var end  = function()  { wrap.removeEventListener('touchmove', move); wrap.removeEventListener('touchend', end); };
+        wrap.addEventListener('touchmove', move, {passive:false});
+        wrap.addEventListener('touchend', end);
+    }, {passive:false});
+}
+
+// ── Téléchargement ──
+function downloadCanvas(type, ext) {
+    var canvas = $('ie-result-canvas');
+    var mime   = type === 'jpg' ? 'image/jpeg' : 'image/png';
+    var suffix = type === 'jpg' ? '.jpg' : '.png';
+    canvas.toBlob(function(blob) {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url; a.download = 'image-etendue-' + Date.now() + suffix;
+        document.body.appendChild(a); a.click();
+        document.body.removeChild(a); URL.revokeObjectURL(url);
+    }, mime, type === 'jpg' ? 0.92 : undefined);
+}
+$('ie-btn-download-png').addEventListener('click', function() { downloadCanvas('png'); });
+$('ie-btn-download-jpg').addEventListener('click', function() { downloadCanvas('jpg'); });
+
+// ── Recommencer ──
+$('ie-btn-restart').addEventListener('click', function() {
+    originalImg = null; origW = 0; origH = 0;
+    fileInput.value = '';
+    $('ie-step-upload').style.display = 'block';
+    $('ie-step-config').style.display  = 'none';
+    $('ie-result-wrap').style.display  = 'none';
+    hideError();
+    // Reset sliders
+    ['ext-top','ext-left','ext-right','ext-bottom'].forEach(function(id){ $(id).value = 200; });
+    $('ext-all').value = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ── Helpers UI ──
+function setProgress(show, label, pct) {
+    $('ie-progress').style.display = show ? 'block' : 'none';
+    if (show) {
+        $('ie-progress-label').textContent = label || 'Traitement…';
+        $('ie-progress-fill').style.width  = (pct || 0) + '%';
+    }
+}
+function showError(msg) { $('ie-error').style.display = 'block'; $('ie-error-text').textContent = '⚠️ ' + msg; }
+function hideError() { $('ie-error').style.display = 'none'; }
+
+// ── Redimensionner l'aperçu quand la fenêtre change ──
+window.addEventListener('resize', function() { if (originalImg) renderPreview(); });
+
+})();
+</script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .catch(err => console.warn('[SW]', err));
+  document.addEventListener('click', function askOnce() {
+    if (Notification.permission === 'default') Notification.requestPermission();
+    document.removeEventListener('click', askOnce);
+  }, { once: true });
+}
+</script>
+</body>
+</html>

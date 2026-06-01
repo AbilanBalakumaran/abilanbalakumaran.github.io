@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /googleaf9fb833c05985b8.html
+Disallow: /googledb174ad426b15df0.html
+
+# Sitemap
+Sitemap: https://abilanbalakumaran.github.io/sitemap.xml
+
+# Autoriser explicitement les crawlers d'images et vidéos Google
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Googlebot-Video
+Allow: /images/motion/
+
+# Crawl-delay recommandé pour éviter la surcharge
+User-agent: *
+Crawl-delay: 5
