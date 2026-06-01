@@ -63,7 +63,7 @@
 <link rel="manifest" href="/manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Abilan Lab">
 <link rel="apple-touch-icon" href="/images/fiole.png">
 
@@ -455,6 +455,37 @@ canvas#tp-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
 </style>
 </head>
 <body>
+
+<!-- ─── Splash Screen PWA ─── -->
+<div id="pwa-splash" aria-hidden="true">
+<style>
+#pwa-splash{position:fixed;inset:0;z-index:9999999;background:#0f1823;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .6s ease,transform .6s ease;}
+.sp-logo-wrap{position:relative;width:96px;height:96px;animation:spPop .9s cubic-bezier(.68,-.55,.265,1.55) .1s both;}
+.sp-logo-img{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 0 32px rgba(107,155,209,.8));}
+.sp-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);border-radius:50%;border:1.5px solid rgba(107,155,209,.3);opacity:0;animation:spRing 2.2s ease-out infinite;}
+.sp-r1{width:130px;height:130px;animation-delay:.7s;}
+.sp-r2{width:178px;height:178px;animation-delay:1.05s;}
+.sp-r3{width:226px;height:226px;animation-delay:1.4s;}
+.sp-title{font-family:'Sora',system-ui,sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:-.03em;animation:spUp .6s ease .75s both;}
+.sp-sub{font-family:'JetBrains Mono',monospace,sans-serif;font-size:10px;color:rgba(168,197,226,.5);letter-spacing:.18em;text-transform:uppercase;animation:spUp .6s ease .95s both;}
+.sp-bar{width:100px;height:2px;background:rgba(168,197,226,.1);border-radius:2px;overflow:hidden;margin-top:6px;animation:spUp .6s ease .95s both;}
+.sp-bar-fill{height:100%;width:0;background:linear-gradient(90deg,#2d4263,#5a7ba6,#a8c5e2);border-radius:2px;animation:spFill 1.7s ease .3s forwards;}
+@keyframes spPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes spRing{0%{transform:translate(-50%,-50%) scale(.4);opacity:.65}100%{transform:translate(-50%,-50%) scale(1.7);opacity:0}}
+@keyframes spUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spFill{to{width:100%}}
+</style>
+<div class="sp-logo-wrap">
+  <img class="sp-logo-img" src="/images/fiole.png" alt="Abilan Lab">
+  <div class="sp-ring sp-r1"></div>
+  <div class="sp-ring sp-r2"></div>
+  <div class="sp-ring sp-r3"></div>
+</div>
+<span class="sp-title">Abilan Lab</span>
+<span class="sp-sub">Digital &amp; Motion</span>
+<div class="sp-bar"><div class="sp-bar-fill"></div></div>
+</div>
+<script>(function(){var s=document.getElementById('pwa-splash');if(!s)return;var isPWA=window.matchMedia('(display-mode:standalone)').matches||!!window.navigator.standalone;var first=!sessionStorage.getItem('sp');if(!isPWA&&!first){s.remove();return;}sessionStorage.setItem('sp','1');setTimeout(function(){s.style.opacity='0';s.style.transform='scale(1.04)';s.style.pointerEvents='none';setTimeout(function(){s.remove();},600);},2000);})();</script>
 
 <div class="tp-dot-grid" aria-hidden="true"></div>
 <div class="tp-orb tp-orb-1" aria-hidden="true"></div>
@@ -985,12 +1016,20 @@ canvas#tp-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
     setProgress(5, 'Préparation…');
 
     try {
+      // ── Vérification connexion ──
+      if (!navigator.onLine) throw new Error('Vous êtes hors ligne. Vérifiez votre connexion internet et réessayez.');
+
       let audioBlob;
 
       if (currentMode === 'file') {
         // ── Mode fichier : utiliser le fichier stocké en mémoire ──
         const file = _storedFile || (fileInput.files && fileInput.files[0]);
-        if (!file) throw new Error('Aucun fichier sélectionné.');
+        if (!file) throw new Error('Aucun fichier sélectionné. Déposez un fichier audio ou vidéo dans la zone prévue.');
+
+        const ALLOWED = ['audio/','video/','application/ogg'];
+        const okType = ALLOWED.some(t => file.type.startsWith(t)) || /\.(mp3|wav|ogg|flac|m4a|mp4|webm|mov)$/i.test(file.name);
+        if (!okType) throw new Error(`Format non reconnu : "${file.name}". Utilisez un fichier MP3, WAV, OGG, FLAC, M4A, MP4 ou WebM.`);
+
         const MAX_DIRECT = 24 * 1024 * 1024;
 
         if (file.size > MAX_DIRECT) {
@@ -998,12 +1037,12 @@ canvas#tp-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
           setProgress(10, 'Décodage du fichier audio…');
           let arrayBuffer;
           try { arrayBuffer = await file.arrayBuffer(); }
-          catch(e) { throw new Error('Impossible de lire le fichier.'); }
+          catch(e) { throw new Error('Impossible de lire le fichier. Il est peut-être corrompu ou votre navigateur n\'a pas les permissions nécessaires.'); }
 
           const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
           let audioBuffer;
           try { audioBuffer = await audioCtx.decodeAudioData(arrayBuffer); }
-          catch(e) { throw new Error('Format audio non supporté pour le découpage automatique. Essayez MP3 ou WAV.'); }
+          catch(e) { throw new Error('Impossible de décoder ce fichier audio. Pour les fichiers volumineux, utilisez de préférence MP3, WAV ou M4A.'); }
 
           const CHUNK_SECS = 480; // 8 min par morceau
           const TARGET_SR  = 16000; // Whisper tourne nativement à 16 kHz
@@ -1050,7 +1089,10 @@ canvas#tp-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
             const res = await fetch(WORKER_URL + '/api/groq/transcribe', { method: 'POST', body: fd });
             if (!res.ok) {
               const errBody = await res.json().catch(() => ({}));
-              throw new Error(errBody?.error?.message || `Groq API: ${res.status} (partie ${i + 1})`);
+              const msg = errBody?.error?.message || '';
+              if (res.status === 429) throw new Error('Limite de requêtes atteinte (partie ' + (i+1) + '). Attendez quelques secondes et réessayez.');
+              if (res.status >= 500) throw new Error('Le serveur de transcription est temporairement indisponible (partie ' + (i+1) + '). Réessayez dans un instant.');
+              throw new Error(msg || `Erreur de transcription sur la partie ${i + 1} (code ${res.status}).`);
             }
             const part = await res.json();
 
@@ -1080,7 +1122,9 @@ canvas#tp-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
       } else {
         // ── Mode URL via Supadata ──
         const url = $('trans-url').value.trim();
-        if (!url) throw new Error('Veuillez entrer une URL.');
+        if (!url) throw new Error('Veuillez entrer une URL YouTube, Instagram, TikTok ou Twitter/X.');
+        const validUrl = /^https?:\/\/(www\.)?(youtube\.com|youtu\.be|instagram\.com|tiktok\.com|twitter\.com|x\.com)/i.test(url);
+        if (!validUrl) throw new Error('URL non reconnue. Seuls YouTube, Instagram, TikTok et Twitter/X sont supportés.');
         setProgress(10, 'Extraction de la transcription via Supadata…');
 
         // Supadata: via le Worker proxy (la clé API reste côté serveur)
@@ -1148,7 +1192,11 @@ canvas#tp-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
 
       if (!groqRes.ok) {
         const errBody = await groqRes.json().catch(() => ({}));
-        throw new Error(errBody?.error?.message || `Groq API: ${groqRes.status}`);
+        const msg = errBody?.error?.message || '';
+        if (groqRes.status === 429) throw new Error('Limite de requêtes atteinte. Attendez quelques secondes et réessayez.');
+        if (groqRes.status === 413) throw new Error('Fichier trop volumineux. Le fichier dépasse la limite acceptée par le serveur.');
+        if (groqRes.status >= 500) throw new Error('Le serveur de transcription est temporairement indisponible. Réessayez dans un instant.');
+        throw new Error(msg || `Erreur de transcription (code ${groqRes.status}). Vérifiez votre fichier et réessayez.`);
       }
 
       setProgress(95, 'Analyse du résultat…');
