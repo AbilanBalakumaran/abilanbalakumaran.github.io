@@ -15,27 +15,39 @@
     },
     {
       keys: ['qui est','c\'est qui','parle moi','tell me','about','profil','présentation','présente'],
-      answer: () => `<strong>Abilan Balakumaran</strong> est <strong>Digital Manager & Motion Designer</strong> 🎨<br><br>Il crée des expériences visuelles impactantes pour des marques, des créateurs et des entreprises : animations, identités visuelles, stratégies digitales et développement web.<br><br>Sa philosophie : <em>"Votre visibilité en ligne est votre meilleur commercial !"</em><br><br>Il est disponible en freelance et mobile en Île-de-France 🚀`
+      answer: () => `<strong>Abilan Balakumaran</strong> est <strong>Digital Manager & Motion Designer</strong> basé en Île-de-France 🎨<br><br>Sa mission : allier stratégie digitale et créativité visuelle pour donner vie aux marques.<br><br>Actuellement en <strong>MBA Digital Marketing & Business</strong> et diplômé d'un <strong>Mastère en Motion Design</strong> (mention Félicitations du jury), il accompagne les entreprises dans leur présence en ligne avec une approche qui mêle curiosité, rigueur et adaptabilité.<br><br><em>"Votre visibilité en ligne est votre meilleur commercial !"</em>`
     },
     {
-      keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect'],
-      answer: () => `Abilan est spécialisé en <strong>Motion Design</strong> 🎬<br><br>Parmi ses créations :<br>🎬 <strong>Coding Animation</strong> : animation motion design sur la programmation<br>🎙️ <strong>Hey Alexa</strong> : animation autour de l'assistant vocal Amazon<br>⚽ <strong>Basketball Match</strong> : animation sportive dynamique<br>🎭 <strong>Mascotte 2D</strong> : animation de personnage 2D<br>📻 <strong>Radio</strong> : motion design sonore<br><br>Tout est visible sur <a href="https://www.youtube.com/@sukiamv" target="_blank">sa chaîne YouTube @sukiamv</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> 🎨`
+      keys: ['expérience','poste','entreprise','emploi','waat','alternance','travaillé','travaille','carrière','cabinet','rénovation'],
+      answer: () => `Voici le parcours professionnel d'Abilan :<br><br>🏢 <strong>Chef de projet digital</strong> chez Cabinet d'Étude pour la Rénovation (alternance, sept. 2025 – aujourd'hui)<br><br>🏢 <strong>Graphiste / Motion Designer</strong> chez WAAT (alternance, sept. 2023 – juin 2025)<br>Vidéos pédagogiques en motion design, animation de mascotte 2D/3D, sound design, charte graphique AFOR, contenus pour LinkedIn, YouTube et Intranet<br><br>🎬 <strong>Monteur / Motion Designer</strong> chez Clutch Rayn Production (stage, mai–juin 2022)<br>Overlays, intros Twitch, vidéos événementielles, affiches`
     },
     {
-      keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire'],
-      answer: () => `Voici les compétences d'Abilan :<br><br>🎬 <strong>Vidéo & Motion</strong> : After Effects, Premiere Pro, DaVinci Resolve<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign<br>💻 <strong>Web</strong> : HTML/CSS/JS, WordPress, UI/UX<br>📱 <strong>Digital</strong> : Stratégie réseaux, Community Management<br><br>Plus de <strong>34 réalisations</strong> à son actif en print, motion et digital 💪`
+      keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte'],
+      answer: () => `Abilan est spécialisé en <strong>Motion Design</strong> depuis 2016 🎬<br><br>Ses réalisations notables :<br>🎥 <strong>Recrutement WAAT</strong> : vidéo pédagogique sur le processus de recrutement (52 réactions LinkedIn)<br>⚡ <strong>Recharge WAAT</strong> : vidéo explicative sur la recharge en copropriété (41 réactions)<br>🏀 <strong>Basketball Match</strong> : animation sportive dynamique<br>🤖 <strong>Hey Alexa</strong> : animation autour de l'assistant vocal<br>🎭 <strong>Animation mascotte 2D/3D</strong> avec rigging, lip-syncing et incrustation vidéo<br>🪙 <strong>Tx Coin</strong> : vidéo motion design (Behance)<br><br>Visible sur <a href="https://www.youtube.com/@sukiamv" target="_blank">YouTube @sukiamv</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> 🎨`
+    },
+    {
+      keys: ['youtube','yt','chaine','chaîne','suki','sukiamv','amv','tuto','tutoriel','abonné','abonne','vidéo youtube'],
+      answer: () => `Sur <a href="https://www.youtube.com/@sukiamv" target="_blank"><strong>YouTube @sukiamv</strong></a>, Abilan publie depuis <strong>2016</strong> 🎬<br><br>Deux types de contenu :<br>🎌 <strong>AMV (Anime Music Videos)</strong> : montages créatifs sur des musiques<br>🎓 <strong>Tutoriels After Effects</strong> :<br>&nbsp;&nbsp;• Smooth Zoom In & Out Tutorial<br>&nbsp;&nbsp;• Smooth 3D Camera Movements with 2D Text<br>&nbsp;&nbsp;• Hardcore Twitch Shake Tutorial (sans plugin !)<br><br>Il gère tout de A à Z : SEO YouTube, miniatures, sound design, montage avancé et effets visuels. Allez vous abonner ! ✨`
+    },
+    {
+      keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire','blender','sound design'],
+      answer: () => `Les compétences d'Abilan couvrent tout le pipeline créatif :<br><br>🎬 <strong>Motion & Vidéo</strong> : After Effects, Premiere Pro, DaVinci Resolve, Blender (3D)<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign<br>🔊 <strong>Sound Design</strong> : Adobe Audition, habillages sonores, spatialisation audio<br>💻 <strong>Web</strong> : HTML/CSS/JS, WordPress, UI/UX<br>📊 <strong>Digital</strong> : Google Analytics, Google Ads, SEO YouTube, Community Management<br>🤖 <strong>IA</strong> : génération de voix, extension d'images, automatisation créative`
     },
     {
       keys: ['service','propose','offre','prestation','travail','mission','commande','tarif','prix','devis','aide','comment abilan'],
-      answer: () => `Abilan propose <strong>4 grands services</strong> :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong> : animations pour réseaux, pubs, présentations<br>🎨 <strong>Design graphique & Identité visuelle</strong> : logos, chartes graphiques, supports print et digitaux<br>📱 <strong>Stratégie digitale & Community Management</strong> : gestion des réseaux, création de contenu<br>💻 <strong>Développement web & Applications</strong> : sites WordPress, apps mobiles, UI/UX<br><br>Pour un devis, écrivez-lui directement 😊`
+      answer: () => `Abilan accompagne les entreprises sur <strong>4 axes</strong> :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong> : vidéos pédagogiques, publicités, présentations, tutos<br>🎨 <strong>Design graphique & Identité visuelle</strong> : logos, chartes graphiques, flyers, bannières<br>📱 <strong>Stratégie digitale & Community Management</strong> : gestion des réseaux, création de contenu, SEO<br>💻 <strong>Développement web & Applications</strong> : sites WordPress, apps mobiles, UI/UX<br><br>Expérimenté chez <strong>WAAT</strong> et <strong>Cabinet d'Étude pour la Rénovation</strong>. Pour un projet, écrivez-lui ! 😊`
     },
     {
-      keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france'],
-      answer: () => `Le meilleur moyen de contacter Abilan :<br><br>📧 <a href="mailto:Abilan.Balakumaran@gmail.com"><strong>Abilan.Balakumaran@gmail.com</strong></a><br><br>Il est <strong>mobile en Île-de-France</strong> et disponible pour des projets freelance. Il répond rapidement, n'hésitez pas ! 🙂`
+      keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france','linkedin'],
+      answer: () => `Pour contacter Abilan :<br><br>📧 <a href="mailto:Abilan.Balakumaran@gmail.com"><strong>Abilan.Balakumaran@gmail.com</strong></a><br>💼 <a href="https://www.linkedin.com/in/abilan-balakumaran/" target="_blank"><strong>LinkedIn</strong></a> (1 123 abonnés)<br><br>Il est <strong>mobile en Île-de-France</strong>, disponible en freelance et répond rapidement. N'hésitez pas ! 🙂`
     },
     {
-      keys: ['réseau','instagram','youtube','behance','social','suivre','communauté','yt','chaine','chaîne','abonné','abonne','suki','contenu','tuto','publie','poste','actif','créateur'],
-      answer: () => `Retrouvez Abilan sur ses réseaux :<br><br>📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank"><strong>Instagram @abilan_motion</strong></a> : ses créations graphiques et motion<br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank"><strong>YouTube @sukiamv</strong></a> : ses animations, tutos et projets motion design<br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank"><strong>Behance AbilanBalakumaran</strong></a> : son portfolio complet avec 5 projets présentés<br><br>Abonnez-vous pour suivre ses créations ! ✨`
+      keys: ['réseau','instagram','behance','social','suivre','communauté','actif','créateur','publie','poste'],
+      answer: () => `Retrouvez Abilan sur ses réseaux :<br><br>📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank"><strong>Instagram @abilan_motion</strong></a> : créations graphiques et motion<br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank"><strong>YouTube @sukiamv</strong></a> : AMV et tutoriels After Effects depuis 2016<br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank"><strong>Behance AbilanBalakumaran</strong></a> : portfolio de projets<br>💼 <a href="https://www.linkedin.com/in/abilan-balakumaran/" target="_blank"><strong>LinkedIn</strong></a> : 1 123 abonnés, posts réguliers sur le motion design<br><br>Abonnez-vous pour suivre ses créations ! ✨`
+    },
+    {
+      keys: ['certification','google','analytics','ads','certifié'],
+      answer: () => `Abilan est certifié par Google 🏆<br><br>✅ <strong>Google Analytics Certification</strong> (avril 2026)<br>✅ <strong>Google Ads Certification</strong> (avril 2026)<br><br>Ces certifications complètent son profil créatif avec une vraie expertise en performance digitale et mesure des résultats.`
     },
     {
       keys: ['lab','outil','gratuit','fonctionnalité','feature'],
@@ -43,30 +55,30 @@
     },
     {
       keys: ['transcri','audio','whisper','sous-titre','srt','dicter','enregistrement','vocal'],
-      answer: () => `Comment utiliser la <strong>Transcription Audio</strong> :<br><br>1️⃣ Choisissez <em>Fichier local</em> ou <em>URL vidéo</em><br>2️⃣ Paramétrez la vitesse, la langue et le nombre d'intervenants<br>3️⃣ Cliquez sur <em>"Lancer la transcription"</em><br>4️⃣ Exportez en TXT, JSON ou SRT<br><br>Compatible YouTube, Instagram, TikTok, Twitter/X. Formats audio/vidéo : MP3, MP4, WAV, M4A 🚀`
+      answer: () => `Comment utiliser la <strong>Transcription Audio</strong> :<br><br>1️⃣ Choisissez <em>Fichier local</em> ou <em>URL vidéo</em><br>2️⃣ Paramétrez la vitesse, la langue et le nombre d'intervenants<br>3️⃣ Cliquez sur <em>"Lancer la transcription"</em><br>4️⃣ Exportez en TXT, JSON ou SRT<br><br>Compatible YouTube, Instagram, TikTok, Twitter/X. Formats : MP3, MP4, WAV, M4A 🚀`
     },
     {
       keys: ['filigrane','watermark','supprimer','enlever','efface'],
-      answer: () => `Comment utiliser le <strong>Filigrane Remover</strong> :<br><br>1️⃣ Importez votre image (PNG, JPG, WEBP)<br>2️⃣ Détection automatique ou sélection manuelle du filigrane<br>3️⃣ L'IA supprime et reconstruit la zone ✨<br>4️⃣ Téléchargez le résultat<br><br>Optimisé pour Canva, Shutterstock et Adobe Stock. 100% gratuit 🔒`
+      answer: () => `Comment utiliser le <strong>Filigrane Remover</strong> :<br><br>1️⃣ Importez votre image (PNG, JPG, WEBP)<br>2️⃣ Détection automatique ou sélection manuelle<br>3️⃣ L'IA supprime et reconstruit la zone ✨<br>4️⃣ Téléchargez le résultat<br><br>Optimisé pour Canva, Shutterstock et Adobe Stock. 100% gratuit 🔒`
     },
     {
       keys: ['extend','étend','agrandir','outpaint','zoom out'],
-      answer: () => `Comment utiliser l'<strong>Image Extender</strong> :<br><br>1️⃣ Importez votre image (PNG, JPG, WEBP)<br>2️⃣ Choisissez la direction d'extension<br>3️⃣ Mode rapide (local) ou IA réaliste selon vos besoins<br>4️⃣ Téléchargez l'image étendue<br><br>Parfait pour recadrer ou agrandir vos visuels sans perte de qualité ! 🖼️`
+      answer: () => `Comment utiliser l'<strong>Image Extender</strong> :<br><br>1️⃣ Importez votre image (PNG, JPG, WEBP)<br>2️⃣ Choisissez la direction d'extension<br>3️⃣ Mode rapide ou IA réaliste<br>4️⃣ Téléchargez l'image étendue<br><br>Parfait pour recadrer ou agrandir vos visuels ! 🖼️`
     },
     {
       keys: ['installer','install','pwa','application','appli','écran d\'accueil','télécharger'],
-      answer: () => `Vous pouvez installer ce site comme une <strong>vraie application</strong> ! 📱<br><br><strong>Sur iPhone (Safari) :</strong><br>Appuyez sur <em>Partager</em> puis <em>"Sur l'écran d'accueil"</em><br><br><strong>Sur Android (Chrome) :</strong><br>Appuyez sur les <em>3 points</em> puis <em>"Ajouter à l'écran d'accueil"</em><br><br>L'app se lance en plein écran, avec un splash screen et des notifications quand vos transcriptions sont prêtes ✨`
+      answer: () => `Vous pouvez installer ce site comme une <strong>vraie application</strong> ! 📱<br><br><strong>Sur iPhone (Safari) :</strong> Partager puis <em>"Sur l'écran d'accueil"</em><br><strong>Sur Android (Chrome) :</strong> 3 points puis <em>"Ajouter à l'écran d'accueil"</em><br><br>L'app se lance en plein écran avec splash screen et notifications pour vos transcriptions ✨`
     },
     {
       keys: ['projet','réalisation','portfolio','travaux','exemple','dernier','récent','behance','warren','vélo','tx coin'],
-      answer: () => `Voici les projets d'Abilan :<br><br>📱 <strong>Application Suivi de Chantier</strong> : dashboard mobile temps réel pour le BTP<br>🌐 <strong>etudereno.fr</strong> : site WordPress pour une entreprise de rénovation<br>🎬 <strong>Tx Coin</strong> : vidéo motion design (Behance, 41 vues)<br>🏙️ <strong>Mon vélo urbain</strong> : projet design urbain (Behance)<br>🎭 <strong>Question d'époque</strong> : projet créatif (Behance)<br>📹 <strong>+34 réalisations</strong> en motion, print et digital<br><br>Tout sur <a href="https://abilanbalakumaran.github.io/" target="_blank">son portfolio</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> 🎨`
+      answer: () => `Les projets d'Abilan :<br><br>📱 <strong>App Suivi de Chantier</strong> : dashboard mobile temps réel pour le BTP<br>🌐 <strong>etudereno.fr</strong> : site WordPress entreprise de rénovation<br>🎬 <strong>Vidéo recrutement WAAT</strong> : motion design interne (52 réactions)<br>⚡ <strong>Recharge copropriété WAAT</strong> : vidéo pédagogique (41 réactions)<br>🪙 <strong>Tx Coin</strong> : vidéo motion design sur Behance<br>🏙️ <strong>Mon vélo urbain</strong> : projet design (Behance)<br><br>+34 réalisations sur <a href="https://abilanbalakumaran.github.io/" target="_blank">son portfolio</a> 🎨`
     },
     {
-      keys: ['formation','étude','diplôme','école','université','cursus','parcours','master','mba'],
-      answer: () => `Abilan a un solide parcours académique :<br><br>🎓 <strong>MBA Digital Marketing & Business</strong><br>🎨 <strong>Spécialisation Motion Design & Création digitale</strong><br><br>Une combinaison rare de créativité et de stratégie qui lui permet de prendre en charge des projets de A à Z !`
+      keys: ['formation','étude','diplôme','école','fonderie','mastère','mba'],
+      answer: () => `Le parcours académique d'Abilan :<br><br>🎓 <strong>MBA Spécialisé Digital Marketing & Business</strong> (oct. 2025 – sept. 2026)<br>🎨 <strong>Mastère Directeur de Création – Motion Design</strong> à la Fonderie de l'Image (2023–2025)<br>&nbsp;&nbsp;→ Mention <strong>Félicitations du jury</strong> 🏅<br>&nbsp;&nbsp;→ Spécialités : DA, animation 2D/3D Blender, sound design, gestion de projet<br><br>La combinaison parfaite entre créativité et stratégie digitale !`
     },
     {
-      keys: ['merci','super','parfait','génial','cool','top','excellent','impeccable','nickel','bravo'],
+      keys: ['merci','super','parfait','génial','cool','top','excellent','impeccable','nickel','bravo','sympa'],
       answer: () => `Merci beaucoup, c'est très gentil ! 😊 Je transmettrai à Abilan. N'hésitez pas si vous avez d'autres questions, je suis là pour vous aider ! 🙌`
     }
   ];
