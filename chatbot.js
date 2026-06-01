@@ -7,15 +7,23 @@
 
   const AVATAR = '/images/chatbot-avatar.png';
 
+  // Lecture du CV (cv-data.js) — fallback si non chargé
+  const CV = (typeof window !== 'undefined' && window.ABILAN_CV) || {};
+  const NOM    = CV.nom    || 'Abilan Balakumaran';
+  const TITRE  = CV.titre  || 'Digital Manager & Motion Designer';
+  const EMAIL  = CV.email  || 'Abilan.Balakumaran@gmail.com';
+  const LINKTREE = CV.linktree || 'https://linktr.ee/abilan.motion';
+  const LINKEDIN = CV.linkedin || 'https://www.linkedin.com/in/abilan-balakumaran/';
+
   /* ── Base de connaissances ─────────────────────── */
   const KB = [
     {
       keys: ['bonjour','salut','hello','coucou','bonsoir','hey','hi'],
-      answer: () => `Bonjour ! 👋 Bienvenue !<br><br>Je suis <strong>Akino</strong>, l'assistant d'<strong>Abilan Balakumaran</strong> — Digital Manager & Motion Designer.<br><br>Que vous cherchiez à booster votre image de marque, créer des vidéos percutantes ou développer votre présence en ligne, vous êtes au bon endroit 🎯<br><br>Comment puis-je vous aider ?`
+      answer: () => `Bonjour ! 👋 Bienvenue !<br><br>Je suis <strong>Akino</strong>, l'assistant d'<strong>${NOM}</strong> — <strong>${TITRE}</strong>.<br><br>Que vous cherchiez à booster votre image de marque, créer des vidéos percutantes ou développer votre présence en ligne, vous êtes au bon endroit 🎯<br><br>Comment puis-je vous aider ?`
     },
     {
       keys: ['qui est','c\'est qui','parle moi','tell me','about','profil','présentation','présente'],
-      answer: () => `<strong>Abilan Balakumaran</strong> est le profil rare qui combine <strong>créativité visuelle</strong> et <strong>stratégie digitale</strong> 🚀<br><br>✅ <strong>Motion Designer certifié</strong> (Mastère avec félicitations du jury)<br>✅ <strong>En MBA Digital Marketing</strong> pour comprendre vos enjeux business<br>✅ <strong>2 ans d'alternance chez WAAT</strong> : vidéos qui ont généré des dizaines de réactions et amélioré la communication interne d'une vraie entreprise<br>✅ <strong>Certifié Google Analytics & Ads</strong><br><br>Sa philosophie : <em>"Votre visibilité en ligne est votre meilleur commercial."</em><br>Ce n'est pas qu'un slogan, c'est ce qu'il prouve chaque jour avec ses clients 💡`
+      answer: () => `<strong>${NOM}</strong> est <strong>${TITRE}</strong> 🚀<br><br>${CV.accroche ? CV.accroche.replace(/\n/g,'<br>') + '<br><br>' : ''}✅ <strong>Mastère Motion Design</strong> — mention Félicitations du jury<br>✅ <strong>MBA Digital Marketing</strong> — EFAP Paris<br>✅ <strong>2 ans chez WAAT</strong> : productions motion design à fort impact<br>✅ <strong>Certifié Google Analytics, Google Ads & Prestashop</strong><br>✅ <strong>Mobile en Île-de-France</strong> — freelance & alternance<br><br><em>"${CV.philosophie || 'Votre visibilité en ligne est votre meilleur commercial.'}"</em> 💡`
     },
     {
       keys: ['expérience','poste','entreprise','emploi','waat','alternance','travaillé','travaille','carrière','cabinet','rénovation'],
@@ -47,7 +55,7 @@
     },
     {
       keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france','linkedin','linktree'],
-      answer: () => `Abilan répond vite et est à l'écoute de chaque projet 🤝<br><br>📧 <a href="mailto:Abilan.Balakumaran@gmail.com"><strong>Abilan.Balakumaran@gmail.com</strong></a><br>🔗 <a href="https://linktr.ee/abilan.motion" target="_blank"><strong>linktr.ee/abilan.motion</strong></a> — tous ses liens en un<br>💼 <a href="https://www.linkedin.com/in/abilan-balakumaran/" target="_blank"><strong>LinkedIn</strong></a> — 1 123 abonnés<br><br>Il est <strong>mobile en Île-de-France</strong>, disponible en alternance ou en freelance.<br><br>💡 <em>Un projet créatif ou digital en tête ? Écrivez-lui, il sera ravi d'en discuter !</em>`
+      answer: () => `${NOM} répond vite et est à l'écoute de chaque projet 🤝<br><br>📧 <a href="mailto:${EMAIL}"><strong>${EMAIL}</strong></a><br>🔗 <a href="${LINKTREE}" target="_blank"><strong>${LINKTREE.replace('https://','')}</strong></a> — tous ses liens en un<br>💼 <a href="${LINKEDIN}" target="_blank"><strong>LinkedIn</strong></a> — 1 123 abonnés<br><br>Il est <strong>${CV.localisation || 'mobile en Île-de-France'}</strong>, disponible en ${CV.disponibilite || 'alternance & freelance'}.<br><br>💡 <em>Un projet créatif ou digital en tête ? Écrivez-lui, il sera ravi d'en discuter !</em>`
     },
     {
       keys: ['réseau','instagram','behance','social','suivre','communauté','actif','créateur','publie','poste'],
