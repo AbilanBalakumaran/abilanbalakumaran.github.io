@@ -1,5 +1,5 @@
-/* ═══════════════════════════════════════════════════
-   Akino — Chatbot Assistant
+﻿/* ═══════════════════════════════════════════════════
+   Akino : Chatbot Assistant
    Commercial virtuel d'Abilan Balakumaran
 ═══════════════════════════════════════════════════ */
 (function () {
@@ -11,7 +11,7 @@
   const KB = [
     {
       keys: ['bonjour','salut','hello','coucou','bonsoir','hey','hi'],
-      answer: () => `Bonjour ! 👋 Ravi de vous accueillir sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant — posez-moi n'importe quelle question sur son profil, ses services ou ses outils. Je suis là pour vous aider ! 😊`
+      answer: () => `Bonjour ! 👋 Ravi de vous accueillir sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant ! Posez-moi n'importe quelle question sur son profil, ses services ou ses outils. Je suis là pour vous aider ! 😊`
     },
     {
       keys: ['qui','profil','présent','abilan','c\'est qui','parle moi','tell me','about'],
@@ -19,7 +19,7 @@
     },
     {
       keys: ['compétence','logiciel','skill','maîtrise','technologie','sait','capable','outil','stack','after effects','premiere','illustrator','photoshop'],
-      answer: () => `Voici les compétences d'Abilan :<br><br>🎬 <strong>Vidéo & Motion</strong> — After Effects, Premiere Pro, DaVinci Resolve<br>🎨 <strong>Design</strong> — Illustrator, Photoshop, InDesign<br>💻 <strong>Web</strong> — HTML/CSS/JS, WordPress, UI/UX<br>📱 <strong>Digital</strong> — Stratégie réseaux, Community Management`
+      answer: () => `Voici les compétences d'Abilan :<br><br>🎬 <strong>Vidéo & Motion</strong> : After Effects, Premiere Pro, DaVinci Resolve<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign<br>💻 <strong>Web</strong> : HTML/CSS/JS, WordPress, UI/UX<br>📱 <strong>Digital</strong> : Stratégie réseaux, Community Management`
     },
     {
       keys: ['service','propose','offre','prestation','travail','mission','commande','tarif','prix','devis','aide','faire'],
@@ -31,11 +31,11 @@
     },
     {
       keys: ['réseau','instagram','youtube','behance','social','suivre','lien','communauté'],
-      answer: () => `Retrouvez Abilan sur ses réseaux :<br><br>📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank">Instagram — @abilan_motion</a><br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank">YouTube — @sukiamv</a><br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance — AbilanBalakumaran</a><br><br>Abonnez-vous pour suivre ses créations ! ✨`
+      answer: () => `Retrouvez Abilan sur ses réseaux :<br><br>📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank">Instagram : @abilan_motion</a><br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank">YouTube : @sukiamv</a><br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance : AbilanBalakumaran</a><br><br>Abonnez-vous pour suivre ses créations ! ✨`
     },
     {
       keys: ['lab','outil','gratuit','fonctionnalité','feature','transcription','filigrane','extender','image'],
-      answer: () => `Le Lab propose <strong>3 outils 100% gratuits</strong> :<br><br>🎙️ <a href="/abilanlab/transcription/"><strong>Transcription Audio</strong></a> — Audio/vidéo en texte, multilingue<br>🖼️ <a href="/abilanlab/filigrane-remover/"><strong>Filigrane Remover</strong></a> — Supprime les filigranes<br>✨ <a href="/abilanlab/image-extender/"><strong>Image Extender</strong></a> — Étend vos images avec l'IA<br><br>Voulez-vous que je vous explique comment utiliser l'un d'eux ?`
+      answer: () => `Le Lab propose <strong>3 outils 100% gratuits</strong> :<br><br>🎙️ <a href="/abilanlab/transcription/"><strong>Transcription Audio</strong></a> : Audio/vidéo en texte, multilingue<br>🖼️ <a href="/abilanlab/filigrane-remover/"><strong>Filigrane Remover</strong></a> : Supprime les filigranes<br>✨ <a href="/abilanlab/image-extender/"><strong>Image Extender</strong></a> : Étend vos images avec l'IA<br><br>Voulez-vous que je vous explique comment utiliser l'un d'eux ?`
     },
     {
       keys: ['transcri','audio','whisper','sous-titre','srt','dicter','enregistrement','vocal'],
@@ -55,7 +55,7 @@
     },
     {
       keys: ['projet','réalisation','portfolio','travaux','exemple','création','client'],
-      answer: () => `Parmi les projets notables d'Abilan :<br><br>📱 <strong>Application mobile</strong> — Suivi de chantier BTP<br>🌐 <strong>Site web</strong> — <a href="https://etudereno.fr" target="_blank">etudereno.fr</a> (WordPress)<br>🎬 <strong>Motion Design</strong> — Animations & contenus réseaux<br>🎨 <strong>Identités visuelles</strong> — Logos, chartes graphiques<br><br>Tout sur <a href="https://abilanbalakumaran.github.io/" target="_blank">son portfolio</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> 🎨`
+      answer: () => `Parmi les projets notables d'Abilan :<br><br>📱 <strong>Application mobile</strong> : Suivi de chantier BTP<br>🌐 <strong>Site web</strong> : <a href="https://etudereno.fr" target="_blank">etudereno.fr</a> (WordPress)<br>🎬 <strong>Motion Design</strong> : Animations & contenus réseaux<br>🎨 <strong>Identités visuelles</strong> : Logos, chartes graphiques<br><br>Tout sur <a href="https://abilanbalakumaran.github.io/" target="_blank">son portfolio</a> et <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a> 🎨`
     },
     {
       keys: ['formation','étude','diplôme','école','université','cursus','parcours','bac','master'],
@@ -256,7 +256,7 @@
     renderSugg();
     if (!greeted) {
       greeted = true;
-      setTimeout(() => addMsg(`Bonjour ! 👋 Bienvenue sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant — je peux vous parler de son profil, ses services, ses outils ou vous aider à le contacter. Comment puis-je vous aider ? 😊`, 'b'), 350);
+      setTimeout(() => addMsg(`Bonjour ! 👋 Bienvenue sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant : je peux vous parler de son profil, ses services, ses outils ou vous aider à le contacter. Comment puis-je vous aider ? 😊`, 'b'), 350);
     }
     initScroll();
     setTimeout(() => inp().focus(), 400);
@@ -269,7 +269,7 @@
     setTimeout(() => { win.style.display = 'none'; }, 270);
   }
 
-  // Scroll isolé — hauteur fixe + preventDefault aux bords
+  // Scroll isolé : hauteur fixe + preventDefault aux bords
   let _scrollStartY = 0;
   function initScroll() {
     const m = document.getElementById('cb-msgs');
@@ -293,3 +293,4 @@
   win.querySelector('#cb-inp').addEventListener('keydown', e => { if (e.key === 'Enter') send(); });
 
 })();
+
