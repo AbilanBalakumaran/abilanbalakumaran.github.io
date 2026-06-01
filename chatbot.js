@@ -31,15 +31,8 @@
     },
     {
       keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte','vidéo animée','video animee'],
-      answer: () => `Abilan est spécialisé en <strong>Motion Design</strong> depuis 2016 🎬<br><br>Quelques créations directement depuis son portfolio :`
-        + grid([
-            vid('/images/motion/Coding%20animation.mp4','Coding Animation'),
-            vid('/images/motion/Hey%20Alexa.mp4','Hey Alexa'),
-            vid('/images/motion/basketball%20match.mp4','Basketball Match'),
-            vid('/images/motion/MascotteAnimation2d.mp4','Mascotte 2D'),
-          ])
-        + `<br>Vidéos pédagogiques chez WAAT (recrutement, recharge copropriété), rigging & lip-syncing de mascotte 2D/3D.<br><br>`
-        + chips([['YouTube @sukiamv','https://www.youtube.com/@sukiamv'],['Behance','https://www.behance.net/AbilanBalakumaran']])
+      answer: () => `Abilan crée du <strong>Motion Design</strong> depuis 2016 🎬<br><br>Ses réalisations :<br>🎬 Coding Animation, Hey Alexa, Basketball Match, Mascotte 2D<br>🏢 Chez WAAT : vidéos pédagogiques, onboarding, mascotte 2D/3D avec rigging et lip-syncing<br>🎮 Chez Clutch Rayn : overlays Twitch, tutos After Effects<br><br>Tout est visible ici :`
+        + chips([['Portfolio','https://abilanbalakumaran.github.io/'],['YouTube @sukiamv','https://www.youtube.com/@sukiamv'],['Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
       keys: ['youtube','yt','chaine','chaîne','suki','sukiamv','amv','tuto','tutoriel','abonné','abonne','vidéo youtube'],
@@ -103,12 +96,7 @@
     },
     {
       keys: ['projet','réalisation','portfolio','travaux','exemple','dernier','récent','behance','warren','vélo','tx coin','voir','montre','affiche','création','galerie','réalise','cree','construit'],
-      answer: () => `Voici quelques projets d'Abilan :`
-        + grid([
-            imgt('/images/website/etudereno-fr.png','etudereno.fr'),
-            imgt('/images/website/app/application-suivi-de-chantier-dashboardtestnew.png','App Suivi Chantier'),
-          ])
-        + `<br>📱 <strong>App Suivi de Chantier</strong> : dashboard BTP temps réel<br>🌐 <strong>etudereno.fr</strong> : site WordPress entreprise de rénovation<br>🎬 <strong>Motion Design WAAT</strong> : vidéos pédagogiques internes<br>+34 réalisations au total !<br><br>`
+      answer: () => `Voici les projets d'Abilan :<br><br>📱 <strong>App Suivi de Chantier</strong> : dashboard mobile temps réel pour le BTP<br>🌐 <strong>etudereno.fr</strong> : site WordPress pour une entreprise de rénovation<br>🎬 <strong>Motion Design WAAT</strong> : vidéos pédagogiques à fort impact<br>🪙 <strong>Tx Coin</strong> : vidéo motion design sur Behance<br>🎨 <strong>+34 réalisations</strong> en motion, print et digital<br><br>Tout est visible ici :`
         + chips([['Portfolio complet','https://abilanbalakumaran.github.io/'],['Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
