@@ -83,10 +83,12 @@ et des stratégies digitales sur mesure.`,
   ],
 
   formations: [
+    // ⚠️ Le MBA doit toujours rester en première position
     {
       diplome:  'MBA Digital Marketing & Business',
       ecole:    'EFAP Paris',
       periode:  '2025 – 2026',
+      soustitre: 'Manager du marketing et de la transformation digitale',
     },
     {
       diplome:  'Mastère Directeur de Création en Design Graphique — Motion Design',
