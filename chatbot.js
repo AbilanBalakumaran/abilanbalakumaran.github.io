@@ -89,9 +89,9 @@
   /* ── CSS ───────────────────────────────────────── */
   const css = document.createElement('style');
   css.textContent = `
-#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;border:none;background:none;padding:0;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;appearance:none;-webkit-appearance:none;box-shadow:none;outline:none;}
+#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;border:0;background:transparent;padding:0;margin:0;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:transparent;outline:0 !important;box-shadow:none !important;}
 #cb-btn:hover{transform:scale(1.12) translateY(-4px);}
-#cb-btn img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;filter:drop-shadow(0 4px 24px rgba(107,155,209,.55));}
+#cb-btn img{width:68px;height:68px;object-fit:cover;border-radius:50%;display:block;pointer-events:none;filter:drop-shadow(0 4px 24px rgba(107,155,209,.55));}
 .cb-ring{position:fixed;bottom:24px;right:24px;z-index:99989;width:68px;height:68px;border-radius:50%;border:2px solid rgba(107,155,209,.35);pointer-events:none;animation:cbRing 2.2s ease-out infinite;}
 .cb-ring2{animation-delay:.7s;}
 #cb-dot{position:fixed;bottom:82px;right:20px;z-index:99991;width:13px;height:13px;background:#6ba68d;border-radius:50%;border:2px solid #0f1823;box-shadow:0 0 8px rgba(107,166,141,.8);animation:cbDotPulse 2.5s ease-in-out infinite;pointer-events:none;}
@@ -105,7 +105,7 @@
 .cbh-status::before{content:'● ';font-size:8px;}
 .cbh-x{margin-left:auto;width:30px;height:30px;border:none;background:rgba(168,197,226,.07);border-radius:8px;cursor:pointer;color:rgba(168,197,226,.55);font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .cbh-x:hover{background:rgba(168,197,226,.14);color:#fff;}
-#cb-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(90,123,166,.25) transparent;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+#cb-msgs{flex:1;min-height:0;overflow-y:scroll;padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(90,123,166,.25) transparent;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;}
 #cb-msgs::-webkit-scrollbar{width:3px;}
 #cb-msgs::-webkit-scrollbar-thumb{background:rgba(90,123,166,.3);border-radius:3px;}
 .cbm{display:flex;gap:8px;animation:cbMsg .3s cubic-bezier(.22,1,.36,1) both;}
@@ -243,6 +243,7 @@
       greeted = true;
       setTimeout(() => addMsg(`Bonjour ! 👋 Bienvenue sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant — je peux vous parler de son profil, ses services, ses outils ou vous aider à le contacter. Comment puis-je vous aider ? 😊`, 'b'), 350);
     }
+    initScroll();
     setTimeout(() => inp().focus(), 400);
   }
 
@@ -253,9 +254,21 @@
     setTimeout(() => { win.style.display = 'none'; }, 270);
   }
 
-  // Bloquer le scroll de la page quand on scrolle dans le chat
-  win.addEventListener('wheel', e => { e.stopPropagation(); }, { passive: true });
-  win.addEventListener('touchmove', e => { e.stopPropagation(); }, { passive: true });
+  // Scroll isolé dans #cb-msgs — empêche la page de scroller
+  function initScroll() {
+    const m = document.getElementById('cb-msgs');
+    if (!m) return;
+    m.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
+    let startY = 0;
+    m.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+    m.addEventListener('touchmove', e => {
+      const dy = e.touches[0].clientY - startY;
+      const atTop    = m.scrollTop <= 0;
+      const atBottom = m.scrollTop + m.clientHeight >= m.scrollHeight - 1;
+      if ((atTop && dy > 0) || (atBottom && dy < 0)) e.preventDefault();
+      e.stopPropagation();
+    }, { passive: false });
+  }
 
   btn.onclick = () => open ? closeChat() : openChat();
   document.getElementById('cb-x').onclick = closeChat;
