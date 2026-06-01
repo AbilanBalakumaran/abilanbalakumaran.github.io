@@ -353,11 +353,6 @@
       setTimeout(() => addMsg(`Bonjour ! 👋 Bienvenue sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant : je peux vous parler de son profil, ses services, ses outils ou vous aider à le contacter. Comment puis-je vous aider ? 😊`, 'b'), 350);
     }
     initScroll();
-    // Lightbox sur clic média dans le chat
-    msgs().addEventListener('click', e => {
-      const el = e.target.closest('.cbm-b img, .cbm-b video');
-      if (el) openLightbox(el.src || el.currentSrc, el.tagName === 'VIDEO');
-    });
     setTimeout(() => inp().focus(), 400);
   }
 
