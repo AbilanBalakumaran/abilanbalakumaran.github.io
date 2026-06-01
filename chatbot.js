@@ -260,7 +260,7 @@
 
   function send() {
     const v = inp().value.trim();
-    if (!v) return;
+    if (!v || /^[-—–.…,;:!?]+$/.test(v)) return;
     addMsg(esc(v), 'u');
     inp().value = '';
     botReply(getAnswer(v));
