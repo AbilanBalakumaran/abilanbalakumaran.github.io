@@ -158,7 +158,7 @@
 .cbh-status::before{content:'● ';font-size:8px;}
 .cbh-x{margin-left:auto;width:30px;height:30px;border:none;background:rgba(168,197,226,.07);border-radius:8px;cursor:pointer;color:rgba(168,197,226,.55);font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .cbh-x:hover{background:rgba(168,197,226,.14);color:#fff;}
-#cb-msgs{height:285px;overflow-y:scroll;padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(90,123,166,.25) transparent;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;}
+#cb-msgs{height:285px;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;position:relative;padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(90,123,166,.25) transparent;}
 #cb-msgs::-webkit-scrollbar{width:3px;}
 #cb-msgs::-webkit-scrollbar-thumb{background:rgba(90,123,166,.3);border-radius:3px;}
 .cbm{display:flex;gap:8px;animation:cbMsg .3s cubic-bezier(.22,1,.36,1) both;}
@@ -368,21 +368,13 @@
     setTimeout(() => { win.style.display = 'none'; }, 270);
   }
 
-  // Scroll isolé : hauteur fixe + preventDefault aux bords
-  let _scrollStartY = 0;
+  // Scroll : uniquement CSS, pas de JS touchmove (bloque le scroll natif iOS)
   function initScroll() {
     const m = document.getElementById('cb-msgs');
     if (!m || m._cbScroll) return;
     m._cbScroll = true;
+    // Desktop uniquement : stopper la roue de souris
     m.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
-    m.addEventListener('touchstart', e => { _scrollStartY = e.touches[0].clientY; }, { passive: true });
-    m.addEventListener('touchmove', e => {
-      const dy  = e.touches[0].clientY - _scrollStartY;
-      const top = m.scrollTop <= 0 && dy > 0;
-      const bot = m.scrollTop + m.clientHeight >= m.scrollHeight - 1 && dy < 0;
-      if (top || bot) e.preventDefault();
-      e.stopPropagation();
-    }, { passive: false });
   }
 
   // Scanner la page au chargement
