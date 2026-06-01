@@ -168,29 +168,7 @@
   btn.innerHTML = `<img src="${AVATAR}" alt="Akino">`;
   document.body.appendChild(btn);
 
-  // Bulle de bienvenue
-  const bubble = document.createElement('div');
-  bubble.id = 'cb-bubble';
-  bubble.innerHTML = `Bonjour ! Je suis <strong>Akino</strong>, disponible pour vous aider ou répondre à vos questions 😊 <button id="cb-bubble-x" aria-label="Fermer">✕</button>`;
-  bubble.style.display = 'none';
-  document.body.appendChild(bubble);
-
-  // Afficher la bulle après 3s si le chat n'a pas été ouvert
-  let bubbleShown = false;
-  setTimeout(() => {
-    if (!open && !bubbleShown) {
-      bubbleShown = true;
-      bubble.style.display = 'flex';
-    }
-  }, 3000);
-
-  function hideBubble() {
-    bubble.classList.add('cb-bubble-hide');
-    setTimeout(() => { bubble.style.display = 'none'; }, 280);
-  }
-
-  bubble.addEventListener('click', () => { hideBubble(); openChat(); });
-  document.getElementById('cb-bubble-x').addEventListener('click', e => { e.stopPropagation(); hideBubble(); });
+  function hideBubble() {}
 
   const win = document.createElement('div');
   win.id = 'cb-win';
