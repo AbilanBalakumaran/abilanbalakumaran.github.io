@@ -31,8 +31,15 @@
     },
     {
       keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte','vidéo animée','video animee'],
-      answer: () => `Abilan crée du <strong>Motion Design</strong> depuis 2016 🎬<br><br>Ses réalisations :<br>🎬 Coding Animation, Hey Alexa, Basketball Match, Mascotte 2D<br>🏢 Chez WAAT : vidéos pédagogiques, onboarding, mascotte 2D/3D avec rigging et lip-syncing<br>🎮 Chez Clutch Rayn : overlays Twitch, tutos After Effects<br><br>Tout est visible ici :`
-        + chips([['Portfolio','https://abilanbalakumaran.github.io/'],['YouTube @sukiamv','https://www.youtube.com/@sukiamv'],['Behance','https://www.behance.net/AbilanBalakumaran']])
+      answer: () => `Abilan crée du <strong>Motion Design</strong> depuis 2016 🎬<br>Appuyez ▶ pour voir ses créations :`
+        + grid([
+            vid('/images/motion/Coding%20animation.mp4','Coding Animation'),
+            vid('/images/motion/Hey%20Alexa.mp4','Hey Alexa'),
+            vid('/images/motion/basketball%20match.mp4','Basketball Match'),
+            vid('/images/motion/MascotteAnimation2d.mp4','Mascotte 2D'),
+          ])
+        + `<br>Chez WAAT : vidéos pédagogiques, mascotte 2D/3D, rigging, lip-syncing.<br>`
+        + chips([['YouTube @sukiamv','https://www.youtube.com/@sukiamv'],['Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
       keys: ['youtube','yt','chaine','chaîne','suki','sukiamv','amv','tuto','tutoriel','abonné','abonne','vidéo youtube'],
@@ -280,7 +287,8 @@
   }
 
   // Helpers HTML médias
-  const vid  = (src, t='') => `<video src="${src}" title="${t}" autoplay loop muted playsinline></video>`;
+  // Vidéo optimisée mobile : pas d'autoplay, preload="none", playsinline bloque le fullscreen iOS
+  const vid = (src, t='') => `<video src="${src}" title="${t}" controls muted playsinline webkit-playsinline preload="none" style="background:#0a1018;max-height:120px;"></video>`;
   const imgt = (src, a='') => `<img src="${src}" alt="${a}" loading="lazy">`;
   const grid = items => `<div class="cb-grid">${items.join('')}</div>`;
   const chips = links => `<div class="cb-links">${links.map(([l,h])=>`<a href="${h}" target="_blank" class="cb-chip-link">${l}</a>`).join('')}</div>`;
