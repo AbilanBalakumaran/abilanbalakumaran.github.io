@@ -27,7 +27,7 @@
     },
     {
       keys: ['expérience','poste','entreprise','emploi','waat','alternance','travaillé','travaille','carrière','cabinet','rénovation'],
-      answer: () => `Abilan a un vrai parcours terrain, pas que de la théorie 💪<br><br>🏢 <strong>Chef de projet digital</strong> — Cabinet d'Étude pour la Rénovation (alternance, depuis 2025)<br>→ Pilote l'écosystème web complet (sites, landing pages, tunnels de vente), déploie l'identité de marque globale, lead la stratégie SEO local et e-réputation<br><br>🏢 <strong>Graphiste / Motion Designer</strong> — WAAT (alternance 2 ans, 2023–2025)<br>→ Production autonome de vidéos pédagogiques 2D/3D à fort impact, onboarding interne, direction artistique, intégration d'outils IA, sound design<br><br>🎬 <strong>Monteur / Motion Designer</strong> — Clutch Rayn Production (stage 8 semaines, 2022)<br>→ Overlays & animations Twitch sur-mesure, montage vidéo long format, affiches événementielles<br><br>➕ <strong>Depuis 2016</strong> : créateur YouTube @SukiAMV (VFX, stratégie de contenu)<br>➕ <strong>Depuis 2019</strong> : Instagram @abilan_motion (dessin et animation)<br>➕ <strong>2021</strong> : développement de son portfolio web sur-mesure`
+      answer: () => `Abilan a un vrai parcours terrain, pas que de la théorie 💪<br><br>🏢 <strong>Chef de projet digital — Cabinet d'Étude pour la Rénovation</strong> (alternance, depuis 2025)<br>• Pilotage de l'écosystème web : sites, landing pages, web apps, tunnels de vente<br>• Déploiement de l'identité de marque globale : DA, motion design, print, merchandising<br>• Lead de la stratégie notoriété, SEO local (Google Business Profile) et e-réputation<br><br>🏢 <strong>Graphiste / Motion Designer — WAAT</strong> (alternance 2 ans, 2023–2025)<br>• Vidéos pédagogiques 2D/3D à fort impact : compréhension produit, formats promotionnels<br>• Vidéos d'onboarding et communication interne pour engager les équipes<br>• Animation de mascotte 2D/3D : rigging, modélisation, lip-syncing, incrustation vidéo<br>• Direction artistique globale + intégration outils IA + sound design<br>• Charte graphique pour l'association AFOR<br>• Contenus multi-réseaux : LinkedIn, YouTube, Intranet, site internet<br><br>🎬 <strong>Monteur / Motion Designer — Clutch Rayn Production</strong> (stage 8 semaines, 2022)<br>• Overlays, animations et transitions Twitch sur-mesure<br>• Montage vidéo long format : streaming, récapitulatifs, dérushage<br>• Affiches et illustrations événementielles<br><br>➕ <strong>Depuis 2016</strong> : YouTube @SukiAMV — stratégie de contenu, VFX, communauté<br>➕ <strong>Depuis 2019</strong> : Instagram @abilan_motion — dessin et animation<br>➕ <strong>2021</strong> : développement de son portfolio web sur-mesure`
     },
     {
       keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte'],
@@ -121,13 +121,15 @@
     }
   ];
 
+  // Suggestions — utilisent un mot-clé direct pour trouver la bonne entrée KB
+  // Plus jamais de décalage d'index !
   const SUGGESTIONS = [
-    { label: '👤 Qui est Abilan ?',    key: 1 },
-    { label: '🛠️ Ses services',        key: 3 },
-    { label: '📧 Le contacter',        key: 4 },
-    { label: '⚙️ Les outils du Lab',   key: 6 },
-    { label: '📱 Installer l\'app',    key: 10 },
-    { label: '🌐 Ses réseaux',         key: 5 },
+    { label: '👤 Qui est Abilan ?',     trigger: 'qui est abilan' },
+    { label: '🛠️ Ses services',         trigger: 'service propose' },
+    { label: '💼 Son expérience',       trigger: 'expérience waat' },
+    { label: '📧 Le contacter',         trigger: 'contact email' },
+    { label: '⚙️ Les outils du Lab',    trigger: 'lab outil' },
+    { label: '🌐 Ses réseaux',          trigger: 'réseau instagram' },
   ];
 
   function getAnswer(input) {
@@ -137,7 +139,7 @@
         return entry.answer();
       }
     }
-    return `Merci pour votre message ! 😊 Je n'ai pas la réponse exacte, mais Abilan sera ravi de vous répondre directement.<br><br>📧 <a href="mailto:Abilan.Balakumaran@gmail.com"><strong>Abilan.Balakumaran@gmail.com</strong></a><br><br>En attendant, une de ces questions peut peut-être vous aider 👇`;
+    return `Merci pour votre message ! 😊 Je n'ai pas la réponse exacte, mais Abilan sera ravi de vous répondre directement.<br><br>📧 <a href="mailto:${EMAIL}"><strong>${EMAIL}</strong></a><br><br>En attendant, une de ces questions peut peut-être vous aider 👇`;
   }
 
   /* ── CSS ───────────────────────────────────────── */
@@ -328,7 +330,7 @@
       const b = document.createElement('button');
       b.className = 'cbc';
       b.textContent = sg.label;
-      b.onclick = () => { addMsg(esc(sg.label), 'u'); botReply(KB[sg.key].answer()); };
+      b.onclick = () => { addMsg(esc(sg.label), 'u'); botReply(getAnswer(sg.trigger)); };
       s.appendChild(b);
     });
   }
