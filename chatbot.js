@@ -295,11 +295,11 @@
     '/images/motion/can\'t%20see.mp4',
     '/images/motion/radio_1.mp4',
   ];
-  let _skillVidShown = false; // true une fois la première vidéo montrée dans la session
+  let _skillVidCount = 0; // 1 réponse sur 3 affiche une vidéo
 
   function skillVidHtml() {
-    if (_skillVidShown) return '';
-    _skillVidShown = true;
+    _skillVidCount++;
+    if (_skillVidCount % 3 !== 1) return ''; // affiche sur la 1re, 4e, 7e...
     const src = SKILL_VIDS[Math.floor(Math.random() * SKILL_VIDS.length)];
     return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.4);letter-spacing:.05em">▶ Une création d'Abilan</small>`
       + `<video src="${src}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;width:100%;border-radius:8px;margin-top:4px;max-height:130px;object-fit:cover;"></video>`;
@@ -385,7 +385,7 @@
 
   function closeChat() {
     open = false;
-    _skillVidShown = false; // reset pour la prochaine ouverture
+    _skillVidCount = 0; // reset pour la prochaine ouverture
     win.classList.remove('cb-in');
     win.classList.add('cb-out');
     setTimeout(() => { win.style.display = 'none'; }, 270);
