@@ -334,7 +334,7 @@
     // Pioche une vidéo YouTube aléatoire du catalogue carrousel
     const v = YT_CAT[Math.floor(Math.random() * YT_CAT.length)];
     return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.35);letter-spacing:.05em">▶ Une production d'Abilan</small>`
-      + ytCard(v.id, v.title, v.desc, v.ctx)
+      + ytCard(v.id, v.title)
       + chips([['🎬 Voir toutes les vidéos','/#section-videos']]);
   }
 
@@ -382,7 +382,7 @@
   function videoBlock(input) {
     _vidBlockCount++;
     const vids = selectYtVids(input, 3);
-    let html = vids.map(v => ytCard(v.id, v.title, v.desc, v.ctx)).join('');
+    let html = vids.map(v => ytCard(v.id, v.title)).join('');
     // Toutes les 4 demandes → ajoute une vidéo de galerie locale
     if (_vidBlockCount % 4 === 0) {
       const gv = GALLERY_VIDS[(_vidBlockCount / 4 - 1) % GALLERY_VIDS.length];
@@ -393,12 +393,10 @@
   }
 
   // YouTube card — thumbnail cliquable → iframe lecture dans le chat
-  function ytCard(id, title, desc, ctx) {
+  function ytCard(id, title) {
     const thumb = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
     const cid = 'cbyt_' + id.replace(/[^a-zA-Z0-9]/g,'');
-    const ctxHtml = ctx ? `<span class="cb-yt-ctx">${ctx}</span>` : '';
     return `<div class="cb-yt-card" id="${cid}">
-      ${ctxHtml}
       <div class="cb-yt-thumb" onclick="window._cbYtPlay('${cid}','${id}')">
         <img src="${thumb}" alt="${title}" loading="lazy">
         <div class="cb-yt-play"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="rgba(255,0,0,.85)"/><polygon points="14,11 28,18 14,25" fill="white"/></svg></div>
