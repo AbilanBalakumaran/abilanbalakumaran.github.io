@@ -39,19 +39,21 @@
             vid('/images/motion/MascotteAnimation2d.mp4','Mascotte 2D'),
           ])
         + `<br>Chez WAAT : vidéos pédagogiques, mascotte 2D/3D, rigging, lip-syncing.<br>`
-        + chips([['YouTube @sukiamv','https://www.youtube.com/@sukiamv'],['Behance','https://www.behance.net/AbilanBalakumaran']])
+        + chips([['🎬 Voir toutes les vidéos','/#section-videos'],['🖼️ Galerie complète','/#section-galerie'],['YouTube @sukiamv','https://www.youtube.com/@sukiamv'],['Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
       keys: ['youtube','yt','chaine','chaîne','suki','sukiamv','amv','tuto','tutoriel','abonné','abonne','vidéo youtube'],
       answer: () => `Sur <a href="https://www.youtube.com/@sukiamv" target="_blank"><strong>YouTube @sukiamv</strong></a>, Abilan publie depuis <strong>2016</strong> 🎬<br><br>Deux types de contenu :<br>🎌 <strong>AMV (Anime Music Videos)</strong> : montages créatifs sur des musiques<br>🎓 <strong>Tutoriels After Effects</strong> :<br>&nbsp;&nbsp;• Smooth Zoom In & Out Tutorial<br>&nbsp;&nbsp;• Smooth 3D Camera Movements with 2D Text<br>&nbsp;&nbsp;• Hardcore Twitch Shake Tutorial (sans plugin !)<br><br>Il gère tout de A à Z : SEO YouTube, miniatures, sound design, montage avancé et effets visuels. Allez vous abonner ! ✨`
     },
     {
-      keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire','blender','sound design','figma','canva','anglais','wordpress','html','css','javascript','outil','connaissance'],
+      keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire','blender','sound design','figma','canva','anglais','wordpress','html','css','javascript','connaissance'],
       answer: () => `Ce qui rend Abilan rare, c'est qu'il maîtrise <strong>toute la chaîne créative et digitale</strong> en solo :<br><br>🎬 <strong>Motion & Vidéo</strong> : After Effects, Premiere Pro, DaVinci Resolve, Blender 3D, Adobe Audition<br>🎨 <strong>Design</strong> : Illustrator, Photoshop, InDesign, Figma, Canva<br>💻 <strong>Web & Dev</strong> : HTML, CSS, WordPress, Claude AI<br>📊 <strong>Marketing & Digital</strong> : Google Analytics ✅, Google Ads ✅, Prestashop ✅, SEO local, Google Business Profile<br>🤖 <strong>IA</strong> : génération de voix, extension d'images, automatisation créative<br>🌐 <strong>Langues</strong> : Français natif · Anglais B2<br><br>Du brief client jusqu'à la livraison : <strong>un seul interlocuteur, zéro dépendance externe</strong> 🎯` + skillVidHtml()
     },
     {
       keys: ['service','propose','offre','prestation','mission','commande','tarif','prix','devis','aider','comment abilan','logo','site web','graphisme','identité visuelle','identite visuelle','design graphique','seo','référencement','referencement','pub','publicité','publicite','communication','marque','brand','freelance','digital manager','tunnel','landing','vidéo','video','stratégie','strategie','community'],
-      answer: () => `Abilan maîtrise <strong>tout le spectre du digital créatif</strong> pour faire grandir votre marque :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>Vidéos explicatives, publicités, tutos, intros, animations 2D/3D, sound design. Il gère tout : script, illustration, animation, voix IA, montage. Résultat : vos messages passent en quelques secondes là où du texte échoue.<br><br>🎨 <strong>Identité visuelle & Design graphique</strong><br>Logo, charte graphique, flyers, bannières, supports print et digitaux. Une image qui inspire confiance au premier regard et reste dans les mémoires.<br><br>📱 <strong>Stratégie digitale & Community Management</strong><br>Gestion des réseaux, création de contenu, SEO YouTube, Google Analytics & Ads (certifié). Il transforme votre visibilité en clients réels.<br><br>💻 <strong>Développement web & Applications mobiles</strong><br>Sites WordPress, apps mobiles sur mesure, UI/UX design. Ce portfolio que vous visitez ? Il l'a codé entièrement lui-même.<br><br>Expérimenté chez <strong>Cabinet d'Étude pour la Rénovation</strong>, <strong>WAAT</strong> et <strong>Clutch Rayn Production</strong> — du vrai terrain, de vrais livrables.<br>📩 Un projet ? Contactez-le, il répond vite ! 🚀` + skillVidHtml()
+      answer: () => `Abilan maîtrise <strong>tout le spectre du digital créatif</strong> pour faire grandir votre marque :<br><br>🎬 <strong>Motion Design & Vidéo animée</strong><br>Vidéos explicatives, publicités, tutos, intros, animations 2D/3D, sound design. Il gère tout : script, illustration, animation, voix IA, montage. Résultat : vos messages passent en quelques secondes là où du texte échoue.<br><br>🎨 <strong>Identité visuelle & Design graphique</strong><br>Logo, charte graphique, flyers, bannières, supports print et digitaux. Une image qui inspire confiance au premier regard et reste dans les mémoires.<br><br>📱 <strong>Stratégie digitale & Community Management</strong><br>Gestion des réseaux, création de contenu, SEO YouTube, Google Analytics & Ads (certifié). Il transforme votre visibilité en clients réels.<br><br>💻 <strong>Développement web & Applications mobiles</strong><br>Sites WordPress, apps mobiles sur mesure, UI/UX design. Ce portfolio que vous visitez ? Il l'a codé entièrement lui-même.<br><br>Expérimenté chez <strong>Cabinet d'Étude pour la Rénovation</strong>, <strong>WAAT</strong> et <strong>Clutch Rayn Production</strong> — du vrai terrain, de vrais livrables.<br>📩 Un projet ? Contactez-le, il répond vite ! 🚀`
+        + chips([['🛠️ Voir les services','/#section-services'],['🎬 Voir les vidéos','/#section-videos'],['🖼️ Voir la galerie','/#section-galerie']])
+        + skillVidHtml()
     },
     {
       keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france','linkedin','linktree'],
@@ -83,19 +85,23 @@
     },
     {
       keys: ['lab','outil','gratuit','fonctionnalité','feature'],
-      answer: () => `<strong>Abilan Lab</strong> est le terrain d'expérimentation d'<strong>${NOM}</strong> 🧪<br><br>C'est là qu'il démontre concrètement ses compétences en <strong>développement web</strong> et en <strong>intégration IA</strong> : quand un outil lui fait gagner du temps, il le code, le peaufine et le publie gratuitement.<br><br>3 outils disponibles :<br>🎙️ <a href="/abilanlab/transcription/"><strong>Transcription Audio</strong></a> — audio et vidéo en texte, multilingue<br>🖼️ <a href="/abilanlab/filigrane-remover/"><strong>Filigrane Remover</strong></a> — supprime les filigranes (Canva, Shutterstock...)<br>✨ <a href="/abilanlab/image-extender/"><strong>Image Extender</strong></a> — étend vos images avec l'IA<br><br>Ces outils montrent qu'Abilan ne fait pas que du design : il <strong>code et déploie</strong> des produits digitaux fonctionnels. Voulez-vous en savoir plus sur l'un d'eux ?`
+      answer: () => `Le <strong>Lab</strong> met à disposition <strong>3 outils gratuits</strong> 🧪<br><br>🎙️ <strong>Transcription Audio</strong><br>Convertit vos fichiers audio et vidéo en texte. Compatible YouTube, TikTok, Instagram, Twitter/X. Export TXT, JSON ou SRT.<br><br>🖼️ <strong>Filigrane Remover</strong><br>Supprime automatiquement les filigranes (Canva, Shutterstock, Adobe Stock). Détection auto ou sélection manuelle.<br><br>✨ <strong>Image Extender</strong><br>Étend vos images avec l'IA en mode rapide ou réaliste. Idéal pour recadrer vos visuels sans perte de qualité.<br><br>Quel outil voulez-vous utiliser ?`
+        + chips([['🎙️ Transcription','/abilanlab/transcription/'],['🖼️ Filigrane Remover','/abilanlab/filigrane-remover/'],['✨ Image Extender','/abilanlab/image-extender/']])
     },
     {
       keys: ['transcri','audio','whisper','sous-titre','srt','dicter','enregistrement','vocal'],
       answer: () => `Comment utiliser la <strong>Transcription Audio</strong> :<br><br>1️⃣ Choisissez <em>Fichier local</em> ou <em>URL vidéo</em><br>2️⃣ Paramétrez la vitesse, la langue et le nombre d'intervenants<br>3️⃣ Cliquez sur <em>"Lancer la transcription"</em><br>4️⃣ Exportez en TXT, JSON ou SRT<br><br>Compatible YouTube, Instagram, TikTok, Twitter/X. Formats : MP3, MP4, WAV, M4A 🚀`
+        + chips([['🎙️ Ouvrir la Transcription','/abilanlab/transcription/'],['← Tous les outils','/abilanlab/']])
     },
     {
       keys: ['filigrane','watermark','supprimer','enlever','efface'],
       answer: () => `Comment utiliser le <strong>Filigrane Remover</strong> :<br><br>1️⃣ Importez votre image (PNG, JPG, WEBP)<br>2️⃣ Détection automatique ou sélection manuelle<br>3️⃣ L'IA supprime et reconstruit la zone ✨<br>4️⃣ Téléchargez le résultat<br><br>Optimisé pour Canva, Shutterstock et Adobe Stock. 100% gratuit 🔒`
+        + chips([['🖼️ Ouvrir le Filigrane Remover','/abilanlab/filigrane-remover/'],['← Tous les outils','/abilanlab/']])
     },
     {
       keys: ['extend','étend','agrandir','outpaint','zoom out'],
       answer: () => `Comment utiliser l'<strong>Image Extender</strong> :<br><br>1️⃣ Importez votre image (PNG, JPG, WEBP)<br>2️⃣ Choisissez la direction d'extension<br>3️⃣ Mode rapide ou IA réaliste<br>4️⃣ Téléchargez l'image étendue<br><br>Parfait pour recadrer ou agrandir vos visuels ! 🖼️`
+        + chips([['✨ Ouvrir l\'Image Extender','/abilanlab/image-extender/'],['← Tous les outils','/abilanlab/']])
     },
     {
       keys: ['installer','install','pwa','application','appli','écran d\'accueil','télécharger'],
@@ -103,8 +109,8 @@
     },
     {
       keys: ['projet','réalisation','portfolio','travaux','exemple','dernier','récent','behance','warren','vélo','tx coin','voir','montre','affiche','création','galerie','réalise','cree','construit'],
-      answer: () => `Voici les projets d'Abilan :<br><br>📱 <strong>App Suivi de Chantier</strong> : dashboard mobile temps réel pour le BTP<br>🌐 <strong>etudereno.fr</strong> : site WordPress pour une entreprise de rénovation<br>🎬 <strong>Motion Design WAAT</strong> : vidéos pédagogiques à fort impact<br>🪙 <strong>Tx Coin</strong> : vidéo motion design sur Behance<br>🎨 <strong>+34 réalisations</strong> en motion, print et digital<br><br>Tout est visible ici :`
-        + chips([['Portfolio complet','https://abilanbalakumaran.github.io/'],['Behance','https://www.behance.net/AbilanBalakumaran']])
+      answer: () => `Voici les projets d'Abilan :<br><br>📱 <strong>App Suivi de Chantier</strong> : dashboard mobile temps réel pour le BTP<br>🌐 <strong>etudereno.fr</strong> : site WordPress pour une entreprise de rénovation<br>🎬 <strong>Motion Design WAAT</strong> : vidéos pédagogiques à fort impact<br>🪙 <strong>Tx Coin</strong> : vidéo motion design sur Behance<br>🎨 <strong>+34 réalisations</strong> en motion, print et digital<br><br>Explorez directement :`
+        + chips([['📱 Projets web & app','/#section-projets'],['🎬 Vidéos motion','/#section-videos'],['🖼️ Galerie complète','/#section-galerie'],['Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
       keys: ['formation','étude','diplôme','école','fonderie','mastère','mba','upec','icademie','bachelor','dut','parcours','cursus','bac','efap'],
@@ -116,18 +122,19 @@
     }
   ];
 
-  // Suggestions — utilisent un mot-clé direct pour trouver la bonne entrée KB
-  // Plus jamais de décalage d'index !
-  const SUGGESTIONS = [
+  // Pool de suggestions — 4 affichées à la fois, rotatives via bouton 🔄
+  const SUGG_POOL = [
     { label: '👤 Qui est Abilan ?',     trigger: 'qui est abilan' },
     { label: '🛠️ Ses services',         trigger: 'service propose' },
     { label: '💼 Son expérience',       trigger: 'expérience waat' },
     { label: '🎓 Sa formation',         trigger: 'formation diplôme' },
     { label: '🔧 Ses compétences',      trigger: 'compétence logiciel' },
     { label: '📧 Le contacter',         trigger: 'contact email' },
-    { label: '⚙️ Les outils du Lab',    trigger: 'lab outil' },
+    { label: '⚙️ Les outils du Lab',    trigger: 'lab gratuit' },
     { label: '🌐 Ses réseaux',          trigger: 'réseau instagram' },
+    { label: '📱 Installer l\'app',     trigger: 'installer pwa' },
   ];
+  let _suggOffset = 0;
 
   function getAnswer(input) {
     const low = input.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -143,9 +150,9 @@
   const css = document.createElement('style');
   css.textContent = `
 /* bouton : div pur, zéro style navigateur */
-#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;}
+#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:transparent!important;user-select:none;-webkit-user-select:none;outline:none!important;background:none!important;border:none!important;box-shadow:none!important;-webkit-appearance:none;appearance:none;}
+#cb-btn img{width:68px;height:68px;object-fit:cover;border-radius:50%;display:block;pointer-events:none;filter:drop-shadow(0 4px 24px rgba(107,155,209,.55));background:transparent;outline:none;border:none;}
 #cb-btn:hover{transform:scale(1.12) translateY(-4px);}
-#cb-btn img{width:68px;height:68px;object-fit:cover;border-radius:50%;display:block;pointer-events:none;filter:drop-shadow(0 4px 24px rgba(107,155,209,.55));}
 .cb-ring{position:fixed;bottom:24px;right:24px;z-index:99989;width:68px;height:68px;border-radius:50%;border:2px solid rgba(107,155,209,.35);pointer-events:none;animation:cbRing 2.2s ease-out infinite;}
 .cb-ring2{animation-delay:.7s;}
 #cb-dot{position:fixed;bottom:82px;right:20px;z-index:99991;width:13px;height:13px;background:#6ba68d;border-radius:50%;border:2px solid #0f1823;box-shadow:0 0 8px rgba(107,166,141,.8);animation:cbDotPulse 2.5s ease-in-out infinite;pointer-events:none;}
@@ -210,6 +217,12 @@
 @keyframes cbdd{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
 @keyframes cbBubIn{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes cbBubOut{to{opacity:0;transform:translateY(6px) scale(.95)}}
+.cb-sugg-rot{padding:5px 8px;font-size:13px;flex-shrink:0;}
+#cb-fs{display:none;width:30px;height:30px;border:none;background:rgba(168,197,226,.07);border-radius:8px;cursor:pointer;color:rgba(168,197,226,.55);font-size:15px;align-items:center;justify-content:center;transition:all .2s;margin-left:4px;flex-shrink:0;}
+#cb-fs:hover{background:rgba(168,197,226,.14);color:#fff;}
+@media(max-width:768px){#cb-fs{display:flex;}}
+#cb-win.cb-fullscreen{bottom:0!important;right:0!important;left:0!important;top:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;border-radius:0!important;max-width:none!important;}
+#cb-win.cb-fullscreen #cb-msgs{height:calc(100dvh - 200px)!important;}
 @media(max-width:400px){#cb-win{width:calc(100vw - 16px);right:8px;bottom:96px;}#cb-bubble{right:84px;max-width:180px;}}
 `;
   document.head.appendChild(css);
@@ -245,6 +258,7 @@
     <div class="cbh-name">Akino</div>
     <div class="cbh-status">En ligne</div>
   </div>
+  <button id="cb-fs" title="Plein écran">⤢</button>
   <button class="cbh-x" id="cb-x">✕</button>
 </div>
 <div id="cb-msgs"></div>
@@ -302,7 +316,8 @@
     if (_skillVidCount % 3 !== 1) return ''; // affiche sur la 1re, 4e, 7e...
     const src = SKILL_VIDS[Math.floor(Math.random() * SKILL_VIDS.length)];
     return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.4);letter-spacing:.05em">▶ Une création d'Abilan</small>`
-      + `<video src="${src}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;width:100%;border-radius:8px;margin-top:4px;max-height:130px;object-fit:cover;"></video>`;
+      + `<video src="${src}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;width:100%;border-radius:8px;margin-top:4px;max-height:130px;object-fit:cover;"></video>`
+      + chips([['🎬 Voir toutes les créations','/#section-videos'],['🖼️ Galerie complète','/#section-galerie']]);
   }
 
   // Helpers HTML médias
@@ -343,13 +358,22 @@
   function renderSugg() {
     const s = document.getElementById('cb-sugg');
     s.innerHTML = '';
-    SUGGESTIONS.forEach(sg => {
+    // bouton rotatif 🔄
+    const rot = document.createElement('button');
+    rot.className = 'cbc cb-sugg-rot';
+    rot.title = 'Autres suggestions';
+    rot.innerHTML = '🔄';
+    rot.onclick = () => { _suggOffset = (_suggOffset + 4) % SUGG_POOL.length; renderSugg(); };
+    s.appendChild(rot);
+    // 4 suggestions à partir de l'offset courant
+    for (let i = 0; i < 4; i++) {
+      const sg = SUGG_POOL[(_suggOffset + i) % SUGG_POOL.length];
       const b = document.createElement('button');
       b.className = 'cbc';
       b.textContent = sg.label;
       b.onclick = () => { addMsg(esc(sg.label), 'u'); botReply(getAnswer(sg.trigger)); };
       s.appendChild(b);
-    });
+    }
   }
 
   function botReply(html) {
@@ -434,6 +458,17 @@
   document.getElementById('cb-x').onclick = closeChat;
   document.getElementById('cb-go').onclick = send;
   win.querySelector('#cb-inp').addEventListener('keydown', e => { if (e.key === 'Enter') send(); });
+
+  // Bouton fullscreen mobile
+  let _fs = false;
+  const fsBtn = document.getElementById('cb-fs');
+  fsBtn.onclick = () => {
+    _fs = !_fs;
+    win.classList.toggle('cb-fullscreen', _fs);
+    fsBtn.innerHTML = _fs ? '⤡' : '⤢';
+    fsBtn.title = _fs ? 'Réduire' : 'Plein écran';
+    scroll();
+  };
 
 })();
 
