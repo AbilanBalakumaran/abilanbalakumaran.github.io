@@ -152,11 +152,19 @@
 /* reset global PWA : supprime le flash gris sur tous les éléments tactiles */
 *{-webkit-tap-highlight-color:rgba(0,0,0,0)!important;}
 /* bouton : div pur, zéro style navigateur */
-#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:rgba(0,0,0,0)!important;tap-highlight-color:rgba(0,0,0,0)!important;user-select:none;-webkit-user-select:none;outline:none!important;background:transparent!important;background-color:transparent!important;border:none!important;box-shadow:none!important;-webkit-appearance:none;appearance:none;overflow:visible;}
+#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:rgba(0,0,0,0)!important;tap-highlight-color:rgba(0,0,0,0)!important;user-select:none;-webkit-user-select:none;outline:none!important;background:transparent!important;background-color:transparent!important;border:none!important;box-shadow:none!important;-webkit-appearance:none;appearance:none;overflow:visible;clip-path:circle(34px at center);-webkit-clip-path:circle(34px at center);}
 #cb-btn::before,#cb-btn::after{display:none!important;content:none!important;}
 #cb-btn img{width:68px;height:68px;object-fit:cover;border-radius:50%;display:block;pointer-events:none;filter:drop-shadow(0 4px 24px rgba(107,155,209,.55));background:transparent;outline:none;border:none;}
 #cb-btn:hover{transform:scale(1.12) translateY(-4px);}
 #cb-btn:focus,#cb-btn:active,#cb-btn:focus-visible{outline:none!important;background:transparent!important;box-shadow:none!important;}
+/* bouton son sur les vidéos */
+.cb-vid-wrap{position:relative;display:block;width:100%;margin-top:8px;}
+.cb-vid-wrap video{width:100%;height:auto;object-fit:contain;border-radius:8px;display:block;pointer-events:none;}
+.cb-snd-btn{position:absolute;bottom:7px;right:7px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.6);border:none;cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;color:#fff;z-index:3;transition:background .2s;-webkit-tap-highlight-color:transparent;pointer-events:all;}
+.cb-snd-btn:hover{background:rgba(0,0,0,.85);}
+/* dans la grille */
+.cb-grid .cb-vid-wrap{margin-top:0;height:auto;}
+.cb-grid .cb-vid-wrap video{max-height:180px;background:#000;}
 .cb-ring{position:fixed;bottom:24px;right:24px;z-index:99989;width:68px;height:68px;border-radius:50%;border:2px solid rgba(107,155,209,.35);pointer-events:none;animation:cbRing 2.2s ease-out infinite;}
 .cb-ring2{animation-delay:.7s;}
 #cb-dot{position:fixed;bottom:82px;right:20px;z-index:99991;width:13px;height:13px;background:#6ba68d;border-radius:50%;border:2px solid #0f1823;box-shadow:0 0 8px rgba(107,166,141,.8);animation:cbDotPulse 2.5s ease-in-out infinite;pointer-events:none;}
@@ -322,13 +330,16 @@
     if (_skillVidCount % 3 !== 1) return ''; // affiche sur la 1re, 4e, 7e...
     const src = SKILL_VIDS[Math.floor(Math.random() * SKILL_VIDS.length)];
     return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.4);letter-spacing:.05em">▶ Une création d'Abilan</small>`
-      + `<video src="${src}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;width:100%;border-radius:8px;margin-top:4px;height:auto;object-fit:contain;"></video>`
+      + vid(src)
       + chips([['🎬 Voir toutes les créations','/#section-videos'],['🖼️ Galerie complète','/#section-galerie']]);
   }
 
   // Helpers HTML médias
-  // Vidéo GIF-like : autoplay+loop sans son, pointer-events:none bloque tout clic/fullscreen
-  const vid = (src, t='') => `<video src="${src}" title="${t}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"></video>`;
+  // Vidéo avec bouton son en overlay — muette par défaut, 1 seul son à la fois
+  function vid(src, t='') {
+    const id = 'cbv' + Math.random().toString(36).slice(2,7);
+    return `<div class="cb-vid-wrap"><video id="${id}" src="${src}" title="${t}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback"></video><button class="cb-snd-btn" onclick="window._cbSnd(this,'${id}')" title="Activer le son">🔇</button></div>`;
+  }
   const imgt = (src, a='') => `<img src="${src}" alt="${a}" loading="lazy">`;
   const grid = items => `<div class="cb-grid">${items.join('')}</div>`;
   const chips = links => `<div class="cb-links">${links.map(([l,h])=>`<a href="${h}" target="_blank" class="cb-chip-link">${l}</a>`).join('')}</div>`;
@@ -491,6 +502,22 @@
   } else {
     scanPage();
   }
+
+  // Gestion son vidéos : 1 seule vidéo avec son à la fois
+  window._cbSnd = function(btn, id) {
+    const target = document.getElementById(id);
+    if (!target) return;
+    const unmuting = target.muted;
+    // Mute toutes les vidéos du chat
+    document.querySelectorAll('#cb-msgs video').forEach(v => { v.muted = true; });
+    document.querySelectorAll('.cb-snd-btn').forEach(b => { b.textContent = '🔇'; b.title = 'Activer le son'; });
+    // Active/désactive le son de la vidéo ciblée
+    if (unmuting) {
+      target.muted = false;
+      btn.textContent = '🔊';
+      btn.title = 'Couper le son';
+    }
+  };
 
   btn.onclick = () => open ? closeChat() : openChat();
   btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') btn.onclick(); });
