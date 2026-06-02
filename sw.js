@@ -48,13 +48,13 @@ self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(cached => {
       const network = fetch(e.request).then(res => {
-        if (res && res.status === 200) {
-          caches.open(CACHE).then(c => c.put(e.request, res.clone()));
+        if (res && res.status === 200 && res.type !== 'opaque') {
+          caches.open(CACHE).then(c => c.put(e.request, res.clone())).catch(() => {});
         }
         return res;
-      }).catch(() => cached);
+      }).catch(() => cached || new Response('', { status: 408 }));
       return cached || network;
-    })
+    }).catch(() => caches.match(e.request))
   );
 });
 

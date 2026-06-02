@@ -150,9 +150,11 @@
   const css = document.createElement('style');
   css.textContent = `
 /* bouton : div pur, zéro style navigateur */
-#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:transparent!important;user-select:none;-webkit-user-select:none;outline:none!important;background:none!important;border:none!important;box-shadow:none!important;-webkit-appearance:none;appearance:none;}
+#cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:rgba(0,0,0,0)!important;tap-highlight-color:rgba(0,0,0,0)!important;user-select:none;-webkit-user-select:none;outline:none!important;background:transparent!important;background-color:transparent!important;border:none!important;box-shadow:none!important;-webkit-appearance:none;appearance:none;overflow:visible;}
+#cb-btn::before,#cb-btn::after{display:none!important;content:none!important;}
 #cb-btn img{width:68px;height:68px;object-fit:cover;border-radius:50%;display:block;pointer-events:none;filter:drop-shadow(0 4px 24px rgba(107,155,209,.55));background:transparent;outline:none;border:none;}
 #cb-btn:hover{transform:scale(1.12) translateY(-4px);}
+#cb-btn:focus,#cb-btn:active,#cb-btn:focus-visible{outline:none!important;background:transparent!important;box-shadow:none!important;}
 .cb-ring{position:fixed;bottom:24px;right:24px;z-index:99989;width:68px;height:68px;border-radius:50%;border:2px solid rgba(107,155,209,.35);pointer-events:none;animation:cbRing 2.2s ease-out infinite;}
 .cb-ring2{animation-delay:.7s;}
 #cb-dot{position:fixed;bottom:82px;right:20px;z-index:99991;width:13px;height:13px;background:#6ba68d;border-radius:50%;border:2px solid #0f1823;box-shadow:0 0 8px rgba(107,166,141,.8);animation:cbDotPulse 2.5s ease-in-out infinite;pointer-events:none;}
@@ -221,8 +223,9 @@
 #cb-fs{display:none;width:30px;height:30px;border:none;background:rgba(168,197,226,.07);border-radius:8px;cursor:pointer;color:rgba(168,197,226,.55);font-size:15px;align-items:center;justify-content:center;transition:all .2s;margin-left:4px;flex-shrink:0;}
 #cb-fs:hover{background:rgba(168,197,226,.14);color:#fff;}
 @media(max-width:768px){#cb-fs{display:flex;}}
-#cb-win.cb-fullscreen{bottom:0!important;right:0!important;left:0!important;top:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;border-radius:0!important;max-width:none!important;}
-#cb-win.cb-fullscreen #cb-msgs{height:calc(100dvh - 200px)!important;}
+#cb-win.cb-fullscreen{bottom:0!important;right:0!important;left:0!important;top:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;border-radius:0!important;max-width:none!important;z-index:999995!important;}
+#cb-win.cb-fullscreen #cb-msgs{height:calc(100dvh - 195px)!important;}
+#cb-win.cb-fullscreen #cb-fs{display:flex!important;background:rgba(255,100,100,.13);color:rgba(255,180,180,.8);}
 @media(max-width:400px){#cb-win{width:calc(100vw - 16px);right:8px;bottom:96px;}#cb-bubble{right:84px;max-width:180px;}}
 `;
   document.head.appendChild(css);
@@ -334,7 +337,28 @@
 
   function scroll() { const m = msgs(); m.scrollTop = m.scrollHeight; }
 
-  function addMsg(html, role) {
+  /* ── Historique persistant (localStorage) ─── */
+  const HIST_KEY = 'akino_history';
+  const HIST_MAX = 60;
+
+  function saveMsg(html, role) {
+    try {
+      const h = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+      h.push({ html, role });
+      if (h.length > HIST_MAX) h.splice(0, h.length - HIST_MAX);
+      localStorage.setItem(HIST_KEY, JSON.stringify(h));
+    } catch(e) {}
+  }
+
+  function loadHistory() {
+    try {
+      const h = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+      h.forEach(({ html, role }) => addMsg(html, role, true));
+      return h.length > 0;
+    } catch(e) { return false; }
+  }
+
+  function addMsg(html, role, noSave) {
     const d = document.createElement('div');
     d.className = `cbm cb${role}`;
     d.innerHTML = role === 'b'
@@ -342,6 +366,7 @@
       : `<div class="cbm-b">${html}</div>`;
     msgs().appendChild(d);
     scroll();
+    if (!noSave) saveMsg(html, role);
   }
 
   function showTyping() {
@@ -401,7 +426,10 @@
     renderSugg();
     if (!greeted) {
       greeted = true;
-      setTimeout(() => addMsg(`Bonjour ! 👋 Bienvenue sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant : je peux vous parler de son profil, ses services, ses outils ou vous aider à le contacter. Comment puis-je vous aider ? 😊`, 'b'), 350);
+      const hasHistory = loadHistory();
+      if (!hasHistory) {
+        setTimeout(() => addMsg(`Bonjour ! 👋 Bienvenue sur le portfolio d'<strong>Abilan Balakumaran</strong>.<br>Je suis son assistant : je peux vous parler de son profil, ses services, ses outils ou vous aider à le contacter. Comment puis-je vous aider ? 😊`, 'b'), 350);
+      }
     }
     initScroll();
     setTimeout(() => inp().focus(), 400);
@@ -462,13 +490,15 @@
   // Bouton fullscreen mobile
   let _fs = false;
   const fsBtn = document.getElementById('cb-fs');
-  fsBtn.onclick = () => {
-    _fs = !_fs;
+  function setFs(on) {
+    _fs = on;
     win.classList.toggle('cb-fullscreen', _fs);
     fsBtn.innerHTML = _fs ? '⤡' : '⤢';
     fsBtn.title = _fs ? 'Réduire' : 'Plein écran';
     scroll();
-  };
+  }
+  fsBtn.onclick = () => setFs(!_fs);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && _fs) setFs(false); });
 
 })();
 
