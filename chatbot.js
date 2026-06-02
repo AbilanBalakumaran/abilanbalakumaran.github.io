@@ -149,6 +149,8 @@
   /* ── CSS ───────────────────────────────────────── */
   const css = document.createElement('style');
   css.textContent = `
+/* reset global PWA : supprime le flash gris sur tous les éléments tactiles */
+*{-webkit-tap-highlight-color:rgba(0,0,0,0)!important;}
 /* bouton : div pur, zéro style navigateur */
 #cb-btn{position:fixed;bottom:24px;right:24px;z-index:99990;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:cbFloat 3s ease-in-out infinite;transition:transform .2s;-webkit-tap-highlight-color:rgba(0,0,0,0)!important;tap-highlight-color:rgba(0,0,0,0)!important;user-select:none;-webkit-user-select:none;outline:none!important;background:transparent!important;background-color:transparent!important;border:none!important;box-shadow:none!important;-webkit-appearance:none;appearance:none;overflow:visible;}
 #cb-btn::before,#cb-btn::after{display:none!important;content:none!important;}
@@ -199,10 +201,11 @@
 #cb-go{width:36px;height:36px;border:none;background:linear-gradient(135deg,#2d4263,#5a7ba6);border-radius:10px;cursor:pointer;color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s,box-shadow .2s;}
 #cb-go:hover{transform:scale(1.06);box-shadow:0 4px 16px rgba(45,66,99,.45);}
 /* ── Médias dans les bulles ── */
-.cbm-b img{max-width:100%;border-radius:8px;margin-top:8px;display:block;cursor:pointer;}
-.cbm-b video{max-width:100%;border-radius:8px;margin-top:8px;display:block;max-height:150px;object-fit:cover;cursor:pointer;}
+.cbm-b img{max-width:100%;border-radius:8px;margin-top:8px;display:block;cursor:pointer;height:auto;}
+.cbm-b video{max-width:100%;width:100%;border-radius:8px;margin-top:8px;display:block;height:auto;object-fit:contain;cursor:pointer;}
 .cb-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px;}
-.cb-grid img,.cb-grid video{width:100%;height:85px;object-fit:cover;border-radius:7px;display:block;cursor:pointer;transition:transform .2s;}
+.cb-grid img{width:100%;height:85px;object-fit:cover;border-radius:7px;display:block;cursor:pointer;transition:transform .2s;}
+.cb-grid video{width:100%;height:auto;max-height:180px;object-fit:contain;border-radius:7px;display:block;cursor:pointer;transition:transform .2s;background:#000;}
 .cb-grid img:hover,.cb-grid video:hover{transform:scale(1.03);}
 .cb-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
 .cb-chip-link{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(168,197,226,.07);border:1px solid rgba(168,197,226,.14);border-radius:100px;font-size:11px;color:#a8c5e2;text-decoration:none;transition:background .2s;white-space:nowrap;}
@@ -319,7 +322,7 @@
     if (_skillVidCount % 3 !== 1) return ''; // affiche sur la 1re, 4e, 7e...
     const src = SKILL_VIDS[Math.floor(Math.random() * SKILL_VIDS.length)];
     return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.4);letter-spacing:.05em">▶ Une création d'Abilan</small>`
-      + `<video src="${src}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;width:100%;border-radius:8px;margin-top:4px;max-height:130px;object-fit:cover;"></video>`
+      + `<video src="${src}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;width:100%;border-radius:8px;margin-top:4px;height:auto;object-fit:contain;"></video>`
       + chips([['🎬 Voir toutes les créations','/#section-videos'],['🖼️ Galerie complète','/#section-galerie']]);
   }
 
