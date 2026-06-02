@@ -324,24 +324,17 @@
     document.body.appendChild(lb);
   }
 
-  // ── Vidéo auto à la première réponse compétences ───
-  const SKILL_VIDS = [
-    '/images/motion/Coding%20animation.mp4',
-    '/images/motion/Hey%20Alexa.mp4',
-    '/images/motion/basketball%20match.mp4',
-    '/images/motion/MascotteAnimation2d.mp4',
-    '/images/motion/can\'t%20see.mp4',
-    '/images/motion/radio_1.mp4',
-  ];
-  let _skillVidCount = 0; // 1 réponse sur 3 affiche une vidéo
+  // ── Vidéo YouTube auto dans les réponses générales (1 sur 3) ───
+  let _skillVidCount = 0;
 
   function skillVidHtml() {
     _skillVidCount++;
-    if (_skillVidCount % 3 !== 1) return ''; // affiche sur la 1re, 4e, 7e...
-    const src = SKILL_VIDS[Math.floor(Math.random() * SKILL_VIDS.length)];
-    return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.4);letter-spacing:.05em">▶ Une création d'Abilan</small>`
-      + vid(src)
-      + chips([['🎬 Voir toutes les créations','/#section-videos'],['🖼️ Galerie complète','/#section-galerie']]);
+    if (_skillVidCount % 3 !== 1) return '';
+    // Pioche une vidéo YouTube aléatoire du catalogue carrousel
+    const v = YT_CAT[Math.floor(Math.random() * YT_CAT.length)];
+    return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.35);letter-spacing:.05em">▶ Une production d'Abilan</small>`
+      + ytCard(v.id, v.title, v.desc)
+      + chips([['🎬 Voir toutes les vidéos','/#section-videos']]);
   }
 
   // ── Icônes SVG son (définies avant vid() pour éviter la TDZ) ──
