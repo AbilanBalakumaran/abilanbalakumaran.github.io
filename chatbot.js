@@ -405,7 +405,6 @@
       </div>
       <div class="cb-yt-info">
         <span class="cb-yt-title">${title}</span>
-        <span class="cb-yt-desc">${desc}</span>
         <a href="https://www.youtube.com/watch?v=${id}" class="cb-yt-ext">↗ Ouvrir sur YouTube</a>
       </div>
     </div>`;
