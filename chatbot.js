@@ -31,9 +31,9 @@
     },
     {
       keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte','vidéo animée','video animee'],
-      answer: () => `Abilan crée du <strong>Motion Design</strong> depuis 2016 🎬<br>Cliquez ▶ pour regarder directement :`
-        + YT_CAT.slice(0,3).map(v => ytCard(v.id, v.title, v.desc)).join('')
-        + `<br><small style="color:rgba(168,197,226,.45);font-size:10px">Réalisées dans le cadre professionnel · After Effects · Premiere Pro</small>`
+      answer: (input) => `Abilan crée du <strong>Motion Design</strong> depuis 2016 🎬<br>Cliquez ▶ pour regarder directement :`
+        + videoBlock(input)
+        + `<br><small style="color:rgba(168,197,226,.4);font-size:10px">After Effects · Premiere Pro · Blender · DaVinci</small>`
         + chips([['🎬 Voir toutes les vidéos','/#section-videos'],['▶ Chaîne YouTube','https://www.youtube.com/@sukiamv'],['🎨 Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
@@ -135,7 +135,7 @@
     const low = input.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
     for (const entry of KB) {
       if (entry.keys.some(k => low.includes(k.normalize('NFD').replace(/[̀-ͯ]/g, '')))) {
-        return entry.answer();
+        return entry.answer(input);
       }
     }
     return `Merci pour votre message ! 😊 Je n'ai pas la réponse exacte, mais Abilan sera ravi de vous répondre directement.<br><br>📧 <a href="mailto:${EMAIL}"><strong>${EMAIL}</strong></a><br><br>En attendant, une de ces questions peut peut-être vous aider 👇`;
@@ -348,17 +348,55 @@
   const ICO_MUTE = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M17 7l-1.4 1.4 2.1 2.1-2.1 2.1L17 14l2.1-2.1 2.1 2.1 1.4-1.4-2.1-2.1 2.1-2.1L21.1 7 19 9.1 17 7z"/></svg>`;
   const ICO_SOUND = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
 
-  // ── Catalogue YouTube — vidéos carrousel du portfolio ──
+  // ── Catalogue YouTube avec tags thématiques ──
   const YT_CAT = [
-    { id: '-O1Cyivoj_Y', title: 'Animation pédagogique WAAT',        desc: 'Vidéo explicative produit · After Effects · WAAT' },
-    { id: 'SsdlF6K7aWY', title: 'Motion Design produit WAAT',        desc: 'Format promotionnel · animation 2D · WAAT' },
-    { id: 'fqwBNsTpmFs', title: 'Animation corporate',               desc: 'Vidéo institutionnelle · motion design · portfolio' },
-    { id: 'X0uaPlkVRUE', title: 'Animation 2D After Effects',        desc: 'Création motion design · effets visuels' },
-    { id: 'p7obnS5C9Z8', title: 'Tutoriel After Effects',            desc: 'YouTube @sukiamv · tutoriel motion design' },
-    { id: 'WzHgnUweD-4', title: 'Motion Design créatif',             desc: 'Création personnelle · After Effects' },
-    { id: 'X5qPfGG_SIU', title: 'Animation typographique',           desc: 'Motion design · typographie animée' },
-    { id: 'mg5f_VOLVgU', title: 'Smooth transition After Effects',   desc: 'Tutoriel · YouTube @sukiamv' },
+    { id: '-O1Cyivoj_Y', title: 'Animation pédagogique WAAT',      desc: 'Vidéo explicative produit · After Effects · WAAT',         tags: ['waat','pro','entreprise','pedagogique','corporate','explain'] },
+    { id: 'SsdlF6K7aWY', title: 'Motion Design produit WAAT',      desc: 'Format promotionnel · animation 2D · WAAT',                tags: ['waat','pro','promo','publicite','pub','corporate','produit'] },
+    { id: 'fqwBNsTpmFs', title: 'Animation corporate',             desc: 'Vidéo institutionnelle · motion design · portfolio',       tags: ['corporate','pro','institution','brand','marque','portfolio'] },
+    { id: 'X0uaPlkVRUE', title: 'Animation 2D After Effects',      desc: 'Création motion design · effets visuels',                  tags: ['2d','animation','after effect','effets','mouvement'] },
+    { id: 'p7obnS5C9Z8', title: 'Tutoriel After Effects',          desc: 'YouTube @sukiamv · tutoriel motion design',                tags: ['tuto','tutoriel','apprendre','after effect','youtube','formation'] },
+    { id: 'WzHgnUweD-4', title: 'Motion Design créatif',           desc: 'Création personnelle · After Effects · effets visuels',    tags: ['creatif','perso','personnel','art','vfx','original'] },
+    { id: 'X5qPfGG_SIU', title: 'Animation typographique',         desc: 'Motion design · typographie animée · After Effects',       tags: ['typo','texte','typographie','titre','lettre','kinetic'] },
+    { id: 'mg5f_VOLVgU', title: 'Smooth Transition — Tuto AE',     desc: 'Tutoriel After Effects · YouTube @sukiamv',                tags: ['tuto','tutoriel','transition','smooth','after effect','youtube'] },
+    { id: 'JrPndupOfik', title: 'Montage vidéo dynamique',         desc: 'Montage · rythme · motion design',                        tags: ['montage','edit','rythme','clip','dynamique','video'] },
+    { id: 'U0nDEC9Sus4', title: 'Animation After Effects avancée', desc: 'After Effects · animation complexe · portfolio',           tags: ['after effect','avance','complexe','portfolio','animation'] },
   ];
+
+  // ── Vidéos galerie locale — insérées toutes les 4 demandes vidéo ──
+  const GALLERY_VIDS = [
+    { src: '/images/motion/basketball%20match.mp4',  label: 'Basketball Match — motion design' },
+    { src: '/images/motion/Coding%20animation.mp4',  label: 'Coding Animation — motion design' },
+    { src: '/images/motion/Hey%20Alexa.mp4',         label: 'Hey Alexa — animation 2D' },
+    { src: '/images/motion/MascotteAnimation2d.mp4', label: 'Mascotte 2D — rigging & animation' },
+    { src: "/images/motion/can't%20see.mp4",         label: "Can't See — motion design" },
+    { src: '/images/motion/radio_1.mp4',             label: 'Radio — animation motion' },
+  ];
+  let _vidBlockCount = 0; // compte chaque bloc vidéo affiché
+
+  // Sélection intelligente des vidéos YouTube selon les mots-clés de la demande
+  function selectYtVids(input, n) {
+    const low = (input || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    const scored = YT_CAT.map(v => {
+      const score = v.tags.filter(t => low.includes(t.normalize('NFD').replace(/[̀-ͯ]/g,''))).length;
+      return { ...v, score };
+    }).sort((a, b) => b.score - a.score);
+    // Si aucun tag ne correspond → ordre par défaut (vidéos pro en premier)
+    return scored.slice(0, n);
+  }
+
+  // Bloc vidéo complet : YouTube adaptés + galerie toutes les 4 demandes
+  function videoBlock(input) {
+    _vidBlockCount++;
+    const vids = selectYtVids(input, 3);
+    let html = vids.map(v => ytCard(v.id, v.title, v.desc)).join('');
+    // Toutes les 4 demandes → ajoute une vidéo de galerie locale
+    if (_vidBlockCount % 4 === 0) {
+      const gv = GALLERY_VIDS[(_vidBlockCount / 4 - 1) % GALLERY_VIDS.length];
+      html += `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.35);letter-spacing:.05em">📽 Extrait galerie</small>`
+            + vid(gv.src, gv.label);
+    }
+    return html;
+  }
 
   // YouTube card — thumbnail cliquable → iframe lecture dans le chat
   function ytCard(id, title, desc) {
