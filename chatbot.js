@@ -341,10 +341,12 @@
   const HIST_KEY = 'akino_history';
   const HIST_MAX = 60;
 
+  const HIST_TTL = 5 * 60 * 1000; // 5 minutes
+
   function saveMsg(html, role) {
     try {
       const h = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
-      h.push({ html, role });
+      h.push({ html, role, ts: Date.now() });
       if (h.length > HIST_MAX) h.splice(0, h.length - HIST_MAX);
       localStorage.setItem(HIST_KEY, JSON.stringify(h));
     } catch(e) {}
@@ -353,8 +355,14 @@
   function loadHistory() {
     try {
       const h = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+      if (!h.length) return false;
+      const last = h[h.length - 1];
+      if (Date.now() - (last.ts || 0) > HIST_TTL) {
+        localStorage.removeItem(HIST_KEY);
+        return false;
+      }
       h.forEach(({ html, role }) => addMsg(html, role, true));
-      return h.length > 0;
+      return true;
     } catch(e) { return false; }
   }
 
