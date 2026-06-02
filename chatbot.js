@@ -38,7 +38,7 @@
     },
     {
       keys: ['youtube','yt','chaine','chaîne','suki','sukiamv','amv','tuto','tutoriel','abonné','abonne','vidéo youtube'],
-      answer: () => `Sur <a href="https://www.youtube.com/@sukiamv" target="_blank"><strong>YouTube @sukiamv</strong></a>, Abilan publie depuis <strong>2016</strong> 🎬<br><br>Deux types de contenu :<br>🎌 <strong>AMV (Anime Music Videos)</strong> : montages créatifs sur des musiques<br>🎓 <strong>Tutoriels After Effects</strong> :<br>&nbsp;&nbsp;• Smooth Zoom In & Out Tutorial<br>&nbsp;&nbsp;• Smooth 3D Camera Movements with 2D Text<br>&nbsp;&nbsp;• Hardcore Twitch Shake Tutorial (sans plugin !)<br><br>Il gère tout de A à Z : SEO YouTube, miniatures, sound design, montage avancé et effets visuels. Allez vous abonner ! ✨`
+      answer: () => `Sur <a href="https://www.youtube.com/@sukiamv"><strong>YouTube @sukiamv</strong></a>, Abilan publie depuis <strong>2016</strong> 🎬<br><br>Deux types de contenu :<br>🎌 <strong>AMV (Anime Music Videos)</strong> : montages créatifs sur des musiques<br>🎓 <strong>Tutoriels After Effects</strong> :<br>&nbsp;&nbsp;• Smooth Zoom In & Out Tutorial<br>&nbsp;&nbsp;• Smooth 3D Camera Movements with 2D Text<br>&nbsp;&nbsp;• Hardcore Twitch Shake Tutorial (sans plugin !)<br><br>Il gère tout de A à Z : SEO YouTube, miniatures, sound design, montage avancé et effets visuels. Allez vous abonner ! ✨`
     },
     {
       keys: ['compétence','logiciel','skill','maîtrise','technologie','capable','stack','illustrator','photoshop','sait faire','blender','sound design','figma','canva','anglais','wordpress','html','css','javascript','connaissance'],
@@ -52,7 +52,7 @@
     },
     {
       keys: ['contact','email','mail','joindre','écrire','disponible','disponibilité','localisation','region','situe','île-de-france','linkedin','linktree'],
-      answer: () => `${NOM} répond vite et est à l'écoute de chaque projet 🤝<br><br>📧 <a href="mailto:${EMAIL}"><strong>${EMAIL}</strong></a><br>🔗 <a href="${LINKTREE}" target="_blank"><strong>${LINKTREE.replace('https://','')}</strong></a> — tous ses liens en un<br>💼 <a href="${LINKEDIN}" target="_blank"><strong>LinkedIn</strong></a> — 1 123 abonnés<br><br>Il est <strong>${CV.localisation || 'mobile en Île-de-France'}</strong>, disponible en ${CV.disponibilite || 'alternance & freelance'}.<br><br>💡 <em>Un projet créatif ou digital en tête ? Écrivez-lui, il sera ravi d'en discuter !</em>`
+      answer: () => `${NOM} répond vite et est à l'écoute de chaque projet 🤝<br><br>📧 <a href="mailto:${EMAIL}"><strong>${EMAIL}</strong></a><br>🔗 <a href="${LINKTREE}"><strong>${LINKTREE.replace('https://','')}</strong></a> — tous ses liens en un<br>💼 <a href="${LINKEDIN}"><strong>LinkedIn</strong></a> — 1 123 abonnés<br><br>Il est <strong>${CV.localisation || 'mobile en Île-de-France'}</strong>, disponible en ${CV.disponibilite || 'alternance & freelance'}.<br><br>💡 <em>Un projet créatif ou digital en tête ? Écrivez-lui, il sera ravi d'en discuter !</em>`
     },
     {
       keys: ['réseau','instagram','behance','social','suivre','communauté','actif','créateur','publie','poste'],
@@ -65,10 +65,10 @@
             const href = a.href || '';
             const label = (a.getAttribute('aria-label') || a.textContent || '').replace(/Abilan Balakumaran\s?/i,'').trim();
             const icon = Object.entries(icons).find(([k]) => href.includes(k));
-            html += `${icon ? icon[1] : '🔗'} <a href="${href}" target="_blank"><strong>${label}</strong></a><br>`;
+            html += `${icon ? icon[1] : '🔗'} <a href="${href}"><strong>${label}</strong></a><br>`;
           });
         } else {
-          html += `📸 <a href="https://www.instagram.com/abilan_motion/" target="_blank">Instagram @abilan_motion</a><br>🎬 <a href="https://www.youtube.com/@sukiamv" target="_blank">YouTube @sukiamv</a><br>🎨 <a href="https://www.behance.net/AbilanBalakumaran" target="_blank">Behance</a><br>`;
+          html += `📸 <a href="https://www.instagram.com/abilan_motion/">Instagram @abilan_motion</a><br>🎬 <a href="https://www.youtube.com/@sukiamv">YouTube @sukiamv</a><br>🎨 <a href="https://www.behance.net/AbilanBalakumaran">Behance</a><br>`;
         }
         html += '<br>Abonnez-vous pour suivre ses créations ! ✨';
         return html;
@@ -174,6 +174,7 @@
 .cb-yt-desc{font-family:'Sora',sans-serif;font-size:10px;color:rgba(168,197,226,.55);}
 .cb-yt-ext{font-family:'Sora',sans-serif;font-size:10px;color:#a8c5e2;text-decoration:none;margin-top:2px;}
 .cb-yt-ext:hover{color:#fff;}
+.cb-yt-ctx{display:block;padding:6px 9px 0;font-family:'Sora',sans-serif;font-size:10.5px;color:rgba(168,197,226,.65);font-style:italic;line-height:1.4;}
 .cb-yt-frame{width:100%;aspect-ratio:16/9;border:none;display:block;}
 .cb-ring{position:fixed;bottom:24px;right:24px;z-index:99989;width:68px;height:68px;border-radius:50%;border:2px solid rgba(107,155,209,.35);pointer-events:none;animation:cbRing 2.2s ease-out infinite;}
 .cb-ring2{animation-delay:.7s;}
@@ -333,7 +334,7 @@
     // Pioche une vidéo YouTube aléatoire du catalogue carrousel
     const v = YT_CAT[Math.floor(Math.random() * YT_CAT.length)];
     return `<br><small style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(168,197,226,.35);letter-spacing:.05em">▶ Une production d'Abilan</small>`
-      + ytCard(v.id, v.title, v.desc)
+      + ytCard(v.id, v.title, v.desc, v.ctx)
       + chips([['🎬 Voir toutes les vidéos','/#section-videos']]);
   }
 
@@ -343,16 +344,16 @@
 
   // ── Catalogue YouTube avec tags thématiques ──
   const YT_CAT = [
-    { id: '-O1Cyivoj_Y', title: 'Animation pédagogique WAAT',      desc: 'Vidéo explicative produit · After Effects · WAAT',         tags: ['waat','pro','entreprise','pedagogique','corporate','explain'] },
-    { id: 'SsdlF6K7aWY', title: 'Motion Design produit WAAT',      desc: 'Format promotionnel · animation 2D · WAAT',                tags: ['waat','pro','promo','publicite','pub','corporate','produit'] },
-    { id: 'fqwBNsTpmFs', title: 'Animation corporate',             desc: 'Vidéo institutionnelle · motion design · portfolio',       tags: ['corporate','pro','institution','brand','marque','portfolio'] },
-    { id: 'X0uaPlkVRUE', title: 'Animation 2D After Effects',      desc: 'Création motion design · effets visuels',                  tags: ['2d','animation','after effect','effets','mouvement'] },
-    { id: 'p7obnS5C9Z8', title: 'Tutoriel After Effects',          desc: 'YouTube @sukiamv · tutoriel motion design',                tags: ['tuto','tutoriel','apprendre','after effect','youtube','formation'] },
-    { id: 'WzHgnUweD-4', title: 'Motion Design créatif',           desc: 'Création personnelle · After Effects · effets visuels',    tags: ['creatif','perso','personnel','art','vfx','original'] },
-    { id: 'X5qPfGG_SIU', title: 'Animation typographique',         desc: 'Motion design · typographie animée · After Effects',       tags: ['typo','texte','typographie','titre','lettre','kinetic'] },
-    { id: 'mg5f_VOLVgU', title: 'Smooth Transition — Tuto AE',     desc: 'Tutoriel After Effects · YouTube @sukiamv',                tags: ['tuto','tutoriel','transition','smooth','after effect','youtube'] },
-    { id: 'JrPndupOfik', title: 'Montage vidéo dynamique',         desc: 'Montage · rythme · motion design',                        tags: ['montage','edit','rythme','clip','dynamique','video'] },
-    { id: 'U0nDEC9Sus4', title: 'Animation After Effects avancée', desc: 'After Effects · animation complexe · portfolio',           tags: ['after effect','avance','complexe','portfolio','animation'] },
+    { id: '-O1Cyivoj_Y', title: 'Animation pédagogique WAAT',      desc: 'Vidéo explicative produit · After Effects · WAAT',         ctx: 'Réalisée en entreprise pour WAAT — vidéo pédagogique pour expliquer un produit.',         tags: ['waat','pro','entreprise','pedagogique','corporate','explain'] },
+    { id: 'SsdlF6K7aWY', title: 'Motion Design produit WAAT',      desc: 'Format promotionnel · animation 2D · WAAT',                ctx: 'Production promotionnelle animée en 2D réalisée pour WAAT.',                             tags: ['waat','pro','promo','publicite','pub','corporate','produit'] },
+    { id: 'fqwBNsTpmFs', title: 'Animation corporate',             desc: 'Vidéo institutionnelle · motion design · portfolio',       ctx: 'Vidéo institutionnelle motion design — identité et communication de marque.',             tags: ['corporate','pro','institution','brand','marque','portfolio'] },
+    { id: 'X0uaPlkVRUE', title: 'Animation 2D After Effects',      desc: 'Création motion design · effets visuels',                  ctx: 'Animation 2D réalisée sur After Effects — composition et effets visuels.',               tags: ['2d','animation','after effect','effets','mouvement'] },
+    { id: 'p7obnS5C9Z8', title: 'Tutoriel After Effects',          desc: 'YouTube @sukiamv · tutoriel motion design',                ctx: 'Tutoriel After Effects publié sur la chaîne YouTube @sukiamv.',                          tags: ['tuto','tutoriel','apprendre','after effect','youtube','formation'] },
+    { id: 'WzHgnUweD-4', title: 'Motion Design créatif',           desc: 'Création personnelle · After Effects · effets visuels',    ctx: 'Projet créatif personnel — effets visuels avancés et motion design.',                    tags: ['creatif','perso','personnel','art','vfx','original'] },
+    { id: 'X5qPfGG_SIU', title: 'Animation typographique',         desc: 'Motion design · typographie animée · After Effects',       ctx: 'Kinetic typography — animation de texte et typographie en mouvement.',                   tags: ['typo','texte','typographie','titre','lettre','kinetic'] },
+    { id: 'mg5f_VOLVgU', title: 'Smooth Transition — Tuto AE',     desc: 'Tutoriel After Effects · YouTube @sukiamv',                ctx: 'Tutoriel transitions fluides publié sur YouTube — technique After Effects.',             tags: ['tuto','tutoriel','transition','smooth','after effect','youtube'] },
+    { id: 'JrPndupOfik', title: 'Montage vidéo dynamique',         desc: 'Montage · rythme · motion design',                        ctx: 'Montage vidéo rythmé — cuts dynamiques et motion design synchronisés.',                  tags: ['montage','edit','rythme','clip','dynamique','video'] },
+    { id: 'U0nDEC9Sus4', title: 'Animation After Effects avancée', desc: 'After Effects · animation complexe · portfolio',           ctx: 'Animation complexe After Effects — démonstration de niveau avancé.',                    tags: ['after effect','avance','complexe','portfolio','animation'] },
   ];
 
   // ── Vidéos galerie locale — insérées toutes les 4 demandes vidéo ──
@@ -381,7 +382,7 @@
   function videoBlock(input) {
     _vidBlockCount++;
     const vids = selectYtVids(input, 3);
-    let html = vids.map(v => ytCard(v.id, v.title, v.desc)).join('');
+    let html = vids.map(v => ytCard(v.id, v.title, v.desc, v.ctx)).join('');
     // Toutes les 4 demandes → ajoute une vidéo de galerie locale
     if (_vidBlockCount % 4 === 0) {
       const gv = GALLERY_VIDS[(_vidBlockCount / 4 - 1) % GALLERY_VIDS.length];
@@ -392,10 +393,12 @@
   }
 
   // YouTube card — thumbnail cliquable → iframe lecture dans le chat
-  function ytCard(id, title, desc) {
+  function ytCard(id, title, desc, ctx) {
     const thumb = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
     const cid = 'cbyt_' + id.replace(/[^a-zA-Z0-9]/g,'');
+    const ctxHtml = ctx ? `<span class="cb-yt-ctx">${ctx}</span>` : '';
     return `<div class="cb-yt-card" id="${cid}">
+      ${ctxHtml}
       <div class="cb-yt-thumb" onclick="window._cbYtPlay('${cid}','${id}')">
         <img src="${thumb}" alt="${title}" loading="lazy">
         <div class="cb-yt-play"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="rgba(255,0,0,.85)"/><polygon points="14,11 28,18 14,25" fill="white"/></svg></div>
@@ -403,7 +406,7 @@
       <div class="cb-yt-info">
         <span class="cb-yt-title">${title}</span>
         <span class="cb-yt-desc">${desc}</span>
-        <a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="cb-yt-ext">↗ Ouvrir sur YouTube</a>
+        <a href="https://www.youtube.com/watch?v=${id}" class="cb-yt-ext">↗ Ouvrir sur YouTube</a>
       </div>
     </div>`;
   }
@@ -416,7 +419,7 @@
   }
   const imgt = (src, a='') => `<img src="${src}" alt="${a}" loading="lazy">`;
   const grid = items => `<div class="cb-grid">${items.join('')}</div>`;
-  const chips = links => `<div class="cb-links">${links.map(([l,h])=>`<a href="${h}" target="_blank" class="cb-chip-link">${l}</a>`).join('')}</div>`;
+  const chips = links => `<div class="cb-links">${links.map(([l,h])=>`<a href="${h}" class="cb-chip-link">${l}</a>`).join('')}</div>`;
 
   const msgs = () => document.getElementById('cb-msgs');
   const inp  = () => document.getElementById('cb-inp');
