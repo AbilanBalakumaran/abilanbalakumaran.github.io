@@ -31,15 +31,10 @@
     },
     {
       keys: ['motion design','motion designer','animation','animé','clip','reel','davinci','premiere pro','after effect','2d','mascotte','vidéo animée','video animee'],
-      answer: () => `Abilan crée du <strong>Motion Design</strong> depuis 2016 🎬<br>Appuyez ▶ pour voir ses créations :`
-        + grid([
-            vid('/images/motion/Coding%20animation.mp4','Coding Animation'),
-            vid('/images/motion/Hey%20Alexa.mp4','Hey Alexa'),
-            vid('/images/motion/basketball%20match.mp4','Basketball Match'),
-            vid('/images/motion/MascotteAnimation2d.mp4','Mascotte 2D'),
-          ])
-        + `<br>Chez WAAT : vidéos pédagogiques, mascotte 2D/3D, rigging, lip-syncing.<br>`
-        + chips([['🎬 Voir toutes les vidéos','/#section-videos'],['🖼️ Galerie complète','/#section-galerie'],['YouTube @sukiamv','https://www.youtube.com/@sukiamv'],['Behance','https://www.behance.net/AbilanBalakumaran']])
+      answer: () => `Abilan crée du <strong>Motion Design</strong> depuis 2016 🎬<br>Cliquez ▶ pour regarder directement :`
+        + YT_CAT.slice(0,3).map(v => ytCard(v.id, v.title, v.desc)).join('')
+        + `<br><small style="color:rgba(168,197,226,.45);font-size:10px">Réalisées dans le cadre professionnel · After Effects · Premiere Pro</small>`
+        + chips([['🎬 Voir toutes les vidéos','/#section-videos'],['▶ Chaîne YouTube','https://www.youtube.com/@sukiamv'],['🎨 Behance','https://www.behance.net/AbilanBalakumaran']])
     },
     {
       keys: ['youtube','yt','chaine','chaîne','suki','sukiamv','amv','tuto','tutoriel','abonné','abonne','vidéo youtube'],
@@ -159,12 +154,27 @@
 #cb-btn:focus,#cb-btn:active,#cb-btn:focus-visible{outline:none!important;background:transparent!important;box-shadow:none!important;}
 /* bouton son sur les vidéos */
 .cb-vid-wrap{position:relative;display:block;width:100%;margin-top:8px;}
-.cb-vid-wrap video{width:100%;height:auto;object-fit:contain;border-radius:8px;display:block;pointer-events:none;}
-.cb-snd-btn{position:absolute;bottom:7px;right:7px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.6);border:none;cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;color:#fff;z-index:3;transition:background .2s;-webkit-tap-highlight-color:transparent;pointer-events:all;}
-.cb-snd-btn:hover{background:rgba(0,0,0,.85);}
+.cb-vid-wrap video{width:100%;height:auto;object-fit:contain;border-radius:8px;display:block;pointer-events:none!important;}
+.cb-snd-btn{position:absolute;bottom:7px;right:7px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;z-index:10;transition:background .2s;-webkit-tap-highlight-color:transparent;pointer-events:all!important;padding:0;}
+.cb-snd-btn svg{display:block;flex-shrink:0;}
+.cb-snd-btn:hover{background:rgba(0,0,0,.9);}
 /* dans la grille */
 .cb-grid .cb-vid-wrap{margin-top:0;height:auto;}
 .cb-grid .cb-vid-wrap video{max-height:180px;background:#000;}
+/* YouTube cards */
+.cb-yt-card{display:flex;flex-direction:column;gap:0;text-decoration:none;background:rgba(168,197,226,.05);border:1px solid rgba(168,197,226,.13);border-radius:10px;overflow:hidden;margin-top:7px;transition:background .2s;}
+.cb-yt-card:hover{background:rgba(168,197,226,.1);}
+.cb-yt-thumb{position:relative;width:100%;aspect-ratio:16/9;cursor:pointer;overflow:hidden;}
+.cb-yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.cb-yt-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);transition:background .2s;}
+.cb-yt-thumb:hover .cb-yt-play{background:rgba(0,0,0,.55);}
+.cb-yt-play svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,.6));}
+.cb-yt-info{padding:7px 9px;display:flex;flex-direction:column;gap:3px;}
+.cb-yt-title{font-family:'Sora',sans-serif;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.3;}
+.cb-yt-desc{font-family:'Sora',sans-serif;font-size:10px;color:rgba(168,197,226,.55);}
+.cb-yt-ext{font-family:'Sora',sans-serif;font-size:10px;color:#a8c5e2;text-decoration:none;margin-top:2px;}
+.cb-yt-ext:hover{color:#fff;}
+.cb-yt-frame{width:100%;aspect-ratio:16/9;border:none;display:block;}
 .cb-ring{position:fixed;bottom:24px;right:24px;z-index:99989;width:68px;height:68px;border-radius:50%;border:2px solid rgba(107,155,209,.35);pointer-events:none;animation:cbRing 2.2s ease-out infinite;}
 .cb-ring2{animation-delay:.7s;}
 #cb-dot{position:fixed;bottom:82px;right:20px;z-index:99991;width:13px;height:13px;background:#6ba68d;border-radius:50%;border:2px solid #0f1823;box-shadow:0 0 8px rgba(107,166,141,.8);animation:cbDotPulse 2.5s ease-in-out infinite;pointer-events:none;}
@@ -334,8 +344,41 @@
       + chips([['🎬 Voir toutes les créations','/#section-videos'],['🖼️ Galerie complète','/#section-galerie']]);
   }
 
+  // ── Icônes SVG son (définies avant vid() pour éviter la TDZ) ──
+  const ICO_MUTE = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M17 7l-1.4 1.4 2.1 2.1-2.1 2.1L17 14l2.1-2.1 2.1 2.1 1.4-1.4-2.1-2.1 2.1-2.1L21.1 7 19 9.1 17 7z"/></svg>`;
+  const ICO_SOUND = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
+
+  // ── Catalogue YouTube — vidéos carrousel du portfolio ──
+  const YT_CAT = [
+    { id: '-O1Cyivoj_Y', title: 'Animation pédagogique WAAT',        desc: 'Vidéo explicative produit · After Effects · WAAT' },
+    { id: 'SsdlF6K7aWY', title: 'Motion Design produit WAAT',        desc: 'Format promotionnel · animation 2D · WAAT' },
+    { id: 'fqwBNsTpmFs', title: 'Animation corporate',               desc: 'Vidéo institutionnelle · motion design · portfolio' },
+    { id: 'X0uaPlkVRUE', title: 'Animation 2D After Effects',        desc: 'Création motion design · effets visuels' },
+    { id: 'p7obnS5C9Z8', title: 'Tutoriel After Effects',            desc: 'YouTube @sukiamv · tutoriel motion design' },
+    { id: 'WzHgnUweD-4', title: 'Motion Design créatif',             desc: 'Création personnelle · After Effects' },
+    { id: 'X5qPfGG_SIU', title: 'Animation typographique',           desc: 'Motion design · typographie animée' },
+    { id: 'mg5f_VOLVgU', title: 'Smooth transition After Effects',   desc: 'Tutoriel · YouTube @sukiamv' },
+  ];
+
+  // YouTube card — thumbnail cliquable → iframe lecture dans le chat
+  function ytCard(id, title, desc) {
+    const thumb = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
+    const cid = 'cbyt_' + id.replace(/[^a-zA-Z0-9]/g,'');
+    return `<div class="cb-yt-card" id="${cid}">
+      <div class="cb-yt-thumb" onclick="window._cbYtPlay('${cid}','${id}')">
+        <img src="${thumb}" alt="${title}" loading="lazy">
+        <div class="cb-yt-play"><svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="rgba(255,0,0,.85)"/><polygon points="14,11 28,18 14,25" fill="white"/></svg></div>
+      </div>
+      <div class="cb-yt-info">
+        <span class="cb-yt-title">${title}</span>
+        <span class="cb-yt-desc">${desc}</span>
+        <a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="cb-yt-ext">↗ Ouvrir sur YouTube</a>
+      </div>
+    </div>`;
+  }
+
   // Helpers HTML médias
-  // Vidéo avec bouton son en overlay — muette par défaut, 1 seul son à la fois
+  // Vidéo locale avec bouton son en overlay — muette par défaut
   function vid(src, t='') {
     const id = 'cbv' + Math.random().toString(36).slice(2,7);
     return `<div class="cb-vid-wrap"><video id="${id}" src="${src}" title="${t}" autoplay loop muted playsinline webkit-playsinline disablePictureInPicture controlsList="nofullscreen nodownload noremoteplayback"></video><button class="cb-snd-btn" onclick="window._cbSnd(this,'${id}')" title="Activer le son">${ICO_MUTE}</button></div>`;
@@ -506,10 +549,6 @@
     scanPage();
   }
 
-  // SVG icônes son
-  const ICO_MUTE = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18L19 19.27 20.27 18 5.27 3 4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg>`;
-  const ICO_SOUND = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
-
   // Mute toutes les vidéos du chat + reset icônes
   function muteAllVideos() {
     document.querySelectorAll('#cb-msgs video').forEach(v => { v.muted = true; });
@@ -517,6 +556,15 @@
   }
 
   // Gestion son : 1 seule vidéo avec son à la fois
+  // Lecture YouTube dans le chat — remplace la thumbnail par iframe
+  window._cbYtPlay = function(cardId, ytId) {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+    muteAllVideos();
+    const thumb = card.querySelector('.cb-yt-thumb');
+    if (thumb) thumb.outerHTML = `<iframe class="cb-yt-frame" src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0" allow="autoplay;encrypted-media" allowfullscreen></iframe>`;
+  };
+
   window._cbSnd = function(btn, id) {
     const target = document.getElementById(id);
     if (!target) return;
