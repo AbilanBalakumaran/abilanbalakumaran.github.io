@@ -344,16 +344,16 @@
 
   // ── Catalogue YouTube avec tags thématiques ──
   const YT_CAT = [
-    { id: '-O1Cyivoj_Y', title: 'Animation pédagogique WAAT',      desc: 'Vidéo explicative produit · After Effects · WAAT',         ctx: 'Réalisée en entreprise pour WAAT — vidéo pédagogique pour expliquer un produit.',         tags: ['waat','pro','entreprise','pedagogique','corporate','explain'] },
-    { id: 'SsdlF6K7aWY', title: 'Motion Design produit WAAT',      desc: 'Format promotionnel · animation 2D · WAAT',                ctx: 'Production promotionnelle animée en 2D réalisée pour WAAT.',                             tags: ['waat','pro','promo','publicite','pub','corporate','produit'] },
-    { id: 'fqwBNsTpmFs', title: 'Animation corporate',             desc: 'Vidéo institutionnelle · motion design · portfolio',       ctx: 'Vidéo institutionnelle motion design — identité et communication de marque.',             tags: ['corporate','pro','institution','brand','marque','portfolio'] },
-    { id: 'X0uaPlkVRUE', title: 'Animation 2D After Effects',      desc: 'Création motion design · effets visuels',                  ctx: 'Animation 2D réalisée sur After Effects — composition et effets visuels.',               tags: ['2d','animation','after effect','effets','mouvement'] },
-    { id: 'p7obnS5C9Z8', title: 'Tutoriel After Effects',          desc: 'YouTube @sukiamv · tutoriel motion design',                ctx: 'Tutoriel After Effects publié sur la chaîne YouTube @sukiamv.',                          tags: ['tuto','tutoriel','apprendre','after effect','youtube','formation'] },
-    { id: 'WzHgnUweD-4', title: 'Motion Design créatif',           desc: 'Création personnelle · After Effects · effets visuels',    ctx: 'Projet créatif personnel — effets visuels avancés et motion design.',                    tags: ['creatif','perso','personnel','art','vfx','original'] },
-    { id: 'X5qPfGG_SIU', title: 'Animation typographique',         desc: 'Motion design · typographie animée · After Effects',       ctx: 'Kinetic typography — animation de texte et typographie en mouvement.',                   tags: ['typo','texte','typographie','titre','lettre','kinetic'] },
-    { id: 'mg5f_VOLVgU', title: 'Smooth Transition — Tuto AE',     desc: 'Tutoriel After Effects · YouTube @sukiamv',                ctx: 'Tutoriel transitions fluides publié sur YouTube — technique After Effects.',             tags: ['tuto','tutoriel','transition','smooth','after effect','youtube'] },
-    { id: 'JrPndupOfik', title: 'Montage vidéo dynamique',         desc: 'Montage · rythme · motion design',                        ctx: 'Montage vidéo rythmé — cuts dynamiques et motion design synchronisés.',                  tags: ['montage','edit','rythme','clip','dynamique','video'] },
-    { id: 'U0nDEC9Sus4', title: 'Animation After Effects avancée', desc: 'After Effects · animation complexe · portfolio',           ctx: 'Animation complexe After Effects — démonstration de niveau avancé.',                    tags: ['after effect','avance','complexe','portfolio','animation'] },
+    { id: '-O1Cyivoj_Y', title: 'Showreel Abilan Balakumaran',                           tags: ['showreel','reel','portfolio','pro','best of'] },
+    { id: 'SsdlF6K7aWY', title: "L'Enfant Bleu — Une histoire à ne pas vivre chez soi", tags: ['corporate','pro','association','campagne','social','brand'] },
+    { id: 'fqwBNsTpmFs', title: 'La solution IRVE WAAT pour la copropriété',             tags: ['waat','pro','entreprise','explicatif','pedagogique','produit'] },
+    { id: 'X0uaPlkVRUE', title: 'La magie du recrutement chez WAAT',                    tags: ['waat','pro','recrutement','rh','interne','animation'] },
+    { id: 'p7obnS5C9Z8', title: 'HAPPN — campagne marketing',                           tags: ['campagne','marketing','pub','publicite','brand','promo'] },
+    { id: 'WzHgnUweD-4', title: 'Tx coin — campagne marketing',                         tags: ['campagne','marketing','pub','crypto','brand','promo'] },
+    { id: 'X5qPfGG_SIU', title: 'WAAT360 — installation borne de recharge',             tags: ['waat','pro','explicatif','pedagogique','produit','recharge'] },
+    { id: 'mg5f_VOLVgU', title: 'WAAT équipe 62 sites pour Proudreed',                  tags: ['waat','pro','corporate','immobilier','b2b','entreprise'] },
+    { id: 'JrPndupOfik', title: 'Puces typo 2024',                                      tags: ['typo','typographie','evenement','motion','creatif','art'] },
+    { id: 'U0nDEC9Sus4', title: "Interlude — Portrait d'Agnolo Doni",                   tags: ['art','creatif','perso','animation','illustration','culture'] },
   ];
 
   // ── Vidéos galerie locale — insérées toutes les 4 demandes vidéo ──
