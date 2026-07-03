@@ -112,8 +112,7 @@ canvas#ie-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
 /* ── Nav ── */
 .tp-nav-toggle-cb { display:none; }
 #tp-nav-header a,#tp-nav-header label,.tp-mobile-link,.tp-nav-burger { -webkit-tap-highlight-color:transparent; }
-#tp-nav-header { position:fixed;top:0;left:0;right:0;z-index:99999;height:var(--nav-height);background:rgba(15,24,35,0.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(168,197,226,0.1);box-shadow:0 4px 32px rgba(0,0,0,0.3);font-family:var(--nav-font);animation:nav-slide-in 0.6s cubic-bezier(0.22,1,0.36,1) both; }
-@keyframes nav-slide-in { from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;} }
+#tp-nav-header { position:fixed;top:0;left:0;right:0;z-index:99999;height:var(--nav-height);background:rgba(15,24,35,0.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(168,197,226,0.1);box-shadow:0 4px 32px rgba(0,0,0,0.3);font-family:var(--nav-font); }
 #tp-nav-header.scrolled { background:rgba(10,16,24,0.95);border-bottom-color:rgba(168,197,226,0.15);box-shadow:0 4px 40px rgba(0,0,0,0.5); }
 .tp-nav-topline { position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,#2d4263 15%,#5a7ba6 40%,#a8c5e2 50%,#5a7ba6 60%,#2d4263 85%,transparent 100%);animation:line-glow 4s ease-in-out infinite; }
 @keyframes line-glow { 0%,100%{opacity:.6}50%{opacity:1} }
