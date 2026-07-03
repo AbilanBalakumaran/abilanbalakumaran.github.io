@@ -497,7 +497,7 @@ canvas#tp-grain { position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.
 <span class="sp-title">Abilan<br>Lab</span>
 <span class="sp-sub">Digital &amp; Motion</span>
 </div>
-<script>(function(){var s=document.getElementById('pwa-splash');if(!s)return;var isPWA=window.matchMedia('(display-mode:standalone)').matches||!!window.navigator.standalone;var first=!sessionStorage.getItem('sp');if(!isPWA&&!first){s.remove();return;}sessionStorage.setItem('sp','1');document.body.classList.add('sp-loading');setTimeout(function(){s.style.opacity='0';s.style.pointerEvents='none';document.body.classList.remove('sp-loading');setTimeout(function(){s.remove();},650);},2400);})();</script>
+<script>(function(){var s=document.getElementById('pwa-splash');if(!s)return;var isPWA=window.matchMedia('(display-mode:standalone)').matches||!!window.navigator.standalone;var first=!sessionStorage.getItem('sp');if(!isPWA||!first){s.remove();return;}sessionStorage.setItem('sp','1');document.body.classList.add('sp-loading');setTimeout(function(){s.style.opacity='0';s.style.pointerEvents='none';document.body.classList.remove('sp-loading');setTimeout(function(){s.remove();},650);},2400);})();</script>
 
 <div class="tp-dot-grid" aria-hidden="true"></div>
 <div class="tp-orb tp-orb-1" aria-hidden="true"></div>
